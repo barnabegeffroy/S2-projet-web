@@ -26,6 +26,9 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_DkgEEIZtEeuz_b3Jzs49-Q" name="telephone">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_YAt3UIZyEeuz_b3Jzs49-Q" name="noteMoyenne">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_tZjQYIZiEeuz_b3Jzs49-Q" name="Administrateur">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_x91T4IZiEeuz_b3Jzs49-Q" name="Property2"/>
@@ -52,7 +55,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Q6qpYIZsEeuz_b3Jzs49-Q" name="idUser">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_QzTAoIZtEeuz_b3Jzs49-Q" name="disponible">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Ni00wIZ1Eeuz_b3Jzs49-Q" name="estDisponible" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
@@ -65,6 +68,23 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_qmWBkIZlEeuz_b3Jzs49-Q" name="valeur">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kCVrkIZxEeuz_b3Jzs49-Q" name="idReceveur">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rERdQIZxEeuz_b3Jzs49-Q" name="idEmetteur">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3YBRYIZyEeuz_b3Jzs49-Q" name="id">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__w62AIZyEeuz_b3Jzs49-Q" name="moyenne" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_DWeAYIZzEeuz_b3Jzs49-Q" name="notes">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PCvaQIZzEeuz_b3Jzs49-Q" name="average" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_BjEjYIZjEeuz_b3Jzs49-Q" name="Commentaire">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_wSGDcIZlEeuz_b3Jzs49-Q" name="description">
@@ -72,6 +92,15 @@
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_z4F5wIZlEeuz_b3Jzs49-Q" name="date">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_beEnoIZ1Eeuz_b3Jzs49-Q" name="idEmetteur">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gDNmwIZ1Eeuz_b3Jzs49-Q" name="id">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iDmxMIZ1Eeuz_b3Jzs49-Q" name="idReceveur">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_CV35UIZjEeuz_b3Jzs49-Q" name="Image">
@@ -115,6 +144,26 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-oYvYIZsEeuz_b3Jzs49-Q" name="idAnnonce">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3wj3wIZzEeuz_b3Jzs49-Q" name="Reservations">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5d_p8IZzEeuz_b3Jzs49-Q" name="dateDebut">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8sGksIZzEeuz_b3Jzs49-Q" name="dateFin">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="__Ci3oIZzEeuz_b3Jzs49-Q" name="idAnnonce">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CtsTsIZ0Eeuz_b3Jzs49-Q" name="idUser">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_x2sr8IZ0Eeuz_b3Jzs49-Q" name="estDisponibleMaintenant" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JFdRkIZ1Eeuz_b3Jzs49-Q" name="annonce" type="_3BQKcIZiEeuz_b3Jzs49-Q"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LSVY0IZ1Eeuz_b3Jzs49-Q" name="bool" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_PBoaQIZjEeuz_b3Jzs49-Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PBpoYIZjEeuz_b3Jzs49-Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
