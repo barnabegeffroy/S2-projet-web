@@ -12,6 +12,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: sftp.pedago-ext.ensiie.fr
-        local-dir: ~/public_html/projet-web/
+        local-dir: ./public_html/projet-web/
         username: barnabe.geffroy
         password: ${{ secrets.ftp_password }}
