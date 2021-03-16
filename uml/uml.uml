@@ -3,20 +3,50 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_2-Ea8IZfEeuJFKSRexADFg">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Interaction" xmi:id="_29DuUIZfEeuJFKSRexADFg" name="Interaction1"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8G8ZQIZfEeuJFKSRexADFg" name="User">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_O700kIZgEeuJFKSRexADFg" name="Property2"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_QHGU4IZgEeuJFKSRexADFg" name="Property3"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_T-5s4IZgEeuJFKSRexADFg" name="user" type="_8G8ZQIZfEeuJFKSRexADFg" association="_T-4ewIZgEeuJFKSRexADFg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T-5s4YZgEeuJFKSRexADFg"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T-6T8IZgEeuJFKSRexADFg" value="1"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_r0ewAIZiEeuz_b3Jzs49-Q" name="Utilisateur"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_tZjQYIZiEeuz_b3Jzs49-Q" name="Administrateur">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_x91T4IZiEeuz_b3Jzs49-Q" name="Property2"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_waMW4IZiEeuz_b3Jzs49-Q" name="Operation1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3BQKcIZiEeuz_b3Jzs49-Q" name="Annonce"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7x_8oIZiEeuz_b3Jzs49-Q" name="type_annonce">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MNuIMIZjEeuz_b3Jzs49-Q" name="nom" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_MAXJAIZgEeuJFKSRexADFg" name="Operation1"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T-4ewIZgEeuJFKSRexADFg" memberEnd="_T-5s4IZgEeuJFKSRexADFg _T-6T8YZgEeuJFKSRexADFg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T-5F0IZgEeuJFKSRexADFg" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T-5F0YZgEeuJFKSRexADFg" key="nature" value="UML_Nature"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="__IO4oIZiEeuz_b3Jzs49-Q" name="Catégorie">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_k3wHEIZlEeuz_b3Jzs49-Q" name="nom">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AxGT4IZjEeuz_b3Jzs49-Q" name="Notation">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qmWBkIZlEeuz_b3Jzs49-Q" name="valeur">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BjEjYIZjEeuz_b3Jzs49-Q" name="Commentaire">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wSGDcIZlEeuz_b3Jzs49-Q" name="description">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_z4F5wIZlEeuz_b3Jzs49-Q" name="date">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CV35UIZjEeuz_b3Jzs49-Q" name="Image"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kaIzcIZkEeuz_b3Jzs49-Q" name="Message"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_rAUdQIZkEeuz_b3Jzs49-Q" name="Localisation">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_tyYVMIZkEeuz_b3Jzs49-Q" name="distance">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4K0IoIZkEeuz_b3Jzs49-Q" name="A" type="_rAUdQIZkEeuz_b3Jzs49-Q"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5XxD8IZkEeuz_b3Jzs49-Q" name="B" type="_rAUdQIZkEeuz_b3Jzs49-Q"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_LCOTgIZlEeuz_b3Jzs49-Q" name="d" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_PBoaQIZjEeuz_b3Jzs49-Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PBpoYIZjEeuz_b3Jzs49-Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_T-6T8YZgEeuJFKSRexADFg" name="user" type="_8G8ZQIZfEeuJFKSRexADFg" association="_T-4ewIZgEeuJFKSRexADFg"/>
-  </packagedElement>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
 </uml:Model>
