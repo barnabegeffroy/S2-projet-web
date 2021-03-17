@@ -10,5 +10,6 @@ jobs:
 
       - name: update public_html
         run: |
+          git clone https://github.com/barnabegeffroy/projet-web.git
           ls -a
           git ftp push -u "barnabe.geffroy" -p ${{ secrets.ftp_password }} "sftp://pedago-ext.ensiie.fr/~/public_html/projet-web"
