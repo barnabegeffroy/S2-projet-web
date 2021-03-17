@@ -1,1 +1,0 @@
-git ftp push -u "barnabe.geffroy" -p $password "sftp://pedago-ext.ensiie.fr/~/public_html/projet-web"
