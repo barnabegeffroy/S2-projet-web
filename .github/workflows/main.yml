@@ -1,9 +1,11 @@
 on: push
 
 jobs:
-       
   archive-build-artifacts:
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: .
     steps:
 
       - name: update public_html
