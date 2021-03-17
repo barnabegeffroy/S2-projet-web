@@ -1,16 +1,13 @@
+name: run-script
 on: push
-name: 🚀 Deploy website on push
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2.3.2
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: sftp.pedago-ext.ensiie.fr
-        username: barnabe.geffroy
-        password: ${{ secrets.ftp_password }}
+run:
+runs-on: ubuntu-latest
+steps:
+  - uses: actions/checkout@v1
+  - name: script
+run: PATH/script.sh
+shell: bash
+with:
+  password: ${{ secrets.ftp_password }}
