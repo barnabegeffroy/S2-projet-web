@@ -1,13 +1,17 @@
-name: run-script
+name: CI
 on: push
 
 jobs:
-run:
-runs-on: ubuntu-latest
-steps:
-  - uses: actions/checkout@v1
-  - name: script
-run: PATH/script.sh
-shell: bash
-with:
-  password: ${{ secrets.ftp_password }}
+  linux:
+    name: Linux build on node ${{ matrix.node_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [8.x, 10.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install packages
+      run: git ftp push -u "barnabe.geffroy" -p $password "sftp://pedago-ext.ensiie.fr/~/public_html/projet-web"
