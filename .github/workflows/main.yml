@@ -10,4 +10,5 @@ jobs:
 
       - name: update public_html
         run: |
+          ls -a
           git ftp push -u "barnabe.geffroy" -p ${{ secrets.ftp_password }} "sftp://pedago-ext.ensiie.fr/~/public_html/projet-web"
