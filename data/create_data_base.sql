@@ -1,58 +1,108 @@
 --##############################################################
 --# Script SQL
---# Author: Groupe 29
---# Function: Création des relations astro_personne et astro_signe
+--# Author: Groupe 35
+--# Function: Création de la base de données du projet web
 --###############################################################
--- If tables already exist
-DROP TABLE IF EXISTS astro_personne;
 
-DROP TABLE IF EXISTS astro_signe;
+-- If tables already exists
+DROP TABLE IF EXISTS Utilisateur;
 
-CREATE TABLE astro_signe (
-    nom_signe_astro VARCHAR(10) CONSTRAINT dom_nom_signe_astro CHECK(
-        nom_signe_astro IN (
-            'Bélier',
-            'Taureau',
-            'Gémeaux',
-            'Cancer',
-            'Lion',
-            'Vierge',
-            'Balance',
-            'Scorpion',
-            'Sagittaire',
-            'Capricorne',
-            'Verseau',
-            'Poisson'
-        )
-    ) PRIMARY KEY,
-    jour_debut INTEGER,
-    mois_debut INTEGER,
-    jour_fin INTEGER,
-    mois_fin INTEGER,
-    element VARCHAR(10) CONSTRAINT dom_element CHECK(element IN ('Air','Terre','Eau','Feu'))
-);
-
-CREATE TABLE astro_personne (
-    num_enregistrement VARCHAR CONSTRAINT cleprim_personne PRIMARY KEY,
+CREATE TABLE Utilisateur (
+    id INTEGER CONSTRAINT user_unique_id PRIMARY KEY,
     nom VARCHAR(20) NOT NULL,
     prenom VARCHAR(20) NOT NULL,
-    email VARCHAR(40),
-    nom_signe_astro VARCHAR(10),
-    CONSTRAINT cle_etr_Personne FOREIGN KEY (nom_signe_astro) REFERENCES astro_signe(nom_signe_astro)
+    password VARCHAR(256) NOT NULL,
+    birthday DATE, --OU DATETIME
+    mail VARCHAR(256) NOT NULL,
+    profilePicture FILESTREAM,
+    telephone VARCHAR(10),
+    noteMoyenne FLOAT
 );
 
-INSERT INTO astro_signe VALUES('Bélier',21,3,20,4,'Feu');
-INSERT INTO astro_signe VALUES('Taureau',21,4,20,5,'Terre');
-INSERT INTO astro_signe VALUES('Gémeaux',22,5,21,6,'Air');
-INSERT INTO astro_signe VALUES('Cancer',22,6,22,7,'Eau');
-INSERT INTO astro_signe VALUES('Lion',23,7,22,8,'Feu');
-INSERT INTO astro_signe VALUES('Vierge',23,8,22,9,'Terre');
-INSERT INTO astro_signe VALUES('Balance',23,9,22,10,'Air');
-INSERT INTO astro_signe VALUES('Scorpion',23,10,22,11,'Eau');
-INSERT INTO astro_signe VALUES('Sagittaire',23,11,21,12,'Feu');
-INSERT INTO astro_signe VALUES('Capricorne',22,12,20,1,'Terre');
-INSERT INTO astro_signe VALUES('Verseau',21,1,18,2,'Air');
-INSERT INTO astro_signe VALUES('Poisson',19,2,20,3,'Eau');
+DROP TABLE IF EXISTS Favoris;
 
-GRANT all privileges ON astro_personne TO tpcurseurs;
-GRANT all privileges ON astro_signe TO tpcurseurs;
+CREATE TABLE Favoris (
+    idUtilisateur INTEGER NOT NULL,
+    idAnnonce INTEGER NOT NULL,
+    PRIMARY KEY (idUtilisateur, idAnnonce),
+    CONSTRAINT cle_etr_utilisateur FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id),
+    CONSTRAINT cle_etr_annonce FOREIGN KEY (idAnnonce) REFERENCES Annonce(id),
+);
+
+DROP TABLE IF EXISTS Annonce;
+
+CREATE TABLE Annonce (
+    id INTEGER CONSTRAINT annonce_unique_id UNIQUE PRIMARY KEY,
+    titre VARCHAR(100) NOT NULL,
+    idUtilisateur INTEGER CONSTRAINT fk_annonce FOREIGN KEY REFERENCES Utilisateur(id),
+    datePublication DATE NOT NULL,
+    duree TIME,
+    description VARCHAR,
+    photo FILESTREAM,
+    lieu VARCHAR(256),
+    estDisponible BOOLEAN,
+
+);
+
+DROP TABLE IF EXISTS Notation;
+
+CREATE TABLE Notation (
+    id INTEGER CONSTRAINT notation_unique_id UNIQUE PRIMARY KEY,
+    idEmetteur INTEGER CONSTRAINT fk_notation FOREIGN KEY REFERENCES Utilisateur(id),
+    idReceveur INTEGER NOT NULL,
+    valeur FLOAT,
+);
+
+DROP TABLE IF EXISTS Message;
+
+CREATE TABLE Message (
+    id INTEGER CONSTRAINT message_unique_id UNIQUE PRIMARY KEY,
+    idEmetteur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
+    idReceveur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
+    datePublication DATE NOT NULL,
+    description VARCHAR,
+);
+
+DROP TABLE IF EXISTS Image;
+
+CREATE TABLE Image (
+    id INTEGER CONSTRAINT image_unique_id UNIQUE PRIMARY KEY,
+    titre VARCHAR(100) NOT NULL,
+    hauteur INTEGER,
+    largeur INTEGER,
+);
+
+DROP TABLE IF EXISTS Commentaire;
+
+CREATE TABLE Commentaire (
+    id INTEGER CONSTRAINT commentaire_unique_id UNIQUE PRIMARY KEY,
+    -- titre VARCHAR(100) NOT NULL,
+    description VARCHAR NOT NULL,
+    idEmetteur INTEGER CONSTRAINT fk_commentaire FOREIGN KEY REFERENCES Utilisateur(id),
+    idReceveur INTEGER NOT NULL,
+    datePublication DATE NOT NULL,
+    
+);
+
+DROP TABLE IF EXISTS Reservation;
+
+CREATE TABLE Reservation (
+    idAnnonce INTEGER CONSTRAINT fk_annonce_reservation FOREIGN KEY REFERENCES Annonce(id),
+    idUtilisateur INTEGER CONSTRAINT fk_user_reservation FOREIGN KEY REFERENCES Utilisateur(id),
+    dateDebut DATE NOT NULL,
+    dateFin DATE NOT NULL,
+    CONSTRAINT pk_reservation PRIMARY KEY (idAnnonce,dateDebut,dateFin),
+);
+
+DROP TABLE IF EXISTS Localisation;
+
+CREATE TABLE Localisation (
+    lattitudeDegre FLOAT NOT NULL,
+    lattitudeMinute FLOAT NOT NULL,
+    longitudeDegre FLOAT NOT NULL,
+    longitudeMinute FLOAT NOT NULL,
+    CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute),
+);
+
+-- GRANT all privileges ON astro_personne TO tpcurseurs;
+-- GRANT all privileges ON astro_signe TO tpcurseurs;

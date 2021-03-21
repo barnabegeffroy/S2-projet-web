@@ -29,12 +29,15 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YAt3UIZyEeuz_b3Jzs49-Q" name="noteMoyenne">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vXVkEIqGEeumKKtXVDoFng" name="prenom">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_tZjQYIZiEeuz_b3Jzs49-Q" name="Administrateur">
     <generalization xmi:type="uml:Generalization" xmi:id="_oKg7AIoYEeuYYeJfwLz0dQ" general="_r0ewAIZiEeuz_b3Jzs49-Q"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_3BQKcIZiEeuz_b3Jzs49-Q" name="Annonce">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_N3qvQIZoEeuz_b3Jzs49-Q" name="nom" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_N3qvQIZoEeuz_b3Jzs49-Q" name="titre" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_QqifgIZoEeuz_b3Jzs49-Q" name="duree">
@@ -43,15 +46,15 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_lNNc4IZpEeuz_b3Jzs49-Q" name="id">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_cCb58IZqEeuz_b3Jzs49-Q" name="date">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cCb58IZqEeuz_b3Jzs49-Q" name="datePublication">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_T3kU0IZrEeuz_b3Jzs49-Q" name="description">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_g7PmgIZrEeuz_b3Jzs49-Q" name="image" type="_CV35UIZjEeuz_b3Jzs49-Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_g7PmgIZrEeuz_b3Jzs49-Q" name="photo" type="_CV35UIZjEeuz_b3Jzs49-Q"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_kGuEAIZrEeuz_b3Jzs49-Q" name="lieu" type="_rAUdQIZkEeuz_b3Jzs49-Q"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Q6qpYIZsEeuz_b3Jzs49-Q" name="idUser">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Q6qpYIZsEeuz_b3Jzs49-Q" name="idUtilisateur">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Ni00wIZ1Eeuz_b3Jzs49-Q" name="estDisponible" visibility="public">
@@ -84,7 +87,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_wSGDcIZlEeuz_b3Jzs49-Q" name="description">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_z4F5wIZlEeuz_b3Jzs49-Q" name="date">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_z4F5wIZlEeuz_b3Jzs49-Q" name="datePublication">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_beEnoIZ1Eeuz_b3Jzs49-Q" name="idEmetteur">
@@ -98,7 +101,7 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_CV35UIZjEeuz_b3Jzs49-Q" name="Image">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_xevqgIZqEeuz_b3Jzs49-Q" name="nom">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_xevqgIZqEeuz_b3Jzs49-Q" name="titre">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_zQYnQIZqEeuz_b3Jzs49-Q" name="id">
@@ -118,7 +121,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_PAK9gIZqEeuz_b3Jzs49-Q" name="id">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_VZFnYIZqEeuz_b3Jzs49-Q" name="date">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VZFnYIZqEeuz_b3Jzs49-Q" name="datePublication">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_d-YCMIZqEeuz_b3Jzs49-Q" name="idEmetteur">
@@ -129,10 +132,16 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_rAUdQIZkEeuz_b3Jzs49-Q" name="Localisation">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Yud5MIoXEeuYYeJfwLz0dQ" name="lattitude" aggregation="shared">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Yud5MIoXEeuYYeJfwLz0dQ" name="lattitudeDegre" aggregation="shared">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_wcueQIoXEeuYYeJfwLz0dQ" name="longitude">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wcueQIoXEeuYYeJfwLz0dQ" name="longitudeDegre">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_nWFtoIqKEeumKKtXVDoFng" name="lattitudeMinute">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pZKYoIqKEeumKKtXVDoFng" name="longitudeMinute">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_tyYVMIZkEeuz_b3Jzs49-Q" name="distance">
@@ -261,7 +270,7 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mP-4cIpOEeumKKtXVDoFng" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mP_fgIpOEeumKKtXVDoFng" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qcUgkIpPEeumKKtXVDoFng" name="idUser">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qcUgkIpPEeumKKtXVDoFng" name="idUtilisateur">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_uPfQMIpPEeumKKtXVDoFng" name="idAnnonce">
