@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: 'Arvo', serif;
+}
+
+.h1 {
+  font-size: 28px;
+  color: rgb(0, 0, 0);
+}
+
+.logo-container {
+  font-size: 28px;
+}
+
+.header {
+  color: white;
+  background-color: rgb(0, 0, 0);
+  padding: 23px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-header-container {
+  display: inline;
+}
+
+.link-header-item {
+  display: inline;
+}
+
+.main-container {
+  width: 70%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 90vh;
+  background-color: #eee;
+}
+
+.topic-container {
+  list-style: none;
+  padding: 15px;
+}
+
+.topic-item {
+  justify-content: space-between;
+  display: flex;
+  margin: 15px;
+  padding: 10px;
+  background-color: white;
+}
+
+.footer {
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.person-item {
+  order: 2;
+  margin-left: 20px;
+}
+
+.comment-vote-container {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 70px;
+}
+
+.delete-form {
+  order: 2;
+  margin-left: 20px;
+}
+
+.person-container {
+  display: flex;
+  order: 1;
+}
+
+.fa-chevron-up {
+  color: red;
+}
+
+.topic-edit-form {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 0.625%;
+  text-align: center;
+  color: black;
+}
+
+li:last-child a {
+  margin-right: 0;
+}
+
+a:link, a:visited, a:focus {
+  background: rgb(255, 21, 255);
+}
+
+a:hover {
+  background: rgb(113, 2, 141);
+}
+
+a:active {
+  background: red;
+  color: white;
+}
+
+label {
+  display: inline-block;
+  width: 210px;
+  text-align: right;
+}
+
+.button1{
+  background: transparent;
+  border: 2px solid #27ae60;
+  border-radius: 10px;
+  color: #27ae60;
+  padding: 5px 15px ;
+  outline: none;
+  cursor: pointer;
+}
