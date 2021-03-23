@@ -104,5 +104,12 @@ CREATE TABLE Localisation (
     CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute),
 );
 
--- GRANT all privileges ON astro_personne TO tpcurseurs;
--- GRANT all privileges ON astro_signe TO tpcurseurs;
+GRANT all privileges ON Utilisateur TO projet_web_grp35;
+GRANT all privileges ON Favoris TO projet_web_grp35;
+GRANT all privileges ON Annonce TO projet_web_grp35;
+GRANT all privileges ON Notation TO projet_web_grp35;
+GRANT all privileges ON Message TO projet_web_grp35;
+GRANT all privileges ON Image TO projet_web_grp35;
+GRANT all privileges ON Commentaire TO projet_web_grp35;
+GRANT all privileges ON Reservation TO projet_web_grp35;
+GRANT all privileges ON Localisation TO projet_web_grp35;

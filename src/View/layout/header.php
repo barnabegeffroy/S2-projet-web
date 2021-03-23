@@ -28,18 +28,20 @@ et faire une recherche sur $q_array, trié du plus long mot au plus court (on en
 /*On regarde si q est defini et non vide */
 if(isset($_GET['q']) AND !empty($_GET['q'])){
     $q = htmlspecialchars($_GET['q']);
-    $articles = $bdd->query('SELECT * FROM Annonce WHERE nom LIKE "%'.$q.'%" ORDER BY id DESC';
+    $articles = $bdd->query('SELECT * FROM Annonce WHERE nom LIKE "%'.$q.'%" ORDER BY id DESC');
 
     /* Si on trouve rien en cherchant dans le tire, on cherche dans la description de l'annonce*/
     if($articles->rowCount() ==0){
-        $articles = $bdd->query('SELECT * FROM Annonce WHERE CONCAT(nom,contenu) LIKE "%'.$q.'%" ORDER BY id DESC';
+        $articles = $bdd->query('SELECT * FROM Annonce WHERE CONCAT(nom,contenu) LIKE "%'.$q.'%" ORDER BY id DESC');
     }
 
 }
 
 /*Si aucun résultat n'est trouvé, on affiche aucun résultat*/
 else{ ?>
-Aucun résultat pour : "<?= $q?>"
+<div class="recherche_fail">
+    Aucun résultat pour : "<?= $q?>"
+<div>
 <?php
 }
 ?>
