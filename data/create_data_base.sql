@@ -7,7 +7,7 @@
 -- If tables already exists
 
 
-DROP TABLE IF EXISTS Utilisateur;
+DROP TABLE IF EXISTS Utilisateur CASCADE ;
 
 CREATE TABLE Utilisateur (
     id SERIAL PRIMARY KEY,
@@ -20,7 +20,7 @@ CREATE TABLE Utilisateur (
     telephone VARCHAR(10),
     noteMoyenne FLOAT
 );
-DROP TABLE IF EXISTS Annonce;
+DROP TABLE IF EXISTS Annonce CASCADE;
 
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
