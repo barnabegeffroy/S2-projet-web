@@ -10,7 +10,7 @@
 DROP TABLE IF EXISTS Utilisateur;
 
 CREATE TABLE Utilisateur (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
     password VARCHAR(256) NOT NULL,
@@ -23,13 +23,13 @@ CREATE TABLE Utilisateur (
 DROP TABLE IF EXISTS Annonce;
 
 CREATE TABLE Annonce (
-    id INTEGER CONSTRAINT annonce_unique_id UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     titre VARCHAR(100) NOT NULL,
     idUtilisateur INTEGER CONSTRAINT fk_annonce FOREIGN KEY REFERENCES Utilisateur(id),
     datePublication DATE NOT NULL,
     duree TIME,
     description VARCHAR,
-    photo FILESTREAM,
+    photo INTEGER,
     lieu VARCHAR(256),
     estDisponible BOOLEAN
 
@@ -38,7 +38,7 @@ CREATE TABLE Annonce (
 DROP TABLE IF EXISTS Favoris;
 
 CREATE TABLE Favoris (
-    idUtilisateur INTEGER NOT NULL AUTO_INCREMENT,
+    idUtilisateur INTEGER NOT NULL,
     idAnnonce INTEGER NOT NULL,
     PRIMARY KEY (idUtilisateur, idAnnonce),
     CONSTRAINT cle_etr_utilisateur FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id),
@@ -49,7 +49,7 @@ CREATE TABLE Favoris (
 DROP TABLE IF EXISTS Notation;
 
 CREATE TABLE Notation (
-    id INTEGER CONSTRAINT notation_unique_id UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     idEmetteur INTEGER CONSTRAINT fk_notation FOREIGN KEY REFERENCES Utilisateur(id),
     idReceveur INTEGER NOT NULL,
     valeur FLOAT
@@ -58,7 +58,7 @@ CREATE TABLE Notation (
 DROP TABLE IF EXISTS Message;
 
 CREATE TABLE Message (
-    id INTEGER CONSTRAINT message_unique_id UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     idEmetteur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
     idReceveur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
     datePublication DATE NOT NULL,
@@ -68,8 +68,9 @@ CREATE TABLE Message (
 DROP TABLE IF EXISTS Image;
 
 CREATE TABLE Image (
-    id INTEGER CONSTRAINT image_unique_id UNIQUE PRIMARY  AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY,
     titre VARCHAR(100) NOT NULL,
+    adresse VARCHAR(256) NOT NULL,
     hauteur INTEGER,
     largeur INTEGER
 );
@@ -77,8 +78,7 @@ CREATE TABLE Image (
 DROP TABLE IF EXISTS Commentaire;
 
 CREATE TABLE Commentaire (
-    id INTEGER CONSTRAINT commentaire_unique_id UNIQUE PRIMARY KEY AUTO_INCREMENT,
-    -- titre VARCHAR(100) NOT NULL,
+    id SERIAL PRIMARY KEY,
     description VARCHAR NOT NULL,
     idEmetteur INTEGER CONSTRAINT fk_commentaire FOREIGN KEY REFERENCES Utilisateur(id),
     idReceveur INTEGER NOT NULL,
