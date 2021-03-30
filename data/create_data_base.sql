@@ -112,12 +112,12 @@ CREATE TABLE Localisation (
     CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute)
 );
 
-GRANT all privileges ON Utilisateur TO test_pwgrp35;
-GRANT all privileges ON Favoris TO test_pwgrp35;
-GRANT all privileges ON Annonce TO test_pwgrp35;
-GRANT all privileges ON Notation TO test_pwgrp35;
-GRANT all privileges ON Message TO test_pwgrp35;
-GRANT all privileges ON Image TO test_pwgrp35;
-GRANT all privileges ON Commentaire TO test_pwgrp35;
-GRANT all privileges ON Reservation TO test_pwgrp35;
-GRANT all privileges ON Localisation TO test_pwgrp35;
+GRANT all privileges ON Utilisateur TO administrateur;
+GRANT all privileges ON Favoris TO administrateur;
+GRANT all privileges ON Annonce TO administrateur;
+GRANT all privileges ON Notation TO administrateur;
+GRANT all privileges ON Message TO administrateur;
+GRANT all privileges ON Image TO administrateur;
+GRANT all privileges ON Commentaire TO administrateur;
+GRANT all privileges ON Reservation TO administrateur;
+GRANT all privileges ON Localisation TO administrateur;
