@@ -87,7 +87,7 @@ CREATE TABLE Commentaire (
     idEmetteur INTEGER NOT NULL,
     idReceveur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
-    CONSTRAINT fk_commentaire FOREIGN KEY REFERENCES Utilisateur(id)
+    CONSTRAINT fk_commentaire FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Reservation;
@@ -112,12 +112,12 @@ CREATE TABLE Localisation (
     CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute)
 );
 
-GRANT all privileges ON Utilisateur TO projet_web_grp35;
-GRANT all privileges ON Favoris TO projet_web_grp35;
-GRANT all privileges ON Annonce TO projet_web_grp35;
-GRANT all privileges ON Notation TO projet_web_grp35;
-GRANT all privileges ON Message TO projet_web_grp35;
-GRANT all privileges ON Image TO projet_web_grp35;
-GRANT all privileges ON Commentaire TO projet_web_grp35;
-GRANT all privileges ON Reservation TO projet_web_grp35;
-GRANT all privileges ON Localisation TO projet_web_grp35;
+GRANT all privileges ON Utilisateur TO test_pwgrp35;
+GRANT all privileges ON Favoris TO test_pwgrp35;
+GRANT all privileges ON Annonce TO test_pwgrp35;
+GRANT all privileges ON Notation TO test_pwgrp35;
+GRANT all privileges ON Message TO test_pwgrp35;
+GRANT all privileges ON Image TO test_pwgrp35;
+GRANT all privileges ON Commentaire TO test_pwgrp35;
+GRANT all privileges ON Reservation TO test_pwgrp35;
+GRANT all privileges ON Localisation TO test_pwgrp35;
