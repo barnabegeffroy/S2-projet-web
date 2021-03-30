@@ -65,8 +65,8 @@ CREATE TABLE Message (
     idReceveur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
     description VARCHAR,
-    CONSTRAINT fk_message FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id),
-    CONSTRAINT fk_message FOREIGN KEY (idReceveur) REFERENCES Utilisateur(id)
+    CONSTRAINT fk_message_1 FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id),
+    CONSTRAINT fk_message_2 FOREIGN KEY (idReceveur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Image;
