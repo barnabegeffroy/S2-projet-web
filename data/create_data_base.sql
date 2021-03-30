@@ -25,13 +25,14 @@ DROP TABLE IF EXISTS Annonce;
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
     titre VARCHAR(100) NOT NULL,
-    idUtilisateur INTEGER CONSTRAINT fk_annonce FOREIGN KEY REFERENCES Utilisateur(id),
+    idUtilisateur INTEGER,
     datePublication DATE NOT NULL,
     duree TIME,
     description VARCHAR,
     photo INTEGER,
     lieu VARCHAR(256),
-    estDisponible BOOLEAN
+    estDisponible BOOLEAN,
+    CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 
 );
 
@@ -50,19 +51,22 @@ DROP TABLE IF EXISTS Notation;
 
 CREATE TABLE Notation (
     id SERIAL PRIMARY KEY,
-    idEmetteur INTEGER CONSTRAINT fk_notation FOREIGN KEY REFERENCES Utilisateur(id),
+    idEmetteur INTEGER NOT NULL,
     idReceveur INTEGER NOT NULL,
-    valeur FLOAT
+    valeur FLOAT,
+    CONSTRAINT fk_notation FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Message;
 
 CREATE TABLE Message (
     id SERIAL PRIMARY KEY,
-    idEmetteur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
-    idReceveur INTEGER CONSTRAINT fk_message FOREIGN KEY REFERENCES Utilisateur(id),
+    idEmetteur INTEGER NOT NULL,
+    idReceveur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
-    description VARCHAR
+    description VARCHAR,
+    CONSTRAINT fk_message FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id),
+    CONSTRAINT fk_message FOREIGN KEY (idReceveur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Image;
@@ -80,20 +84,22 @@ DROP TABLE IF EXISTS Commentaire;
 CREATE TABLE Commentaire (
     id SERIAL PRIMARY KEY,
     description VARCHAR NOT NULL,
-    idEmetteur INTEGER CONSTRAINT fk_commentaire FOREIGN KEY REFERENCES Utilisateur(id),
+    idEmetteur INTEGER NOT NULL,
     idReceveur INTEGER NOT NULL,
-    datePublication DATE NOT NULL
-    
+    datePublication DATE NOT NULL,
+    CONSTRAINT fk_commentaire FOREIGN KEY REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Reservation;
 
 CREATE TABLE Reservation (
-    idAnnonce INTEGER CONSTRAINT fk_annonce_reservation FOREIGN KEY REFERENCES Annonce(id),
-    idUtilisateur INTEGER CONSTRAINT fk_user_reservation FOREIGN KEY REFERENCES Utilisateur(id),
+    idAnnonce INTEGER NOT NULL,
+    idUtilisateur INTEGER NOT NULL,
     dateDebut DATE NOT NULL,
     dateFin DATE NOT NULL,
-    CONSTRAINT pk_reservation PRIMARY KEY (idAnnonce,dateDebut,dateFin)
+    CONSTRAINT pk_reservation PRIMARY KEY (idAnnonce,dateDebut,dateFin),
+    CONSTRAINT fk_annonce_reservation FOREIGN KEY (idAnnonce) REFERENCES Annonce(id),
+    CONSTRAINT fk_user_reservation FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Localisation;
