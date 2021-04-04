@@ -1,7 +1,7 @@
 
 <div class="header">
     <div>
-        <span class="logo-container"><a href="index.php"><img src="../images/logo.PNG" alt="Accueil"/></a>
+        <span class="logo-container"><a href="index.php"><img src="../src/View/images/logo.PNG" alt="Accueil"/></a>
         </span>
     </div>
     <div>
@@ -18,7 +18,7 @@
             <button class="button1" onclick="location.href = 'signup.php'">S'inscrire</button>
         </li>
         <li class="link-header-item">
-            <a href="about.php">À propos de nous</a>
+            <button class="button1" onclick="location.href = 'about.php'">À propos de nous</button>
         </li>
     </ul>
 </div>
