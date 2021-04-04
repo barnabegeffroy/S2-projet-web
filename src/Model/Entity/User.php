@@ -28,28 +28,34 @@ class Utilisateur
      * @var string
      */
     private $adresse;
-    
+
     /**
      * @var string
      */
     private $birthday;
-    
+
     /**
      * @var string
      */
     private $telephone;
-    
+
 
     /**
      * @var float
      */
     private $noteMoyenne;
-    
+
+    /**
+     * @var string
+     */
+    private $password;
+
+
     // /**
     //  * @var image
     //  */
     // private $profilePicture;
-    
+
 
     /**
      * constructor
@@ -58,7 +64,7 @@ class Utilisateur
      * @param string $email
      * @return void
      */
-    public function __construct(string $prenom, string $nom, string $email, string $adresse, string $birthday, string $telephone)
+    public function __construct(string $prenom, string $nom, string $email, string $adresse, string $birthday, string $telephone, string $password)
     {
         $this->id = md5(uniqid($email, true));
         $this->nom = $nom;
@@ -67,7 +73,7 @@ class Utilisateur
         $this->adresse = $adresse;
         $this->birthday = $birthday;
         $this->telephone = $telephone;
-
+        $this->password = $password;
     }
     /**
      * @return mixed
@@ -130,7 +136,7 @@ class Utilisateur
         $this->email = $email;
         return $this;
     }
-    
+
     /**
      * @return mixed
      */
@@ -203,4 +209,21 @@ class Utilisateur
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
 }
