@@ -11,12 +11,20 @@
         </form>
     </div>
     <ul class="link-header-container">
+
+    <?php if (!$authenticatorService->isAuthenticated()): {?>
         <li class="link-header-item">
             <button class="button1" onclick="location.href = 'login.php'">Se connecter</button>
         </li>
         <li class="link-header-item">
             <button class="button1" onclick="location.href = 'signup.php'">S'inscrire</button>
         </li>
+        <?php } 
+        else :{ ?>
+            <li class="link-header-item">
+            <button class="button1" onclick="location.href = 'logout.php'">Se déconnecter</button>
+        </li>
+        <?php } ?>
         <li class="link-header-item">
             <button class="button1" onclick="location.href = 'about.php'">À propos de nous</button>
         </li>
