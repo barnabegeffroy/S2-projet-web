@@ -45,7 +45,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])){
 }
 
 /*Si aucun résultat n'est trouvé, on affiche aucun résultat*/
-elseif (isset($_GET['q']) { ?>
+elseif (isset($_GET['q'])) { ?>
 <div class="recherche_fail">
     Aucun résultat pour : "<?php echo $_GET['q']?>"
 <div>
