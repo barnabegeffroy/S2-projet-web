@@ -15,6 +15,9 @@
             <button class="button1" onclick="location.href = 'login.php'">Se connecter</button>
         </li>
         <li class="link-header-item">
+            <button class="button1" onclick="location.href = 'signup.php'">S'inscrire</button>
+        </li>
+        <li class="link-header-item">
             <a href="about.php">À propos de nous</a>
         </li>
     </ul>
