@@ -12,7 +12,7 @@
     </div>
     <ul class="link-header-container">
         <li class="link-header-item">
-            <button class="button1" href="login.php">Se connecter</button>
+            <button class="button1" onclick="location.href = 'href=login.php'">Se connecter</button>
         </li>
         <li class="link-header-item">
             <a href="about.php">À propos de nous</a>
