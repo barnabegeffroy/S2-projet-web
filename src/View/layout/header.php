@@ -23,8 +23,12 @@
     </ul>
 </div>
 
-<?php 
+<?php
 
+
+// create the database connection
+$dbfactory = new \Rediite\Model\Factory\dbFactory();
+$bdd = $dbfactory->createService();
 $articles = $bdd->query('SELECT * FROM Annonce ORDER BY id DESC');
 /*On peut ici $q_array = explode(' ', $q);
 et faire une recherche sur $q_array, trié du plus long mot au plus court (on enlève l'obligation que les mots soient concaténés)*/
