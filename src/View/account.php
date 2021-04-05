@@ -48,7 +48,7 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
 </ul>
 <button class="open-button" onclick="openForm()">Supprimer mon compte</button>
 <div class="form-popup" id="myForm">
-    <form action="deleteAccount.php" class="form-container">
+    <form action="deleteAccount.php" method="post" class="form-container">
         <label for="psw"><b>Mot de passe</b></label>
         <input type="password" placeholder="entrez votre mot de passe" name="password" required>
         <button type="submit" class="btn">Supprimer définitivement</button>

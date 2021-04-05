@@ -8,7 +8,7 @@ $userHydrator = new \Rediite\Model\Hydrator\UserHydrator();
 $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $userHydrator);
 $userService = new \Rediite\Model\Service\UserService($userRepository);
 
-$password =  $_POST['password'];
+$password = $_POST['password'];
 
 $viewData = [];
 $user = $userRepository->findOneById($_SESSION['user_id']);
