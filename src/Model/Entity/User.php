@@ -91,7 +91,7 @@ class Utilisateur
      */
     public function getNickName()
     {
-        return $this->peudo;
+        return $this->pseudo;
     }
 
     /**
