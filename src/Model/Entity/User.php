@@ -61,24 +61,6 @@ class Utilisateur
     //  */
     // private $profilePicture;
 
-
-    /**
-     * constructor
-     * @param string $prenom
-     * @param string $nom
-     * @param string $email
-     * @return void
-     */
-    public function __construct(int $id, string $prenom, string $pseudo, string $nom, string $email, string $telephone, string $password)
-    {
-        $this->id=$id;
-        $this->nom = $nom;
-        $this->pseudo = $pseudo;
-        $this->prenom = $prenom;
-        $this->email = $email;
-        $this->telephone = $telephone;
-        $this->password = $password;
-    }
     /**
      * @return mixed
      */
@@ -87,6 +69,15 @@ class Utilisateur
         return $this->id;
     }
 
+    /**
+     * @param mixed $id
+     * @return Utilisateur
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
     /**
      * @return mixed
      */

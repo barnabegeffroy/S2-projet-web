@@ -8,15 +8,16 @@ class UserHydrator
 {
   public function hydrate($data): UserEntity
   {
-    $topic = new UserEntity(
-      $data['id'],
-      $data['prenom'],
-      $data['pseudo'],
-      $data['nom'],
-      $data['email'],
-      $data['telephone'],
-      $data['password']
-    );
+    $topic = new UserEntity();
+    $topic->setId($data['id'])
+      ->setLastName($data['nom'])
+      ->setFirstName($data['prenom'])
+      ->setEMail($data['email'])
+      ->setPhoneNumber($data['telephone'])
+      ->setPassword($data['password']);
+    if (!empty($data['pseudo'])) {
+      $topic->setNickName($data['pseudo']);
+    }
     return $topic;
   }
 }
