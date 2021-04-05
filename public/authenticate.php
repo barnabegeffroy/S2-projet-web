@@ -14,7 +14,7 @@ $password =  $_POST['password'];
 $viewData = [];
 $user = $userRepository->findOneByEmail($email);
 if (null !== $user ) {
-    if (password_verify($password, $user->getPassword())) {
+    if (!password_verify($password, $user->getPassword())) {
         $viewData['failedAuthent'] = 'Mot de passe incorrect';
         loadView('login', $viewData);
     }
