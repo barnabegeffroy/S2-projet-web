@@ -11,6 +11,7 @@ class UserHydrator
     $topic = new UserEntity(
       $data['id'],
       $data['prenom'],
+      $data['pseudo'],
       $data['nom'],
       $data['email'],
       $data['telephone'],

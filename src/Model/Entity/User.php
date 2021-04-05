@@ -69,10 +69,11 @@ class Utilisateur
      * @param string $email
      * @return void
      */
-    public function __construct(int $id, string $prenom, string $nom, string $email, string $telephone, string $password)
+    public function __construct(int $id, string $prenom, string $pseudo, string $nom, string $email, string $telephone, string $password)
     {
         $this->id=$id;
         $this->nom = $nom;
+        $this->pseudo = $pseudo;
         $this->prenom = $prenom;
         $this->email = $email;
         $this->telephone = $telephone;
