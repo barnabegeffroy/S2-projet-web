@@ -14,7 +14,7 @@ $pseudo =  !empty($_POST['pseudo']) ? $_POST['pseudo'] : null;
 $nom =  $_POST['nom'];
 $email =  $_POST['email'];
 $telephone =  $_POST['telephone'];
-$password =  $_POST['password'];
+$password =  password_hash($_POST['password'], PASSWORD_BCRYPT);
 $passwordVerify =  $_POST['password_verify'];
 
 $viewData = [];
@@ -31,8 +31,8 @@ function checkFormData($userService, $email)
 
 $viewData = checkFormData($userService, $email);
 if (empty($viewData)) {
-  $userRepository->insert($prenom, $nom, $email, $telephone, password_hash($password, PASSWORD_BCRYPT));
-  
+  $userRepository->insert($prenom, $nom, $email, $telephone, $password);
+
   header('Location: login.php');
 }
 loadView('signup', $viewData);
