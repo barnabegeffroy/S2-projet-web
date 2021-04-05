@@ -7,3 +7,5 @@ include_once '../src/Model/Repository/UserRepository.php';
 include_once '../src/Model/Factory/dbFactory.php';
 include_once '../src/Model/Entity/User.php';
 include_once '../src/Model/Hydrator/UserHydrator.php';
+include_once '../src/Model/Service/UserService.php';
+include_once '../src/Model/Service/AuthenticatorService.php';

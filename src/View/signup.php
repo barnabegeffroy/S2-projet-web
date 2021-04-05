@@ -8,7 +8,7 @@
     <input type="text" id="pseudo" name="pseudo" />
   </div>
   <div>
-    <label for="nom">Nom :</label>
+    <label for="nom">Nom :*</label>
     <input type="text" id="nom" name="nom" required />
   </div>
   <div>
