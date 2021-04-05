@@ -5,7 +5,7 @@ namespace Rediite\Model\Entity;
 class Utilisateur
 {
     /**
-     * @var string
+     * @var int
      */
     private $id;
 
@@ -69,8 +69,9 @@ class Utilisateur
      * @param string $email
      * @return void
      */
-    public function __construct(string $prenom, string $nom, string $email, string $telephone, string $password)
+    public function __construct(int $id, string $prenom, string $nom, string $email, string $telephone, string $password)
     {
+        $this->id=$id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;

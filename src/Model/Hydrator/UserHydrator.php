@@ -9,6 +9,7 @@ class UserHydrator
   public function hydrate($data): UserEntity
   {
     $topic = new UserEntity(
+      $data['id'],
       $data['prenom'],
       $data['nom'],
       $data['email'],
