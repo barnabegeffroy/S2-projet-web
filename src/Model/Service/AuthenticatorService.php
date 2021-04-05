@@ -3,7 +3,7 @@
 namespace Rediite\Model\Service;
 
 use Rediite\Model\Repository\UserRepository;
-use Rediite\Model\Entity\User as UserEntity;
+use Rediite\Model\Entity\Utilisateur as UserEntity;
 
 class AuthenticatorService
 {

@@ -4,7 +4,8 @@ namespace Rediite\Model\Service;
 
 use \Rediite\Model\Repository\UserRepository;
 
-class UserService {
+class UserService
+{
 
   /**
    * @var UserRepository
@@ -21,8 +22,4 @@ class UserService {
     $user = $this->userRepository->findOneByEmail($email);
     return null !== $user;
   }
-
-
-
-
 }

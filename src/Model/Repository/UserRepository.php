@@ -1,61 +1,65 @@
 <?php
+
 namespace Rediite\Model\Repository;
 
 use \Rediite\Model\Entity\Utilisateur as UserEntity;
 use \Rediite\Model\Hydrator\UserHydrator;
 
-class UserRepository {
+class UserRepository
+{
 
-   /**
-     * @var \PDO
-     */
-    private $dbAdapter;
+  /**
+   * @var \PDO
+   */
+  private $dbAdapter;
 
-       /**
-     * @var UserHydrator
-     */
-    private $userHydrator;
+  /**
+   * @var UserHydrator
+   */
+  private $userHydrator;
 
-  
-    public function __construct(
-      \PDO $dbAdapter,
-      UserHydrator $userHydrator
 
-    ) {
-      $this->dbAdapter = $dbAdapter;
-      $this->userHydrator = $userHydrator;
-    }
+  public function __construct(
+    \PDO $dbAdapter,
+    UserHydrator $userHydrator
 
-    function insert(string $email, string $password)
-    {
-      $stmt = $this->dbAdapter->prepare(
-        'insert into "user" (email, password) values (:email, :password)'
-      );
-      $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
-      $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
-      $stmt->execute();
-    }
+  ) {
+    $this->dbAdapter = $dbAdapter;
+    $this->userHydrator = $userHydrator;
+  }
 
-    function findOneByEmail($email): ?UserEntity
-    {
-      $stmt = $this->dbAdapter->prepare(
-        'Select * from "utilisateur" where email = :email'
-      );
-      $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
-      $stmt->execute();
-      $rawUser = $stmt->fetch();
-      return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
-    }
+  function insert(string $prenom, string $nom, string $email, string $telephone, string $password)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'INSERT INTO "utilisateur" (nom, prenom, email, telephone, password) VALUES (:nom, :prenom, :email, :telephone, :password)'
+    );
+    $stmt->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
+    $stmt->bindValue(':nom', $nom, \PDO::PARAM_STR);
+    $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
+    $stmt->bindValue(':telephone', $telephone, \PDO::PARAM_STR);
+    $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
+    $stmt->execute();
+  }
 
-    public function findOneById ($userId)
-    {
-      $stmt = $this->dbAdapter->prepare(
-        'Select * from "utilisateur" where id = :id'
-      );
-      $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
-      $stmt->execute();
-      $rawUser = $stmt->fetch();
-      return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
-    }
+  function findOneByEmail($email): ?UserEntity
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "utilisateur" WHERE email = :email'
+    );
+    $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
+    $stmt->execute();
+    $rawUser = $stmt->fetch();
+    return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
+  }
 
+  public function findOneById($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "utilisateur" WHERE id = :id'
+    );
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $rawUser = $stmt->fetch();
+    return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
+  }
 }

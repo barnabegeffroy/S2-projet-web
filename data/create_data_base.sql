@@ -13,11 +13,11 @@ CREATE TABLE Utilisateur (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
+    email VARCHAR(256) UNIQUE NOT NULL,
+    telephone VARCHAR(10),
     password VARCHAR(256) NOT NULL,
     birthday DATE,
-    mail VARCHAR(256) NOT NULL,
     profilePicture INTEGER,
-    telephone VARCHAR(10),
     noteMoyenne FLOAT
 );
 DROP TABLE IF EXISTS Annonce CASCADE;
