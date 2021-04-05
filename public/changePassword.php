@@ -18,6 +18,6 @@ if (!password_verify($last_password, $user->getPassword())) {
     loadView('password', $viewData);
     exit;
 } else {
-    $userRepository->changePassword($user->getId(), $user->getPassword());
+    $userRepository->changePassword($user->getId(), $password);
     header('Location: account.php');
 }
