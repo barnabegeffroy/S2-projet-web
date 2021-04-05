@@ -1,7 +1,7 @@
 <?php
 if (!$authenticatorService->isAuthenticated()){
-    $errorMessage['userAlreadyExist'] = "Vous devez vous connecter pour accéder à cette page";
-    loadView('home',$errorMessage);
+    $error="Vous devez vous connecter pour accéder à cette page";
+    header('Location: index.php?erreur='.$error); 
     exit;
 }
 $dbfactory = new \Rediite\Model\Factory\dbFactory();
