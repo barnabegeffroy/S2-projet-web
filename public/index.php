@@ -1,8 +1,8 @@
 <?php
 
 // create the database connection
-$dbfactory = new \Rediite\Model\Factory\dbFactory();
-$dbAdapter = $dbfactory->createService();
+// $dbfactory = new \Rediite\Model\Factory\dbFactory();
+// $dbAdapter = $dbfactory->createService();
 
 
 include_once '../src/utils/autoloader.php';
