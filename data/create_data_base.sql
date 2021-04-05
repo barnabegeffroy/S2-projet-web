@@ -11,12 +11,12 @@ DROP TABLE IF EXISTS Utilisateur CASCADE ;
 
 CREATE TABLE Utilisateur (
     id SERIAL PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
+    pseudo VARCHAR(50),
+    nom VARCHAR(50) NOT NULL,
     email VARCHAR(256) UNIQUE NOT NULL,
     telephone VARCHAR(10),
     password VARCHAR(256) NOT NULL,
-    birthday DATE,
     profilePicture INTEGER,
     noteMoyenne FLOAT
 );
@@ -112,12 +112,12 @@ CREATE TABLE Localisation (
     CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute)
 );
 
-GRANT all privileges ON Utilisateur TO administrateur;
-GRANT all privileges ON Favoris TO administrateur;
-GRANT all privileges ON Annonce TO administrateur;
-GRANT all privileges ON Notation TO administrateur;
-GRANT all privileges ON Message TO administrateur;
-GRANT all privileges ON Image TO administrateur;
-GRANT all privileges ON Commentaire TO administrateur;
-GRANT all privileges ON Reservation TO administrateur;
-GRANT all privileges ON Localisation TO administrateur;
+GRANT all privileges ON Utilisateur TO tpcurseurs;
+GRANT all privileges ON Favoris TO tpcurseurs;
+GRANT all privileges ON Annonce TO tpcurseurs;
+GRANT all privileges ON Notation TO tpcurseurs;
+GRANT all privileges ON Message TO tpcurseurs;
+GRANT all privileges ON Image TO tpcurseurs;
+GRANT all privileges ON Commentaire TO tpcurseurs;
+GRANT all privileges ON Reservation TO tpcurseurs;
+GRANT all privileges ON Localisation TO tpcurseurs;

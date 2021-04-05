@@ -7,6 +7,6 @@ class dbFactory
 
   function createService()
   {
-    return new \PDO('pgsql:dbname=projet_web_grp35;host=pgsql2;port=5432"', 'administrateur', 'administrateur');
+    return new \PDO('pgsql:dbname=projet_entraiide;host=pgsql2;port=5432"', 'tpcurseurs', 'tpcurseurs');
   }
 }
