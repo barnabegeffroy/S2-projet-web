@@ -18,5 +18,5 @@ if (!password_verify($password, $user->getPassword())) {
     exit;
 } else {
     $userRepository->deleteUser($user->getId());
-    header('Location: account.php');
+    header('Location: logout.php');
 }
