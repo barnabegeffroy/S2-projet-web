@@ -40,12 +40,12 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
 </div>
 <ul class="link-header-container">
     <li class="link-header-item">
-        <button class="button1" onclick="location.href = 'modify_password.php'">Modifier mon mot de passe</button>
+        <button class="button1" onclick="location.href = 'modifyPassword.php'">Modifier mon mot de passe</button>
     </li>
     <li class="link-header-item">
-        <button class="button1" onclick="location.href = 'modify_infos.php'">Modifier mes informations</button>
+        <button class="button1" onclick="location.href = 'modifyInfo.php'">Modifier mes informations</button>
     </li>
     <li class="link-header-item">
-        <button class="button1" onclick="location.href = 'delete_account.php'">Supprimer mon compte</button>
+        <button class="button1" onclick="location.href = 'deleteAccount.php'">Supprimer mon compte</button>
     </li>
 </ul>
