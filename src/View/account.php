@@ -1,7 +1,7 @@
 <?php
-if (!$authenticatorService->isAuthenticated()){
-    $error="Vous devez vous connecter pour accéder à cette page";
-    header('Location: index.php?erreur='.$error); 
+if (!$authenticatorService->isAuthenticated()) {
+    $error = "Vous devez vous connecter pour accéder à cette page";
+    header('Location: index.php?erreur=' . $error);
     exit;
 }
 $dbfactory = new \Rediite\Model\Factory\dbFactory();
@@ -34,8 +34,18 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
     <div>Email :</div>
     <div><?php echo $user->getEMail() ?></div>
 </div>
-
 <div>
     <div>Téléphone :</div>
     <div><?php echo $user->getPhoneNumber() ?></div>
 </div>
+<ul class="link-header-container">
+    <li class="link-header-item">
+        <button class="button1" onclick="location.href = 'modify_password.php'">Modifier mon mot de passe</button>
+    </li>
+    <li class="link-header-item">
+        <button class="button1" onclick="location.href = 'modify_infos.php'">Modifier mes informations</button>
+    </li>
+    <li class="link-header-item">
+        <button class="button1" onclick="location.href = 'delete_account.php'">Supprimer mon compte</button>
+    </li>
+</ul>
