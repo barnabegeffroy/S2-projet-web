@@ -21,5 +21,8 @@
       }
     </script>
   </div>
+  <?php if (isset($data['failedPassword'])) : ?>
+    <span class="error-message"><?= $data['failedPassword'] ?></span>
+  <?php endif; ?>
   <button type="submit">Valider</button>
 </form>

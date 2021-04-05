@@ -40,7 +40,7 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
 </div>
 <ul class="link-header-container">
     <li class="link-header-item">
-        <button class="button1" onclick="location.href = 'modifyPassword.php'">Modifier mon mot de passe</button>
+        <button class="button1" onclick="location.href = 'password.php'">Modifier mon mot de passe</button>
     </li>
     <li class="link-header-item">
         <button class="button1" onclick="location.href = 'modifyInfos.php'">Modifier mes informations</button>

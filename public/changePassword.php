@@ -14,7 +14,7 @@ $password =  password_hash($_POST['password'], PASSWORD_BCRYPT);
 $viewData = [];
 $user = $userRepository->findOneById($_SESSION['user_id']);
 if (!password_verify($last_password, $user->getPassword())) {
-    $viewData['failedAuthent'] = 'Mot de passe incorrect';
+    $viewData['failedPassword'] = 'Mot de passe incorrect';
     loadView('password', $viewData);
     exit;
 } else {
