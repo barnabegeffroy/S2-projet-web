@@ -64,5 +64,14 @@ class UserRepository
   }
 
 
+  public function changePassword($userId, $password)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET password=:password WHERE id = :id'
+    );
+    $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
   
 }
