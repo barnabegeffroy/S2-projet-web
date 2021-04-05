@@ -1,3 +1,10 @@
+<?php
+if (!$authenticatorService->isAuthenticated()) {
+  $error = "Vous devez vous connecter pour accéder à cette page";
+  header('Location: index.php?erreur=' . $error);
+  exit;
+}
+?>
 <form action="changePassword.php" method="post">
   <div>
     <label>Ancien mot de passe :</label>
