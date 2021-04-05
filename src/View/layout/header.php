@@ -20,13 +20,16 @@
             </li>
         <?php else : ?>
             <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'logout.php'">Ajouter une annonce</button>
+                <button class="button1" onclick="location.href = 'addAnnounce.php'">Ajouter une annonce</button>
             </li>
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'announces.php'">Mes annonces</button>
             </li>
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'account.php'">Mon compte</button>
+            </li>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'logout.php'">Se déconnecter</button>
             </li>
         <?php endif; ?>
         <li class="link-header-item">

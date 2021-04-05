@@ -62,4 +62,7 @@ class UserRepository
     $rawUser = $stmt->fetch();
     return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
   }
+
+
+  
 }
