@@ -4,6 +4,9 @@ function loadView($view, $data)
 {
     $dbfactory = new \Rediite\Model\Factory\dbFactory();
     $dbAdapter = $dbfactory->createService();
+    $userHydrator = new \Rediite\Model\Hydrator\UserHydrator();
+    $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $userHydrator);
+    $authenticatorService = new \Rediite\Model\Service\AuthenticatorService($userRepository);
 ?>
     <!doctype html>
     <html lang="fr">
