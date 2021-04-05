@@ -71,7 +71,6 @@ class Utilisateur
      */
     public function __construct(string $prenom, string $nom, string $email, string $telephone, string $password)
     {
-        $this->id = md5(uniqid($email, true));
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
