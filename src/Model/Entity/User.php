@@ -17,6 +17,11 @@ class Utilisateur
     /**
      * @var string
      */
+    private $pseudo;
+
+    /**
+     * @var string
+     */
     private $prenom;
 
     /**
@@ -64,14 +69,13 @@ class Utilisateur
      * @param string $email
      * @return void
      */
-    public function __construct(string $prenom, string $nom, string $email, string $adresse, string $birthday, string $telephone, string $password)
+    public function __construct(string $prenom,string $pseudo, string $nom, string $email, string $telephone, string $password)
     {
         $this->id = md5(uniqid($email, true));
         $this->nom = $nom;
+        $this->pseudo = $pseudo;
         $this->prenom = $prenom;
         $this->email = $email;
-        $this->adresse = $adresse;
-        $this->birthday = $birthday;
         $this->telephone = $telephone;
         $this->password = $password;
     }
@@ -83,6 +87,23 @@ class Utilisateur
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNickName()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $lastName
+     * @return Utilisateur
+     */
+    public function setNickName($lastName)
+    {
+        $this->nom = $lastName;
+        return $this;
+    }
     /**
      * @return mixed
      */

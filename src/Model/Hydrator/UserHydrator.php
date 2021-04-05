@@ -10,10 +10,9 @@ class UserHydrator
   {
     $topic = new UserEntity(
       $data['prenom'],
+      $data['pseudo'],
       $data['nom'],
       $data['email'],
-      $data['adresse'],
-      $data['birthday'],
       $data['telephone'],
       $data['password']
     );
