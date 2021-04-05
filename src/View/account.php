@@ -44,7 +44,6 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
     </li>
     <li class="link-header-item">
         <button class="button1" onclick="location.href = 'infos.php'">Modifier mes informations</button>
-
     </li>
     <li class="link-header-item">
         <button class="button1" onclick="location.href = 'deleteAccount.php'">Supprimer mon compte</button>

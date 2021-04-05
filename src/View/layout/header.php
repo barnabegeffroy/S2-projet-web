@@ -13,10 +13,10 @@
 
         <?php if (!$authenticatorService->isAuthenticated()) : ?>
             <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'connexion/login.php'">Se connecter</button>
+                <button class="button1" onclick="location.href = 'login.php'">Se connecter</button>
             </li>
             <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'connexion/signup.php'">S'inscrire</button>
+                <button class="button1" onclick="location.href = 'signup.php'">S'inscrire</button>
             </li>
         <?php else : ?>
             <li class="link-header-item">
@@ -26,10 +26,10 @@
                 <button class="button1" onclick="location.href = 'announces.php'">Mes annonces</button>
             </li>
             <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'account/account.php'">Mon compte</button>
+                <button class="button1" onclick="location.href = 'account.php'">Mon compte</button>
             </li>
             <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'connexion/logout.php'">Se déconnecter</button>
+                <button class="button1" onclick="location.href = 'logout.php'">Se déconnecter</button>
             </li>
         <?php endif; ?>
         <li class="link-header-item">
