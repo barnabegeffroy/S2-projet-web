@@ -19,23 +19,20 @@ $passwordVerify =  $_POST['password_verify'];
 
 $viewData = [];
 
-function checkFormData($userService, $email, $password, $passwordVerify)
+function checkFormData($userService, $email)
 {
   $errorMessage = [];
   if ($userService->doesUserExist($email)) {
     $errorMessage['userAlreadyExist'] = "Un utilisateur existe déjà à cette adresse mail";
   }
 
-  if ($password !== $passwordVerify) {
-    $errorMessage['passwordDoesNotMatch'] = "Les mots de passes ne sont pas identiques";
-  }
   return $errorMessage;
 }
 
-$viewData = checkFormData($userService, $email, $password, $passwordVerify);
+$viewData = checkFormData($userService, $email);
 if (empty($viewData)) {
   $userRepository->insert($prenom, $nom, $email, $telephone, password_hash($password, PASSWORD_BCRYPT));
   
-  header('Location: index.php');
+  header('Location: login.php');
 }
 loadView('signup', $viewData);

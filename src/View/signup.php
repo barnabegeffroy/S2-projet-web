@@ -25,14 +25,21 @@
   </div>
   <div>
     <label>Mot de passe :*</label>
-    <input type="password" name="password" required />
+    <input type="password" id="password" name="password" required />
   </div>
   <div>
     <label>Vérification du mot de passe :*</label>
-    <input type="password" name="password_verify" required />
-    <?php if (isset($data['passwordDoesNotMatch'])) : ?>
-      <span class="error-message"><?= $data['passwordDoesNotMatch'] ?></span>
-    <?php endif; ?>
+    <input type="password" name="password_verify" oninput="check(this)" required />
+    <script language='javascript' type='text/javascript'>
+      function check(input) {
+        if (input.value != document.getElementById('password').value) {
+          input.setCustomValidity('Les mots de passes ne sont pas identiques');
+        } else {
+          // input is valid -- reset the error message
+          input.setCustomValidity('');
+        }
+      }
+    </script>
   </div>
   <button type="submit">Valider</button>
 </form>
