@@ -1,5 +1,4 @@
 <?php
-include_once '../src/Model/Service/AuthenticatorService.php';
 
 function loadView($view, $data)
 {

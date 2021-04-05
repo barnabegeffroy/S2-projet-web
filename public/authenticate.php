@@ -18,5 +18,5 @@ if (null !== $user && password_verify($password, $user->getPassword())) {
     header('Location: index.php');
     exit;
 }
-$viewData['failedAuthent'] = 'Authentication failed';
+$viewData['failedAuthent'] = 'L\'indentification a échoué';
 loadView('login', $viewData);
