@@ -91,16 +91,16 @@ class Utilisateur
      */
     public function getNickName()
     {
-        return $this->nom;
+        return $this->peudo;
     }
 
     /**
      * @param mixed $lastName
      * @return Utilisateur
      */
-    public function setNickName($lastName)
+    public function setNickName($nickName)
     {
-        $this->nom = $lastName;
+        $this->pseudo = $nickName;
         return $this;
     }
     /**
