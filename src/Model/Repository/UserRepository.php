@@ -113,4 +113,13 @@ class UserRepository
     $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
     $stmt->execute();
   }
+
+  public function deleteUser($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'DELETE FROM "utilisateur" WHERE id = :id'
+    );
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
 }
