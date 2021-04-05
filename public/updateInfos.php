@@ -31,7 +31,7 @@ if ($prenom !== $user->getFirstName()) {
     $userRepository->changeFirstName($id, $prenom);
 }
 
-if ($pseudo !== null and $pseudo !== $user->getNickName()) {
+if ($pseudo !== $user->getNickName()) {
     $userRepository->changeNickName($id, $pseudo);
 }
 
