@@ -4,4 +4,4 @@ if (null != $erreur): ?>
 <p class="error"><?php echo $erreur; ?></p>
 <?php
 endif;?>
-<h1>Découvrez votre signe astrologique !</h1>
+<h1>La plateforme de prêt d'objets de l'ENSIIE</h1>

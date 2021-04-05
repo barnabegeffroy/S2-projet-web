@@ -13,7 +13,7 @@ function loadView($view, $data)
 
     <head>
         <meta charset="utf-8">
-        <title>Votre Horoscope</title>
+        <title>ENTRAiiDe</title>
         <link rel="stylesheet" href="style.css">
 
     </head>

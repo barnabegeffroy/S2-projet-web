@@ -12,7 +12,7 @@ $userService = new \Rediite\Model\Service\UserService($userRepository);
 
 $user = $userRepository->findOneById($_SESSION['user_id']);
 ?>
-<form action="addUser.php" method="post">
+<form action="updateInfos.php" method="post">
     <div>
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" value="<?php echo $user->getFirstName() ?>" required />
@@ -37,5 +37,8 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
         <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" value="<?php echo $user->getPhoneNumber() ?>" required>
         <small>Format: 0612345678</small>
     </div>
+    <?php if (isset($data['failedPassword'])) : ?>
+        <span class="error-message"><?= $data['failedPassword'] ?></span>
+    <?php endif; ?>
     <button type="submit">Valider</button>
 </form>

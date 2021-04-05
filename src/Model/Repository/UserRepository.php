@@ -73,5 +73,44 @@ class UserRepository
     $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
     $stmt->execute();
   }
-  
+
+  public function changeFirstName($userId, $prenom)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET prenom=:prenom WHERE id = :id'
+    );
+    $stmt->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function changeNickName($userId, $pseudo)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET pseudo=:pseudo WHERE id = :id'
+    );
+    $stmt->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function changeLastName($userId, $nom)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET nom=:nom WHERE id = :id'
+    );
+    $stmt->bindValue(':nom', $nom, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function changeEMail($userId, $email)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET email=:email WHERE id = :id'
+    );
+    $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
 }

@@ -32,7 +32,10 @@ function checkFormData($userService, $email)
 $viewData = checkFormData($userService, $email);
 if (empty($viewData)) {
   $userRepository->insert($prenom, $nom, $email, $telephone, $password);
-
+  if ($pseudo !== null) {
+    $user = $userRepository->findOneByEmail($email);
+    $userRepository->changeNickName($user->getId(), $pseudo);
+  }
   header('Location: login.php');
 }
 loadView('signup', $viewData);
