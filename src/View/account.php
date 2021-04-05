@@ -45,28 +45,26 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
     <li class="link-header-item">
         <button class="button1" onclick="location.href = 'infos.php'">Modifier mes informations</button>
     </li>
-    <li class="link-header-item">
-        <button class="open-button" onclick="openForm()">Supprimer mon compte</button>
-        <div class="form-popup" id="myForm">
-            <form action="deleteAccount.php" class="form-container">
-                <label for="psw"><b>Mot de passe</b></label>
-                <input type="password" placeholder="entrez votre mot de passe" name="password" required>
-                <button type="submit" class="btn">Supprimer définitivement</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button>
-            </form>
-        </div>
-
-        <script>
-            function openForm() {
-                document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("myForm").style.display = "none";
-            }
-        </script>
-    </li>
-    <?php if (isset($data['failedPassword'])) : ?>
-        <span class="error-message"><?= $data['failedPassword'] ?></span>
-    <?php endif; ?>
 </ul>
+<button class="open-button" onclick="openForm()">Supprimer mon compte</button>
+<div class="form-popup" id="myForm">
+    <form action="deleteAccount.php" class="form-container">
+        <label for="psw"><b>Mot de passe</b></label>
+        <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+        <button type="submit" class="btn">Supprimer définitivement</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button>
+    </form>
+</div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+<?php if (isset($data['failedPassword'])) : ?>
+    <span class="error-message"><?= $data['failedPassword'] ?></span>
+<?php endif; ?>
