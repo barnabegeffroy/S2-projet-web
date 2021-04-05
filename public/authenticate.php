@@ -14,13 +14,13 @@ $password =  $_POST['password'];
 $viewData = [];
 $user = $userRepository->findOneByEmail($email);
 if (null !== $user) {
-    if (!password_verify($password, $user->getPassword())) {
-        $viewData['failedAuthent'] = 'Mot de passe incorrect';
-        loadView('login', $viewData);
-    } else {
-
+    if (password_verify($password, $user->getPassword())) {
         $_SESSION['user_id'] = $user->getId();
         header('Location: index.php');
+        exit;
+    } else {
+        $viewData['failedAuthent'] = 'Mot de passe incorrect';
+        loadView('login', $viewData);
         exit;
     }
 }
