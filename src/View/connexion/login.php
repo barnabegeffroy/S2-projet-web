@@ -1,4 +1,4 @@
-<form action="authenticate.php" method="post">
+<form action="connexion/authenticate.php" method="post">
   <div>
     <label for="email">Email :</label>
     <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" required />

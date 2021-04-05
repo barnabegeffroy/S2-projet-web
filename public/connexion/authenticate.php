@@ -1,6 +1,6 @@
 <?php
-include_once '../src/utils/autoloader.php';
-include_once '../src/View/template.php';
+include_once '../../src/utils/autoloader.php';
+include_once '../../src/View/template.php';
 
 $dbfactory = new \Rediite\Model\Factory\dbFactory();
 $dbAdapter = $dbfactory->createService();

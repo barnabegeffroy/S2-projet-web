@@ -1,4 +1,4 @@
-<form action="addUser.php" method="post">
+<form action="connexion/addUser.php" method="post">
   <div>
     <label for="prenom">Prénom :*</label>
     <input type="text" id="prenom" name="prenom" required />
