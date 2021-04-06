@@ -32,7 +32,7 @@ class AnnounceRepository
   {
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, estDisponible) 
-      VALUES (:nom, :idUser, :datePublication, TRUE);
+      VALUES (:titre, :idUser, :datePublication, TRUE);
       /* SELECT * FROM annonce WHERE idutilisateur = :idUser ORDER BY ID DESC LIMIT 1 ; */'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
