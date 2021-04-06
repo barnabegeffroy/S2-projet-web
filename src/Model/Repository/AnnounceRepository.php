@@ -54,9 +54,9 @@ class AnnounceRepository
   public function findAllByUserId($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM "annonce" WHERE idUtilisateur = :idUtilisateur'
+      'SELECT * FROM "annonce" WHERE idutilisateur = :idutilisateur'
     );
-    $stmt->bindValue(':idUtilisateur', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idutilisateur', $userId, \PDO::PARAM_INT);
     $stmt->execute();
     $announces=null;
     $i=0;

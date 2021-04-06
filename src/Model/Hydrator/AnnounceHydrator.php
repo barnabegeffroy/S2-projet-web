@@ -11,9 +11,9 @@ class AnnounceHydrator
     $topic = new AnnounceEntity();
     $topic->setId($data['id'])
       ->setTitle($data['titre'])
-      ->setUserId($data['idUtilisateur'])
-      ->setDate($data['datePublication'])
-      ->setIsAvailable($data['estDisponible']);
+      ->setUserId($data['idutilisateur'])
+      ->setDate($data['datepublication'])
+      ->setIsAvailable($data['estdisponible']);
     if (!empty($data['duree'])) {
       $topic->setDuration($data['duree']);
     }
