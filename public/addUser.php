@@ -38,7 +38,7 @@ if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telepho
     if ($userService->doesUserExist($email)) {
       header('Location: login.php');
     }
-    $errorMessage['errorInCreation'] = "Impossible de créer le compte";
+    $viewData['errorInCreation'] = "Impossible de créer le compte";
   }
 }
 loadView('signup', $viewData);
