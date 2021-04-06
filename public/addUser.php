@@ -42,4 +42,4 @@ if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telepho
     $viewData['errorInCreation'] = "Impossible de créer le compte";
   }
 }
-loadView('signup', $viewData);
+loadView('connexion/signup', $viewData);
