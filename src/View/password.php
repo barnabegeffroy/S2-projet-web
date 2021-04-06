@@ -15,7 +15,7 @@ if (!$authenticatorService->isAuthenticated()) {
     <input type="password" id="password" name="password" required />
   </div>
   <div>
-    <label>Vérification du mot de passe :*</label>
+    <label>Vérification du mot de passe :</label>
     <input type="password" name="password_verify" oninput="check(this)" required />
     <script language='javascript' type='text/javascript'>
       function check(input) {

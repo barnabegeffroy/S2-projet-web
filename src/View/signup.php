@@ -1,4 +1,7 @@
 <form action="addUser.php" method="post">
+  <?php if (isset($data['errorInCreation'])) : ?>
+    <span class="error-message"><?= $data['errorInCreation'] ?></span>
+  <?php endif; ?>
   <div>
     <label for="prenom">Prénom :*</label>
     <input type="text" id="prenom" name="prenom" required />

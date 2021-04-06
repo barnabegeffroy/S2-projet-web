@@ -9,13 +9,12 @@ $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $user
 
 $userService = new \Rediite\Model\Service\UserService($userRepository);
 
-$prenom =  $_POST['prenom'];
-$pseudo =  !empty($_POST['pseudo']) ? $_POST['pseudo'] : null;
-$nom =  $_POST['nom'];
-$email =  $_POST['email'];
-$telephone =  $_POST['telephone'];
-$password =  password_hash($_POST['password'], PASSWORD_BCRYPT);
-$passwordVerify =  $_POST['password_verify'];
+$pseudo = !empty($_POST['pseudo']) ? $_POST['pseudo'] : null;
+$prenom = !empty($_POST['prenom']) ? $_POST['prenom'] : null;
+$nom = !empty($_POST['nom']) ? $_POST['nom'] : null;
+$email = !empty($_POST['email']) ? $_POST['email'] : null;
+$telephone = !empty($_POST['telephone']) ? $_POST['telephone'] : null;
+$password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_BCRYPT) : null;
 
 $viewData = [];
 
@@ -35,7 +34,7 @@ if (empty($viewData)) {
   if ($pseudo !== null) {
     $userRepository->changeNickNameByEmail($email, $pseudo);
   }
-  if (!empty($userRepository->findOneByEmail($email))) {
+  if ($userService->doesUserExist($email)) {
     header('Location: login.php');
   }
   $errorMessage['errorInCreation'] = "Impossible de créer le compte";
