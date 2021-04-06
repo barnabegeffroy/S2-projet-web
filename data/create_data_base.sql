@@ -113,11 +113,17 @@ CREATE TABLE Localisation (
 );
 
 GRANT all privileges ON Utilisateur TO tpcurseurs;
+GRANT all privileges ON utilisateur_id_seq TO tpcurseurs;
 GRANT all privileges ON Favoris TO tpcurseurs;
 GRANT all privileges ON Annonce TO tpcurseurs;
+GRANT all privileges ON Annonce_id_seq TO tpcurseurs;
 GRANT all privileges ON Notation TO tpcurseurs;
+GRANT all privileges ON Notation_id_seq TO tpcurseurs;
 GRANT all privileges ON Message TO tpcurseurs;
+GRANT all privileges ON Message_id_seq TO tpcurseurs;
 GRANT all privileges ON Image TO tpcurseurs;
+GRANT all privileges ON Image_id_seq TO tpcurseurs;
 GRANT all privileges ON Commentaire TO tpcurseurs;
+GRANT all privileges ON Commentaire_id_seq TO tpcurseurs;
 GRANT all privileges ON Reservation TO tpcurseurs;
 GRANT all privileges ON Localisation TO tpcurseurs;
