@@ -7,6 +7,9 @@ function loadView($view, $data)
     $userHydrator = new \Rediite\Model\Hydrator\UserHydrator();
     $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $userHydrator);
     $authenticatorService = new \Rediite\Model\Service\AuthenticatorService($userRepository);
+    $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
+    $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
+    $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 ?>
     <!doctype html>
     <html lang="fr">
