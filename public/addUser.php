@@ -31,15 +31,15 @@ function checkFormData($userService, $email)
 if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telephone && null !== $password) {
   $viewData = checkFormData($userService, $email);
   if (empty($viewData)) {
-    $userRepository->insert($prenom, $nom, $email, $telephone, $password);
+    $log = $userRepository->insert($prenom, $nom, $email, $telephone, $password);
     if ($pseudo !== null) {
       $userRepository->changeNickNameByEmail($email, $pseudo);
     }
     if ($userService->doesUserExist($email)) {
-      header('Location: login.php');
+      header('Location: index.php?erreur=' . $log);
       exit;
     }
-    $viewData['errorInCreation'] = "Impossible de créer le compte";
+    $viewData['errorInCreation'] = $log;
   }
 }
 loadView('connexion/signup', $viewData);
