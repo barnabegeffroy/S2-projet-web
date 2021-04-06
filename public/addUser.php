@@ -28,15 +28,17 @@ function checkFormData($userService, $email)
   return $errorMessage;
 }
 
-$viewData = checkFormData($userService, $email);
-if (empty($viewData)) {
-  $userRepository->insert($prenom, $nom, $email, $telephone, $password);
-  if ($pseudo !== null) {
-    $userRepository->changeNickNameByEmail($email, $pseudo);
+if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telephone && null !== $password) {
+  $viewData = checkFormData($userService, $email);
+  if (empty($viewData)) {
+    $userRepository->insert($prenom, $nom, $email, $telephone, $password);
+    if ($pseudo !== null) {
+      $userRepository->changeNickNameByEmail($email, $pseudo);
+    }
+    if ($userService->doesUserExist($email)) {
+      header('Location: login.php');
+    }
+    $errorMessage['errorInCreation'] = "Impossible de créer le compte";
   }
-  if ($userService->doesUserExist($email)) {
-    header('Location: login.php');
-  }
-  $errorMessage['errorInCreation'] = "Impossible de créer le compte";
 }
 loadView('signup', $viewData);
