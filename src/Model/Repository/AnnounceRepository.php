@@ -39,7 +39,15 @@ class AnnounceRepository
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
     $stmt->execute();
-    /* $id =  */$stmt->fetch();
+    $is_success = $stmt->execute();
+    // Code à rajouter
+    if (!$is_success) {
+      // Ne pas garder ça en production car ça peut servir de faille de sécurité
+      return "SQL Insert error: " . $stmt->errorInfo()[2];
+    } else {
+      return "Insert success";
+    }
+    // /* $id =  */$stmt->fetch();
     // return $id ? $id : null;
   }
 
