@@ -22,7 +22,6 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
     <div>Vous n'avez encore aucune annonce publiée.</div>
 
     <?php else : foreach ($announces as &$announce) :
-        $announce = $announces[$i];
     ?>
         <div>
             <div>Titre :</div>
