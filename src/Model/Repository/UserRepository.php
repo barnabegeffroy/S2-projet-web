@@ -94,6 +94,16 @@ class UserRepository
     $stmt->execute();
   }
 
+  public function changeNickNameByEmail($email, $pseudo)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "utilisateur" SET pseudo=:pseudo WHERE email = :email'
+    );
+    $stmt->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
+    $stmt->bindValue(':email', $email, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
   public function changeLastName($userId, $nom)
   {
     $stmt = $this->dbAdapter->prepare(

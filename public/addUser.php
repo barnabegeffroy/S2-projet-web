@@ -33,8 +33,7 @@ $viewData = checkFormData($userService, $email);
 if (empty($viewData)) {
   $userRepository->insert($prenom, $nom, $email, $telephone, $password);
   if ($pseudo !== null) {
-    $user = $userRepository->findOneByEmail($email);
-    $userRepository->changeNickName($user->getId(), $pseudo);
+    $userRepository->changeNickNameByEmail($email, $pseudo);
   }
   header('Location: login.php');
 }

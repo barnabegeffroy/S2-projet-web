@@ -32,9 +32,6 @@
                 <button class="button1" onclick="location.href = 'logout.php'">Se déconnecter</button>
             </li>
         <?php endif; ?>
-        <li class="link-header-item">
-            <button class="button1" onclick="location.href = 'about.php'">À propos de nous</button>
-        </li>
     </ul>
 </div>
 
