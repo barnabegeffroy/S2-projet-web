@@ -67,6 +67,21 @@ class AnnounceRepository
     return $announces;
   }
 
+  public function findAll()
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "annonce"'
+    );
+    $stmt->execute();
+    $announces=null;
+    $i=0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $announces[$i]=$row? $this->announceHydrator->hydrate($row) : null;
+      $i++;
+    }
+    return $announces;
+  }
+
   public function deleteAnnounce($id)
   {
     $stmt = $this->dbAdapter->prepare(
