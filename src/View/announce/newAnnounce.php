@@ -12,11 +12,11 @@
   </div>
   <div>
     <label for="description">Description :</label>
-    <input type="text" id="description" name="description" required />
+    <input type="text" id="description" name="description" />
   </div>
   <div>
     <label for="lieu">Lieu :</label>
-    <input type="text" id="lieu" name="lieu" required />
+    <input type="text" id="lieu" name="lieu" />
   </div>
   <button type="submit">Valider</button>
 </form>
