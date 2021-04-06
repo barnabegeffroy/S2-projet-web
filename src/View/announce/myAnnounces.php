@@ -19,7 +19,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
 <?php endif; ?>
 <h1>Mes annonces</h1>
 <?php if (empty($announces)) : ?>
-    <div>Vous n'avez encore aucune annonce de publié.</div>
+    <div>Vous n'avez encore aucune annonce publiée.</div>
 
     <?php else : foreach ($announces as &$announce) :
         $announce = $announces[$i];
