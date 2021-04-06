@@ -58,8 +58,13 @@ class AnnounceRepository
     );
     $stmt->bindValue(':idUtilisateur', $userId, \PDO::PARAM_INT);
     $stmt->execute();
-    $rawAnnounce = $stmt->fetch();
-    return $rawAnnounce ? $this->announceHydrator->hydrate($rawAnnounce) : null;
+    $announces=null;
+    $i=0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $announces[$i]=$row? $this->announceHydrator->hydrate($row) : null;
+      $i++;
+    }
+    return $announces;
   }
 
   public function deleteAnnounce($id)
