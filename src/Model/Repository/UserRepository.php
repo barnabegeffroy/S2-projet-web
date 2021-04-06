@@ -33,8 +33,8 @@ class UserRepository
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "utilisateur" (nom, prenom, email, telephone, password) VALUES (:nom, :prenom, :email, :telephone, :password)'
     );
-    $stmt->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
     $stmt->bindValue(':nom', $nom, \PDO::PARAM_STR);
+    $stmt->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
     $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
     $stmt->bindValue(':telephone', $telephone, \PDO::PARAM_STR);
     $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
