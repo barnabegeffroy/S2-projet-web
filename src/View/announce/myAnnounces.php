@@ -21,9 +21,8 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
 
 if (isset($data['failedPassword'])) : ?>
     <span class="error-message"><?= $data['failedPassword'] ?></span>
-<?php endif; ?>
 
-<?php foreach ($announces as &$announce) : ?>
+<?php else : foreach ($announces as &$announce) : ?>
     <div>
         <div>Titre :</div>
         <div><?php echo $announce->getTitle() ?></div>
@@ -60,6 +59,7 @@ if (isset($data['failedPassword'])) : ?>
         </form>
     </div>
 <?php endforeach; ?>
+<?php endif; ?>
 <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";
