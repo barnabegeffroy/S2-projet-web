@@ -35,6 +35,9 @@ if (empty($viewData)) {
   if ($pseudo !== null) {
     $userRepository->changeNickNameByEmail($email, $pseudo);
   }
-  header('Location: login.php');
+  if (!empty($userRepository->findOneByEmail($email))) {
+    header('Location: login.php');
+  }
+  $errorMessage['errorInCreation'] = "Impossible de créer le compte";
 }
 loadView('signup', $viewData);
