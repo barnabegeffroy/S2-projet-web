@@ -17,8 +17,8 @@ $user = $userRepository->findOneById($_SESSION['user_id']);
 if (!password_verify($password, $user->getPassword())) {
     $viewData['failedPassword'] = 'Mot de passe incorrect';
     loadView('account', $viewData);
-    exit;
 } else {
     $announceRepository->deleteAnnounce($idAnnounce);
     header('Location: myAnnounces.php');
+    exit;
 }

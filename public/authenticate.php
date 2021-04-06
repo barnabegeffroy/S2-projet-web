@@ -21,7 +21,6 @@ if (null !== $user) {
     } else {
         $viewData['failedAuthent'] = 'Mot de passe incorrect';
         loadView('login', $viewData);
-        exit;
     }
 }
 $viewData['failedAuthent'] = 'Utilisateur introuvable';

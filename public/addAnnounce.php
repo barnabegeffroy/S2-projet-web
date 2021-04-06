@@ -16,6 +16,7 @@ $viewData = [];
 if (null !== $titre &&  null !== $date) {
   $announceRepository->insert($titre, $_SESSION['user_id'], $date);
   header('Location: myAnnounces.php');
+  exit;
 }
 $viewData['errorInCreation'] = "Impossible de créer l'announce";
 loadView('signup', $viewData);

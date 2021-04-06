@@ -43,3 +43,4 @@ if ($telephone !== $user->getPhoneNumber()) {
     $userRepository->changeLastName($id, $telephone);
 }
 header('Location: account.php');
+exit;
