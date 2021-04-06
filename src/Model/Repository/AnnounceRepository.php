@@ -31,8 +31,8 @@ class AnnounceRepository
   function insert(string $titre, int $idUser, string $datePublication)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, telephone, password) 
-      VALUES (:nom, :idUser, :datePublication, :telephone, :password)'
+      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, estDisponible) 
+      VALUES (:nom, :idUser, :datePublication, TRUE)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
@@ -49,5 +49,25 @@ class AnnounceRepository
     $stmt->execute();
     $rawAnnounce = $stmt->fetch();
     return $rawAnnounce ? $this->announceHydrator->hydrate($rawAnnounce) : null;
+  }
+
+  public function findAllByUserId($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "annonce" WHERE idUtilisateur = :idUtilisateur'
+    );
+    $stmt->bindValue(':idUtilisateur', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $rawAnnounce = $stmt->fetch();
+    return $rawAnnounce ? $this->announceHydrator->hydrate($rawAnnounce) : null;
+  }
+
+  public function deleteAnnounce($id)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'DELETE FROM "annonce" WHERE id = :id'
+    );
+    $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
   }
 }

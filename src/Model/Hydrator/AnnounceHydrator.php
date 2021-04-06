@@ -13,7 +13,7 @@ class AnnounceHydrator
       ->setTitle($data['titre'])
       ->setUserId($data['idUtilisateur'])
       ->setDate($data['datePublication'])
-      ->setIsAvailable(true);
+      ->setIsAvailable($data['estDisponible']);
     if (!empty($data['duree'])) {
       $topic->setDuration($data['duree']);
     }
