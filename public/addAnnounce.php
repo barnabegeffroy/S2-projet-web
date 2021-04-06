@@ -17,16 +17,16 @@ $date = date('d/m/Y');
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $id = $announceRepository->insert($titre, $_SESSION['user_id'], $date);
-  if (null !== $description) {
-    $announceRepository->changeDescription($id, $description);
-  }
-  if (null !== $lieu) {
-    $announceRepository->changePlace($id, $lieu);
-  }
-  if (null !== $duree) {
-    $announceRepository->changeDuration($id, $duree);
-  }
+  /* $id =  */$announceRepository->insert($titre, $_SESSION['user_id'], $date);
+  // if (null !== $description) {
+  //   $announceRepository->changeDescription($id, $description);
+  // }
+  // if (null !== $lieu) {
+  //   $announceRepository->changePlace($id, $lieu);
+  // }
+  // if (null !== $duree) {
+  //   $announceRepository->changeDuration($id, $duree);
+  // }
   header('Location: myAnnounces.php');
   exit;
 }
