@@ -12,12 +12,12 @@ class Announce
     /**
      * @var string
      */
-    private $nom;
+    private $titre;
 
     /**
      * @var string
      */
-    private $idUser;
+    private $userId;
 
     /**
      * @var string
@@ -28,48 +28,28 @@ class Announce
      * @var string
      */
     private $duree;
-    
+
     /**
      * @var string
      */
     private $description;
-    
+
     /**
      * @var string
      */
     private $lieu;
-    
+
 
     /**
      * @var boolean
      */
     private $isAvailableNow;
-    
+
     // /**
     //  * @var image
     //  */
     // private $profilePicture;
-    
 
-    /**
-     * constructor
-     * @param string $prenom
-     * @param string $nom
-     * @param string $email
-     * @return void
-     */
-    public function __construct(int $id, string $nom, int $idUser , string $datePublication, string $duree, string $description, Localisation $lieu, bool $isAvailableNow)
-    {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->idUser = $idUser;
-        $this->datePublication = $datePublication;
-        $this->duree = $duree;
-        $this->description = $description;
-        $this->lieu = $lieu;
-        $this->$isAvailableNow = $isAvailableNow;
-
-    }
     /**
      * @return mixed
      */
@@ -79,39 +59,137 @@ class Announce
     }
 
     /**
+     * @param mixed $id
+     * @return Announce
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    /**
      * @return mixed
      */
     public function getTitle()
     {
-        return $this->nom;
+        return $this->titre;
     }
 
     /**
-     * @param mixed $lastName
+     * @param mixed $titre
      * @return Announce
      */
-    public function setUser($idUser)
+    public function setTitle($titre)
     {
-        $this->idUser = $idUser;
+        $this->titre = $titre;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getIdUser()
+    public function getUserId()
     {
-        return $this->idUser;
+        return $this->userId;
     }
-    
 
+    /**
+     * @param mixed $userId
+     * @return Announce
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->datePublication;
+    }
+
+    /**
+     * @param mixed $date
+     * @return Announce
+     */
+    public function setDate($date)
+    {
+        $this->datePublication = $date;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     * @return Announce
+     */
+    public function setDuration($duree)
+    {
+        $this->duree = $duree;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Announce
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlace()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $place
+     * @return Announce
+     */
+    public function setPlace($place)
+    {
+        $this->lieu = $place;
+        return $this;
+    }
 
     /**
      * @return boolean
      */
-    public function isAvailable()
+    public function isAvailable(): bool
     {
-        return $this->$isAvailableNow;
+        return $this->isAvailableNow;
     }
 
+    /**
+     * @param boolean $bool
+     * @return Announce
+     */
+    public function setIsAvailable($bool)
+    {
+        $this->isAvailableNow = $bool;
+        return $this;
+    }
 }
