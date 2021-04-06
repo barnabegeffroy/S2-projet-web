@@ -39,7 +39,6 @@ class UserRepository
     $stmt->bindValue(':telephone', $telephone, \PDO::PARAM_STR);
     $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
     $stmt->execute();
-    $rawUser = $stmt->fetch();
   }
 
   function findOneByEmail($email): ?UserEntity
