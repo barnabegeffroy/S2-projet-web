@@ -17,17 +17,7 @@ $date = date('d/m/Y');
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date);
-  $id = $announceRepository->getLastCreated($_SESSION['user_id'])['id'];
-  if (null !== $description) {
-    $announceRepository->changeDescription($id, $description);
-  }
-  if (null !== $lieu) {
-    $announceRepository->changePlace($id, $lieu);
-  }
-  if (null !== $duree) {
-    $announceRepository->changeDuration($id, $duree);
-  }
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu);
   header('Location: myAnnounces.php');
   exit;
 }

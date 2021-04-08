@@ -28,19 +28,22 @@ class AnnounceRepository
     $this->announceHydrator = $announceHydrator;
   }
 
-  function insert(string $titre, int $idUser, string $datePublication)
+  function insert(string $titre, int $idUser, string $datePublication, string $duree, string $description, string $place)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, estDisponible) 
-      VALUES (:titre, :idUser, :datePublication, TRUE)'
+      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, lieu, estDisponible) 
+      VALUES (:titre, :idUser, :datePublication, :duree, :description, :lieu TRUE)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
+    $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
+    $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
     $stmt->execute();
     $stmt->fetch();
   }
-  
+
   function getLastCreated(int $idUser)
   {
     $stmt = $this->dbAdapter->prepare(

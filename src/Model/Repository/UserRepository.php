@@ -28,12 +28,13 @@ class UserRepository
     $this->userHydrator = $userHydrator;
   }
 
-  function insert(string $prenom, string $nom, string $email, string $telephone, string $password)
+  function insert(string $prenom, string $pseudo, string $nom, string $email, string $telephone, string $password)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "utilisateur" (nom, prenom, email, telephone, password) VALUES (:nom, :prenom, :email, :telephone, :password)'
+      'INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES (:nom, :pseudo, :prenom, :email, :telephone, :password)'
     );
     $stmt->bindValue(':nom', $nom, \PDO::PARAM_STR);
+    $stmt->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
     $stmt->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
     $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
     $stmt->bindValue(':telephone', $telephone, \PDO::PARAM_STR);

@@ -31,10 +31,7 @@ function checkFormData($userService, $email)
 if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telephone && null !== $password) {
   $viewData = checkFormData($userService, $email);
   if (empty($viewData)) {
-    $log = $userRepository->insert($prenom, $nom, $email, $telephone, $password);
-    if ($pseudo !== null) {
-      $userRepository->changeNickNameByEmail($email, $pseudo);
-    }
+    $log = $userRepository->insert($prenom, $pseudo, $nom, $email, $telephone, $password);
     if ($userService->doesUserExist($email)) {
       header('Location: index.php?erreur=' . $log);
       exit;
