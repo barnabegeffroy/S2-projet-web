@@ -37,21 +37,9 @@ class AnnounceRepository
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
-    if (isset($duree)) {
-      $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
-    } else {
-      $stmt->bindValue(':duree', null, \PDO::PARAM_NULL);
-    }
-    if (isset($description)) {
-      $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
-    } else {
-      $stmt->bindValue(':description', null, \PDO::PARAM_NULL);
-    }
-    if (isset($place)) {
-      $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
-    } else {
-      $stmt->bindValue(':lieu', null, \PDO::PARAM_NULL);
-    }
+    $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
+    $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
     $stmt->execute();
   }
 
