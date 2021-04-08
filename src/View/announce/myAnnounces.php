@@ -37,7 +37,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
                 <div><?php echo $announce->getDescription() ?></div>
             </div>
         <?php endif; ?>
-        <?php if ($announce->getDescription() !== null) : ?>
+        <?php if ($announce->getPlace() !== null) : ?>
             <div>
                 <div>Lieu de prêt :</div>
                 <div><?php echo $announce->getPlace() ?></div>
@@ -58,8 +58,9 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
         <button class="button1" onclick="openForm()">Supprimer mon annonce</button>
         <div class="form-popup" id="myForm">
             <form action="deleteAnnounce.php" method="post" class="form-container">
-                <label for="psw"><b>Mot de passe</b></label>
+                <label for="password"><b>Mot de passe</b></label>
                 <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+                <input id="idAnnounce" name="idAnnounce" type="hidden" value="<?php $announce->getId() ?>">
                 <button type="submit" class="button1">Supprimer définitivement</button>
                 <button type="button" class="button1 cancel" onclick="closeForm()">Annuler</button>
             </form>
