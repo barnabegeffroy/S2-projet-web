@@ -60,7 +60,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
             <form action="deleteAnnounce.php" method="post" class="form-container">
                 <label for="password"><b>Mot de passe</b></label>
                 <input type="password" placeholder="entrez votre mot de passe" name="password" required>
-                <input id="idAnnounce" name="idAnnounce" type="hidden" value="<?php $announce->getId() ?>">
+                <input id="idAnnounce" name="idAnnounce" type="hidden" value="<?php echo $announce->getId() ?>">
                 <button type="submit" class="button1">Supprimer définitivement</button>
                 <button type="button" class="button1 cancel" onclick="closeForm()">Annuler</button>
             </form>
