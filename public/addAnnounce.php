@@ -23,8 +23,5 @@ if (null !== $titre &&  null !== $date) {
   console.log("<?php echo $log ?>");
   </script>
   <?php
-  header('Location: myAnnounces.php');
-  exit;
 }
 $viewData['errorInCreation'] = "Impossible de créer l'annonce";
-loadView('announce/newAnnounce', $viewData);
