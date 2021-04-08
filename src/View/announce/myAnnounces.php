@@ -70,7 +70,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
         <script>
             function openForm() {
                 document.getElementById("MyForm").style.display = "block";
-                document.getElementById("idAnnounce").value = "<?php echo $announce->getId() ?>"
+                document.getElementById("idAnnounce").setAttribute('value', "<?php echo $announce->getId() ?>");
             }
 
             function closeForm() {
