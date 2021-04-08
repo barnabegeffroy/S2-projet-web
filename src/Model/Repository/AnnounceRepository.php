@@ -32,16 +32,26 @@ class AnnounceRepository
   {
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, estDisponible) 
-      VALUES (:titre, :idUser, :datePublication, TRUE);
-      SELECT id FROM annonce WHERE idutilisateur = :idUser ORDER BY ID DESC LIMIT 1 ;'
+      VALUES (:titre, :idUser, :datePublication, TRUE)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
     $stmt->execute();
+    $stmt->fetch();
+  }
+  
+  function getLastCreated(int $idUser)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT id FROM annonce WHERE idutilisateur = :idUser ORDER BY ID DESC LIMIT 1'
+    );
+    $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
+    $stmt->execute();
     $id = $stmt->fetch();
     return $id ? $id : null;
   }
+
 
   public function findOneById($announceId)
   {
