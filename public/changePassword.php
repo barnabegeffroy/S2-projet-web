@@ -15,7 +15,7 @@ $viewData = [];
 $user = $userRepository->findOneById($_SESSION['user_id']);
 if (!password_verify($last_password, $user->getPassword())) {
     $viewData['failedPassword'] = 'Mot de passe incorrect';
-    loadView('password', $viewData);
+    loadView('account/password', $viewData);
 } else {
     $userRepository->changePassword($user->getId(), $password);
     header('Location: account.php');

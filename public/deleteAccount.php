@@ -13,7 +13,7 @@ $viewData = [];
 $user = $userRepository->findOneById($_SESSION['user_id']);
 if (!password_verify($password, $user->getPassword())) {
     $viewData['failedPassword'] = 'Mot de passe incorrect';
-    loadView('account', $viewData);
+    loadView('account/account', $viewData);
 } else {
     $userRepository->deleteUser($user->getId());
     header('Location: logout.php');

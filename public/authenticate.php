@@ -20,8 +20,8 @@ if (null !== $user) {
         exit;
     } else {
         $viewData['failedAuthent'] = 'Mot de passe incorrect';
-        loadView('login', $viewData);
+        loadView('connexion/login', $viewData);
     }
 }
 $viewData['failedAuthent'] = 'Utilisateur introuvable';
-loadView('login', $viewData);
+loadView('connexion/login', $viewData);
