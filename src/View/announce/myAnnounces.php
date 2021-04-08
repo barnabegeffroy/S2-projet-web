@@ -37,6 +37,12 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
                 <div><?php echo $announce->getDescription() ?></div>
             </div>
         <?php endif; ?>
+        <?php if ($announce->getDescription() !== null) : ?>
+            <div>
+                <div>Lieu de prêt :</div>
+                <div><?php echo $announce->getPlace() ?></div>
+            </div>
+        <?php endif; ?>
         <?php if ($announce->getDuration() !== null) : ?>
             <div>
                 <div>Durée de prêt maximale :</div>
