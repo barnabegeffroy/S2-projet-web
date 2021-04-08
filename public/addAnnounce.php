@@ -17,7 +17,8 @@ $date = date('d/m/Y');
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $id = $announceRepository->insert($titre, $_SESSION['user_id'], $date);
+  $raw = $announceRepository->insert($titre, $_SESSION['user_id'], $date);
+  $id = $raw['id'];
   if (null !== $description) {
     $announceRepository->changeDescription($id, $description);
   }
