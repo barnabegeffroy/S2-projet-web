@@ -19,6 +19,6 @@ if (!password_verify($password, $user->getPassword())) {
     loadView('account', $viewData);
 } else {
     $announceRepository->deleteAnnounce($idAnnounce);
-    header('Location: index.php?erreur=' . $idAnnounce);
+    header('Location: myAnnounces.php');
     exit;
 }
