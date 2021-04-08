@@ -52,8 +52,14 @@ class AnnounceRepository
     } else {
       $stmt->bindValue(':lieu', null, \PDO::PARAM_NULL);
     }
-    $stmt->execute();
-    $stmt->fetch();
+    $is_success = $stmt->execute();
+    // Code à rajouter
+    if (!$is_success) {
+      // Ne pas garder ça en production car ça peut servir de faille de sécurité
+      return "SQL Insert error: " . $stmt->errorInfo()[2];
+    } else {
+      return "Insert success";
+    }
   }
 
   function getLastCreated(int $idUser)

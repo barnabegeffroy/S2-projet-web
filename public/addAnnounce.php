@@ -17,8 +17,8 @@ $date = date('d/m/Y');
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu);
-  header('Location: myAnnounces.php');
+  $log = $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu);
+  header('Location: index.php?erreur=' . $log);
   exit;
 }
 $viewData['errorInCreation'] = "Impossible de créer l'annonce";
