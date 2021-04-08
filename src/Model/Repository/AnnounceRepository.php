@@ -28,7 +28,7 @@ class AnnounceRepository
     $this->announceHydrator = $announceHydrator;
   }
 
-  function insert(string $titre, int $idUser, string $datePublication, string $duree, string $description, string $place)
+  function insert(string $titre, int $idUser, string $datePublication,  $duree,  $description, $place)
   {
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, lieu, estDisponible) 
