@@ -39,14 +39,7 @@ class UserRepository
     $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
     $stmt->bindValue(':telephone', $telephone, \PDO::PARAM_STR);
     $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
-    $is_success = $stmt->execute();
-    // Code à rajouter
-    if (!$is_success) {
-      // Ne pas garder ça en production car ça peut servir de faille de sécurité
-      return "SQL Insert error: " . $stmt->errorInfo()[2];
-    } else {
-      return "Insert success";
-    }
+    $stmt->execute();
   }
 
   function findOneByEmail($email): ?UserEntity
