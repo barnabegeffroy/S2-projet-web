@@ -67,18 +67,18 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
             </li>
         </ul>
         <button class="button1" onclick="openForm(); change('<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
-        <script>
-            function openForm() {
-                document.getElementById("MyForm").style.display = "block";
-            }
-
-            function change(value) {
-                document.getElementById("idAnnounce").setAttribute('value', value);
-            }
-
-            function closeForm() {
-                document.getElementById("MyForm").style.display = "none";
-            }
-        </script>
     <?php endforeach; ?>
+    <script>
+        function openForm() {
+            document.getElementById("MyForm").style.display = "block";
+        }
+
+        function change(value) {
+            document.getElementById("idAnnounce").setAttribute('value', value);
+        }
+
+        function closeForm() {
+            document.getElementById("MyForm").style.display = "none";
+        }
+    </script>
 <?php endif; ?>
