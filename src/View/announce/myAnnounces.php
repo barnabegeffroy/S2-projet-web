@@ -56,7 +56,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
             </li>
         </ul>
         <button class="button1" onclick="openForm()">Supprimer mon annonce</button>
-        <div class="form-popup" id="myForm">
+        <div class="form-popup" id="Form <?php echo $announce->getId() ?>">
             <form action="deleteAnnounce.php" method="post" class="form-container">
                 <label for="password"><b>Mot de passe</b></label>
                 <input type="password" placeholder="entrez votre mot de passe" name="password" required>
@@ -65,14 +65,14 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
                 <button type="button" class="button1 cancel" onclick="closeForm()">Annuler</button>
             </form>
         </div>
+        <script>
+            function openForm() {
+                document.getElementById("Form <?php echo $announce->getId() ?>").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("Form <?php echo $announce->getId() ?>").style.display = "none";
+            }
+        </script>
     <?php endforeach; ?>
 <?php endif; ?>
-<script>
-    function openForm() {
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-        document.getElementById("myForm").style.display = "none";
-    }
-</script>
