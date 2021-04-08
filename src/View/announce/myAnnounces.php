@@ -73,7 +73,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
             }
 
             function change(value) {
-                document.getElementById("idAnnounce").setAttribute('value', 'value');
+                document.getElementById("idAnnounce").setAttribute('value', value);
             }
 
             function closeForm() {
