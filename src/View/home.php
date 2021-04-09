@@ -6,7 +6,7 @@ if (null != $erreur): ?>
 endif;
 $announces = $announceRepository->findAll();
 ?>
-<h1>La plateforme de prêt d'objets de l'ENSIIE</h1>
+<h1>La plateforme de prêt d'objets de l'ENSIIE <?php echo exec('whoami'); ?></h1>
 
 <?php if (empty($announces)) : ?>
     <div>Aucune annonce publiée pour l'instant.</div>
