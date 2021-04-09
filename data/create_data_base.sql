@@ -29,7 +29,7 @@ CREATE TABLE Annonce (
     datePublication DATE NOT NULL,
     duree TIME,
     description VARCHAR,
-    photo INTEGER,
+    photo VARCHAR,
     lieu VARCHAR(256),
     estDisponible BOOLEAN,
     CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
