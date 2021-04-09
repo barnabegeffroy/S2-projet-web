@@ -20,7 +20,7 @@ $viewData = [];
 if (null !== $titre &&  null !== $date) {
   $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu, !(empty($image) ? basename($image['name']) : null));
   if ($image !== null) {
-    $dossier = '../src/View/images/announces';
+    $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
     $taille_maxi = 1000000;
     $taille = filesize($image['tmp_name']);
