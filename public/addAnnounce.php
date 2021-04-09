@@ -29,10 +29,10 @@ if (null !== $titre &&  null !== $date) {
     //Début des vérifications de sécurité...
     if (!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
     {
-      $viewData['errorInCreation'] = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+      $viewData['errorInCreation'] += 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
     }
     if ($taille > $taille_maxi) {
-      $viewData['errorInCreation'] = 'Le fichier est trop gros...';
+      $viewData['errorInCreation'] += 'Le fichier est trop gros...';
     }
     if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
     {
@@ -54,7 +54,7 @@ if (null !== $titre &&  null !== $date) {
   }
 }
 else {
-  $viewData['errorInCreation'] = "Impossible de créer l'annonce";
+  $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }
 if (empty($viewData['errorInCreation'])){
   header('Location: myAnnounces.php');
