@@ -33,7 +33,7 @@ if (null !== $nom &&  null !== $prenom &&  null !== $email &&  null !== $telepho
   if (empty($viewData)) {
     $userRepository->insert($prenom, $pseudo, $nom, $email, $telephone, $password);
     if ($userService->doesUserExist($email)) {
-      header('Location: lognin.php');
+      header('Location: login.php');
       exit;
     }
     $viewData['errorInCreation'] = "Impossible de créer le compte";
