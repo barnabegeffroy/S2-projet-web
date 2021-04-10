@@ -36,7 +36,7 @@ if (null !== $titre &&  null !== $date) {
     }
     if (!isset($viewData['errorInCreation'])) //S'il n'y a pas d'erreur, on upload
     {
-      $id = $announceRepository->getLastCreated($_SESSION['user_id']);
+      $id = $announceRepository->getLastCreated($_SESSION['user_id'])['id'];
       $fichier = $id . '.' . $extension;
       if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
       {
