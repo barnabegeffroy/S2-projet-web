@@ -55,7 +55,7 @@ class AnnounceRepository
   }
 
 
-  public function findDataById($announceId)
+  public function getDataById($announceId)
   {
     $stmt = $this->dbAdapter->prepare(
       'SELECT * FROM "annonce" WHERE id = :id'
