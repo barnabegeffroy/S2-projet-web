@@ -68,7 +68,7 @@ class UserRepository
     public function getIdentity($userId)
     {
       $stmt = $this->dbAdapter->prepare(
-        'SELECT (prenom,pseudo,nom) FROM "utilisateur" WHERE id = :id'
+        'SELECT prenom, pseudo, nom FROM "utilisateur" WHERE id = :id'
       );
       $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
       $stmt->execute();
