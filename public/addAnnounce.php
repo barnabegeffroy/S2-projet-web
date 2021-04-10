@@ -12,13 +12,21 @@ $announceService = new \Rediite\Model\Service\AnnounceService($announceRepositor
 $titre = !empty($_POST['titre']) ? $_POST['titre'] : null;
 $description = !empty($_POST['description']) ? $_POST['description'] : null;
 $duree = !empty($_POST['duree']) ? $_POST['duree'] : null;
-$lieu = !empty($_POST['lieu']) ? $_POST['lieu'] : null;
+$cp = !empty($_POST['cp']) ? "postcode=" . $_POST['cp'] : null;
+$ville = !empty($_POST['ville']) ?  preg_replace('/\s+/', '_', $_POST['ville']) : null;
+$adresse = !empty($_POST['adresse']) ? $journalName = preg_replace('/\s+/', '_', $_POST['adresse']) : null;
 $date = date('d/m/Y');
 $image = !empty($_FILES['image']) ? $_FILES['image'] : null;
 $viewData = [];
 
+if (null !== $adresse) {
+  $url = "https://api-adresse.data.gouv.fr/search/?q=" . $adresse . "&" . $cp;
+} else
+  $url = "https://api-adresse.data.gouv.fr/search/?q=" . $ville . "&type=street&" . $cp;
+}
+
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu);
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $url);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);

@@ -15,6 +15,7 @@
     <input type="text" id="description" name="description" value="<?php echo isset($data['description']) ? $data['description'] : null ?>" />
   </div>
   <div>
+    <label for="cp">Adresse :</label>
     <input name="cp" id="cp" type="text" placeholder="CP">
     <input name="ville" id="ville" type="text" placeholder="Ville" required>
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
