@@ -34,7 +34,7 @@ if (null !== $titre &&  null !== $date) {
     if ($taille > $taille_maxi) {
       $viewData['errorInCreation'] += 'Le fichier est trop gros...';
     }
-    if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+    if (!isset($viewData['errorInCreation'])) //S'il n'y a pas d'erreur, on upload
     {
       $id = $announceRepository->getLastCreated($_SESSION['user_id']);
       $fichier = $id . '.' . $extension;
