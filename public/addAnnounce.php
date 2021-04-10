@@ -51,7 +51,8 @@ if (null !== $titre &&  null !== $date) {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }
 if (empty($viewData['errorInCreation'])) {
-  header('Location: myAnnounces.php');
-  exit;
+  // header('Location: myAnnounces.php');
+  // exit;
+  loadView('announce/newAnnounce', $viewData);
 }
 loadView('announce/newAnnounce', $viewData);
