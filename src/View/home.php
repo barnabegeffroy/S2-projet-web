@@ -37,10 +37,12 @@ $announces = $announceRepository->findAll();
             <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
             <button class="button1" type="submit">Voir l'annonce</button>
         </form>
-        <?php if ($announce->getUserId() == isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null) : ?>
-            <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
-        <?php else : ?>
-            <button class="button1" onclick="location.href = 'addToFav.php'">Ajouter aux favoris</button>
+        <?php if (isset($_SESSION['user_id'])) :
+            if ($announce->getUserId() ==  $_SESSION['user_id']) : ?>
+                <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
+            <?php else : ?>
+                <button class="button1" onclick="location.href = 'addToFav.php'">Ajouter aux favoris</button>
     <?php endif;
+        endif;
     endforeach; ?>
 <?php endif; ?>

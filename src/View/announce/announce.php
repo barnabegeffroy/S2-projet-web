@@ -4,7 +4,7 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
 <h1><?php echo $data['titre']; ?></h1>
 
 <div>
-    Publié par <?php echo $user['prenom'] . (isset($user['pseudo']) ? ' ' . $user['pseudo'] . ' ' : ' ') . $user['nom'] ?>
+    Publié par <?php echo $user['prenom'] . (isset($user['pseudo']) ? ' \'' . $user['pseudo'] . '\' ' : ' ') . $user['nom'] ?>
 </div>
 <div>
     <?php echo $data['datepublication']; ?>
