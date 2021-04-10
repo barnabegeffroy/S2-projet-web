@@ -23,8 +23,8 @@ if (null !== $adresse) {
   $url = "https://api-adresse.data.gouv.fr/search/?q=" . $adresse . "&" . $cp;
 } else
   $url = "https://api-adresse.data.gouv.fr/search/?q=" . $ville . "&type=street&" . $cp;
-ini_set("allow_url_fopen", 1);
-$json = file_get_contents($url);
+// ini_set("allow_url_fopen", 1);
+// $json = file_get_contents($url);
 
 
 if (null !== $titre &&  null !== $date) {
