@@ -27,4 +27,4 @@
   </div>
   <button type="submit">Valider</button>
 </form>
-<script src="../src/assets/scripts/autocompletion.js"
+<script src="../src/assets/scripts/autocompletion.js"></script>
