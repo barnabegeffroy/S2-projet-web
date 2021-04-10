@@ -18,7 +18,7 @@ $image = !empty($_FILES['image']) ? $_FILES['image'] : null;
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, !(empty($image) ? basename($image['name']) : null), $lieu);
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, !(empty($image)) ? basename($image['name']) : null, $lieu);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
