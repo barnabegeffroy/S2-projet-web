@@ -33,34 +33,8 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
         </form>
     </div>
     <?php foreach ($announces as &$announce) :
+        loadAnnounce($announce);
     ?>
-        <div>
-            <div>Titre :</div>
-            <div><?php echo $announce->getTitle() ?></div>
-        </div>
-        <div>
-            <div>Date de publication :</div>
-            <div><?php echo $announce->getDate() ?></div>
-        </div>
-        <?php if ($announce->getDescription() !== null) : ?>
-            <div>
-                <div>Description :</div>
-                <div><?php echo $announce->getDescription() ?></div>
-            </div>
-        <?php endif; ?>
-        <?php if ($announce->getPlace() !== null) : ?>
-            <div>
-                <div>Lieu de prêt :</div>
-                <div><?php echo $announce->getPlace() ?></div>
-            </div>
-        <?php endif; ?>
-        <?php if ($announce->getDuration() !== null) : ?>
-            <div>
-                <div>Durée de prêt maximale :</div>
-                <div><?php echo $announce->getDuration() ?></div>
-            </div>
-        <?php endif; ?>
-
         <ul class="link-header-container">
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'password.php'">Modifier mon annonce</button>

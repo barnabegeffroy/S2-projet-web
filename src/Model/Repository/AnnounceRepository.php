@@ -156,4 +156,52 @@ class AnnounceRepository
     $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
     $stmt->execute();
   }
+
+  public function addFav($idAnnounce, $userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'INSERT INTO "favoris" (idUtilisateur,idAnnonce) VALUES (:idUser,:idAnnounce)'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function deleteFav($idAnnounce, $userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'DELETE FROM "favoris" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function findFav($idAnnounce, $userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "favoris" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
+    $stmt->execute();
+    $fav = $stmt->fetch();
+    return $fav ? $fav : null;
+  }
+
+  public function findAllFavs($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM annonce A JOIN favoris F ON A.id = F.idAnnonce WHERE F.idUtilisateur=:idUser;'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $favs = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $favs[$i] = $row ? $this->announceHydrator->hydrate($row) : null;
+      $i++;
+    }
+    return $favs;
+  }
 }

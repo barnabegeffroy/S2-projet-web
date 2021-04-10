@@ -22,4 +22,10 @@ class AnnounceService
     $announce = $this->announceRepository->findOneById($id);
     return null !== $announce;
   }
+
+  public function isFav($announceId, $userId): bool
+  {
+    $fav = $this->announceRepository->findFav($announceId, $userId);
+    return null !== $fav;
+  }
 }

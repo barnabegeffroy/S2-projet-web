@@ -12,36 +12,17 @@ $announces = $announceRepository->findAll();
     <div>Aucune annonce publiée pour l'instant.</div>
 
     <?php else : foreach ($announces as &$announce) :
+        loadAnnounce($announce);
     ?>
-        <div>
-            <div>Titre :</div>
-            <div><?php echo $announce->getTitle() ?></div>
-        </div>
-        <div>
-            <div>Date de publication :</div>
-            <div><?php echo $announce->getDate() ?></div>
-        </div>
-        <?php if ($announce->getDescription() !== null) : ?>
-            <div>
-                <div>Description :</div>
-                <div><?php echo $announce->getDescription() ?></div>
-            </div>
-        <?php endif; ?>
-        <?php if ($announce->getDuration() !== null) : ?>
-            <div>
-                <div>Durée de prêt maximale :</div>
-                <div><?php echo $announce->getDuration() ?></div>
-            </div>
-        <?php endif; ?>
-        <form action="announce.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-            <button class="button1" type="submit">Voir l'annonce</button>
-        </form>
         <?php if (isset($_SESSION['user_id'])) :
             if ($announce->getUserId() ==  $_SESSION['user_id']) : ?>
                 <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
-            <?php else : ?>
-                <button class="button1" onclick="location.href = 'addToFav.php'">Ajouter aux favoris</button>
+            <?php else :
+                $bool = ($announceService->isFav($announce->getUserId(), $_SESSION['user_id'])) ?>
+                <form action="<?php echo $bool ? "addToFav.php" : "deleteFav.php" ?>" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+                    <button class="button1" type="submit"><?php echo $bool ? "Ajouter aux" : "Supprimer des" ?> favoris</button>
+                </form>
     <?php endif;
         endif;
     endforeach; ?>
