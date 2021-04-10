@@ -15,8 +15,9 @@
     <input type="text" id="description" name="description" value="<?php echo isset($data['description']) ? $data['description'] : null ?>" />
   </div>
   <div>
-    <label for="lieu">Lieu :</label>
-    <input type="text" id="lieu" name="lieu" value="<?php echo isset($data['lieu']) ? $data['lieu'] : null ?>" />
+    <input name="cp" id="cp" type="text" placeholder="CP">
+    <input name="ville" id="ville" type="text" placeholder="Ville" required>
+    <input name="adresse" id="adresse" type="text" placeholder="Adresse">
   </div>
   <div>
     <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
