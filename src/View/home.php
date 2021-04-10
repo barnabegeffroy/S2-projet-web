@@ -1,7 +1,7 @@
 <?php
 $erreur = !empty($_GET['erreur']) ? $_GET['erreur'] : null;
-if (null != $erreur): ?>
-<p class="error"><?php echo $erreur; ?></p>
+if (null != $erreur) : ?>
+    <p class="error"><?php echo $erreur; ?></p>
 <?php
 endif;
 $announces = $announceRepository->findAll();
@@ -33,5 +33,14 @@ $announces = $announceRepository->findAll();
                 <div><?php echo $announce->getDuration() ?></div>
             </div>
         <?php endif; ?>
-    <?php endforeach; ?>
+        <form action="viewAnnounce.php" method="POST">
+            <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+            <button class="button1" onclick="location.href = 'announce.php'">Voir l'annonce</button>
+        </form>
+        <?php if ($announce->getUserId() == $_SESSION['user_id']) : ?>
+            <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
+        <?php else : ?>
+            <button class="button1" onclick="location.href = 'addToFav.php'">Ajouter aux favoris</button>
+    <?php endif;
+    endforeach; ?>
 <?php endif; ?>

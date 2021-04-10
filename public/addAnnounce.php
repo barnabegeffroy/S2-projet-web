@@ -37,16 +37,10 @@ if (null !== $titre &&  null !== $date) {
       $fichier = $id . $extension;
       if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
       {
-        if (isset($viewData['errorInCreation']))
-          $viewData['errorInCreation'] += 'Upload effectué avec succès !';
-        else
-          $viewData['errorInCreation'] = 'Upload effectué avec succès !';
+        $viewData['errorInCreation'] = 'Upload effectué avec succès !';
       } else //Sinon (la fonction renvoie FALSE).
       {
-        if (isset($viewData['errorInCreation']))
-          $viewData['errorInCreation'] += 'Echec de l\'upload !';
-        else
-          $viewData['errorInCreation'] = 'Echec de l\'upload !';
+        $viewData['errorInCreation'] = 'Echec de l\'upload !';
       }
     }
   }

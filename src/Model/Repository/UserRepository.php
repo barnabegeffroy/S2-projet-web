@@ -63,8 +63,19 @@ class UserRepository
     $rawUser = $stmt->fetch();
     return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
   }
-
-
+  
+  
+    public function getIdentity($userId)
+    {
+      $stmt = $this->dbAdapter->prepare(
+        'SELECT (prenom,pseudo,nom) FROM "utilisateur" WHERE id = :id'
+      );
+      $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
+      $stmt->execute();
+      $rawUser = $stmt->fetch();
+      return $rawUser ? $$rawUser : null;
+    }
+  
   public function changePassword($userId, $password)
   {
     $stmt = $this->dbAdapter->prepare(
@@ -74,6 +85,8 @@ class UserRepository
     $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
     $stmt->execute();
   }
+
+
 
   public function changeFirstName($userId, $prenom)
   {

@@ -55,6 +55,17 @@ class AnnounceRepository
   }
 
 
+  public function findDataById($announceId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "annonce" WHERE id = :id'
+    );
+    $stmt->bindValue(':id', $announceId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $rawAnnounce = $stmt->fetch();
+    return $rawAnnounce ? $rawAnnounce : null;
+  }
+
   public function findOneById($announceId)
   {
     $stmt = $this->dbAdapter->prepare(
