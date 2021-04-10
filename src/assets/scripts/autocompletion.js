@@ -74,7 +74,7 @@ $("#latitude").val({
             dataType: "json",
             success: function (data) {
                 response($.map(data.features, function (item) {
-                    return { label: item.features.coordinates, value: item.features.coordinates };
+                    return { label: 'item.geometry.coordinates.0', value: 'item.geometry.coordinates.1' };
                 }));
             }
         });
