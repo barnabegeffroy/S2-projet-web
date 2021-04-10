@@ -13,5 +13,5 @@ $announceId = $_POST['id'];
 
 $announceRepository->deleteFav($announceId, $_SESSION['user_id']);
 
-header('Location: index.php');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;
