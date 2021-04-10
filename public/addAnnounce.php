@@ -23,7 +23,7 @@ if (null !== $adresse) {
   $url = "https://api-adresse.data.gouv.fr/search/?q=" . $adresse . "&" . $cp;
 } else
   $url = "https://api-adresse.data.gouv.fr/search/?q=" . $ville . "&type=street&" . $cp;
-}
+
 
 if (null !== $titre &&  null !== $date) {
   $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $url);
