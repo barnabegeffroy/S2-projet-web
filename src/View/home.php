@@ -19,9 +19,9 @@ $announces = $announceRepository->findAll();
                 <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
             <?php else :
                 $bool = ($announceService->isFav($announce->getId(), $_SESSION['user_id'])) ?>
-                <form action="<?php echo $bool ? "addToFav.php" : "deleteFav.php" ?>" method="POST">
+                <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
                     <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-                    <button class="button1" type="submit"><?php echo $bool ? "Ajouter aux" : "Supprimer des" ?> favoris</button>
+                    <button class="button1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>
                 </form>
     <?php endif;
         endif;
