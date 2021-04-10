@@ -18,7 +18,7 @@ $image = !empty($_FILES['image']) ? $_FILES['image'] : null;
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu, !(empty($image) ? basename($image['name']) : null));
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, !(empty($image) ? basename($image['name']) : null), $lieu);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
@@ -29,7 +29,7 @@ if (null !== $titre &&  null !== $date) {
     //Début des vérifications de sécurité...
     if (!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
     {
-      $viewData['errorInCreation'] += 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+      $viewData['errorInCreation'] += 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
     }
     if ($taille > $taille_maxi) {
       $viewData['errorInCreation'] += 'Le fichier est trop gros...';
@@ -52,11 +52,10 @@ if (null !== $titre &&  null !== $date) {
       }
     }
   }
-}
-else {
+} else {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }
-if (empty($viewData['errorInCreation'])){
+if (empty($viewData['errorInCreation'])) {
   header('Location: myAnnounces.php');
   exit;
 }
