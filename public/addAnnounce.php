@@ -18,7 +18,7 @@ $image = !empty($_FILES['image']) ? $_FILES['image'] : null;
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, !(empty($image)) ? basename($image['name']) : null, $lieu);
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $lieu);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
@@ -36,19 +36,14 @@ if (null !== $titre &&  null !== $date) {
     }
     if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
     {
-      //On formate le nom du fichier ici...
-      $fichier = strtr(
-        $fichier,
-        'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-        'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'
-      );
-      $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+      $id = $announceRepository->getLastCreated($_SESSION['user_id']);
+      $fichier = $id . '.' . $extension;
       if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
       {
-        $viewData['errorInCreation'] = 'Upload effectué avec succès !';
+        $viewData['errorInCreation'] += 'Upload effectué avec succès !';
       } else //Sinon (la fonction renvoie FALSE).
       {
-        $viewData['errorInCreation'] = 'Echec de l\'upload !';
+        $viewData['errorInCreation'] += 'Echec de l\'upload !';
       }
     }
   }

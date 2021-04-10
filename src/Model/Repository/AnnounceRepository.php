@@ -28,18 +28,17 @@ class AnnounceRepository
     $this->announceHydrator = $announceHydrator;
   }
 
-  function insert(string $titre, int $idUser, string $datePublication,  $duree,  $description, $imageName, $place)
+  function insert(string $titre, int $idUser, string $datePublication,  $duree,  $description, $place)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, estDisponible) 
-      VALUES (:titre, :idUser, :datePublication, :duree, :description, :photo, :lieu, TRUE)'
+      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, lieu, estDisponible) 
+      VALUES (:titre, :idUser, :datePublication, :duree, :description, :lieu, TRUE)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
     $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
     $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
-    $stmt->bindValue(':photo', $imageName, \PDO::PARAM_STR);
     $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
     $stmt->execute();
   }
