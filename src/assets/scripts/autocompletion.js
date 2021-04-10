@@ -66,3 +66,17 @@ $("#adresse").autocomplete({
         });
     }
 });
+$("#latitude").val({
+    source: function (request, response) {
+        $.ajax({
+            url: "https://api-adresse.data.gouv.fr/search/?" + $("input[name='adresse']").val() + "&postcode=" + $("input[name='cp']").val(),
+            data: { q: request.term },
+            dataType: "json",
+            success: function (data) {
+                response($.map(data.features, function (item) {
+                    return { label: item.features.coordinates, value: item.features.coordinates };
+                }));
+            }
+        });
+    }
+});

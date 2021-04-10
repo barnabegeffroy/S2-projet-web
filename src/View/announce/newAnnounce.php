@@ -19,6 +19,7 @@
     <input name="cp" id="cp" type="text" placeholder="CP">
     <input name="ville" id="ville" type="text" placeholder="Ville" required>
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
+    <input name="coordonnees" id="coordonnees" type="hidden">
   </div>
   <div>
     <input type="hidden" name="MAX_FILE_SIZE" value="1000000">

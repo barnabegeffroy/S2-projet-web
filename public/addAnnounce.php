@@ -15,10 +15,10 @@ $duree = !empty($_POST['duree']) ? $_POST['duree'] : null;
 $cp = !empty($_POST['cp']) ? "postcode=" . $_POST['cp'] : null;
 $ville = !empty($_POST['ville']) ?  preg_replace('/\s+/', '_', $_POST['ville']) : null;
 $adresse = !empty($_POST['adresse']) ? $journalName = preg_replace('/\s+/', '_', $_POST['adresse']) : null;
+$coordonnees = !empty($_POST['coordonnees']) ? $journalName = $_POST['coordonnees'] : null;
 $date = date('d/m/Y');
 $image = !empty($_FILES['image']) ? $_FILES['image'] : null;
 $viewData = [];
-
 if (null !== $adresse) {
   $url = "https://api-adresse.data.gouv.fr/search/?q=" . $adresse . "&" . $cp;
 } else
@@ -28,7 +28,7 @@ $json = file_get_contents($url);
 
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $response);
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
