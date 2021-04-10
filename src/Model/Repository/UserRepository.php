@@ -73,7 +73,7 @@ class UserRepository
       $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
       $stmt->execute();
       $rawUser = $stmt->fetch();
-      return $rawUser ? $$rawUser : null;
+      return $rawUser ? $rawUser : null;
     }
   
   public function changePassword($userId, $password)
