@@ -171,12 +171,12 @@ class Announce
     }
 
     /**
-     * @param mixed $photo
+     * @param boolean $photo
      * @return Announce
      */
     public function setPhoto($photo)
     {
-        $this->lieu = $photo;
+        $this->photo = $photo;
         return $this;
     }
 
