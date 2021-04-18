@@ -23,6 +23,6 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
 
 <?php if (isset($data['photo'])) : ?>
     <div>
-        <img src="<?php glob("../src/View/images/announces/" . $data['id'] . "*") ?>" />
+        <img src="<?php echo glob("../src/View/images/announces/" . $data['id'] . "*") ?>" />
     </div>
 <?php endif; ?>
