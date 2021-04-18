@@ -17,15 +17,8 @@ $ville = !empty($_POST['ville']) ?  preg_replace('/\s+/', '_', $_POST['ville']) 
 $adresse = !empty($_POST['adresse']) ? $journalName = preg_replace('/\s+/', '_', $_POST['adresse']) : null;
 $coordonnees = !empty($_POST['coordonnees']) ? $journalName = $_POST['coordonnees'] : null;
 $date = date('d/m/Y');
-$image = !empty($_FILES['image']) ? $_FILES['image'] : null;
+$image = !is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null;
 $viewData = [];
-if (null !== $adresse) {
-  $url = "https://api-adresse.data.gouv.fr/search/?q=" . $adresse . "&" . $cp;
-} else
-  $url = "https://api-adresse.data.gouv.fr/search/?q=" . $ville . "&type=street&" . $cp;
-// ini_set("allow_url_fopen", 1);
-// $json = file_get_contents($url);
-
 
 if (null !== $titre &&  null !== $date) {
   $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
@@ -56,8 +49,7 @@ if (null !== $titre &&  null !== $date) {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }
 if (empty($viewData['errorInCreation'])) {
-  // header('Location: myAnnounces.php');
-  // exit;
-  loadView('announce/newAnnounce', $viewData);
+  header('Location: myAnnounces.php');
+  exit;
 }
 loadView('announce/newAnnounce', $viewData);
