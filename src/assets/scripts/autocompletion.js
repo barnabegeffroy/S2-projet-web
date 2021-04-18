@@ -66,7 +66,7 @@ $("#adresse").autocomplete({
         });
     }
 });
-$("#latitude").val({
+$("#latitude").autocomplete({
     source: function (request, response) {
         $.ajax({
             url: "https://api-adresse.data.gouv.fr/search/?" + $("input[name='adresse']").val() + "&postcode=" + $("input[name='cp']").val(),
