@@ -20,3 +20,9 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
         Durée maximale de prêt<?php echo $data['duree']; ?>
     </div>
 <?php endif; ?>
+
+<?php if ($announce->getPhoto() !== null) : ?>
+    <div>
+        <img src="../src/View/images/announces/<?php echo $announce->getPhoto() ?>" />
+    </div>
+<?php endif; ?>

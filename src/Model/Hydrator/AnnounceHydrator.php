@@ -13,16 +13,11 @@ class AnnounceHydrator
       ->setTitle($data['titre'])
       ->setUserId($data['idutilisateur'])
       ->setDate($data['datepublication'])
-      ->setIsAvailable($data['estdisponible']);
-    if (!empty($data['duree'])) {
-      $topic->setDuration($data['duree']);
-    }
-    if (!empty($data['description'])) {
-      $topic->setDescription($data['description']);
-    }
-    if (!empty($data['lieu'])) {
-      $topic->setPlace($data['lieu']);
-    }
+      ->setIsAvailable($data['estdisponible'])
+      ->setDuration($data['duree'])
+      ->setDescription($data['description'])
+      ->setPhoto($data['photo'])
+      ->setPlace($data['lieu']);
     return $topic;
   }
 }

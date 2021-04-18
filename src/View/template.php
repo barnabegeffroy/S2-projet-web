@@ -64,6 +64,11 @@ function loadAnnounce($announce)
             <div><?php echo $announce->getDuration() ?></div>
         </div>
     <?php endif; ?>
+    <?php if ($announce->getPhoto() !== null) : ?>
+        <div>
+            <img src="../src/View/images/announces/<?php echo $announce->getPhoto()?>"/>
+        </div>
+    <?php endif; ?>
     <form action="announce.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
         <button class="button1" type="submit">Voir l'annonce</button>

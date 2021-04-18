@@ -37,6 +37,11 @@ class Announce
     /**
      * @var string
      */
+    private $photo;
+
+    /**
+     * @var string
+     */
     private $lieu;
 
 
@@ -154,6 +159,24 @@ class Announce
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     * @return Announce
+     */
+    public function setPhoto($photo)
+    {
+        $this->lieu = $photo;
         return $this;
     }
 
