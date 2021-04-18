@@ -21,7 +21,7 @@ $image = is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : nul
 $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
+  $viewData['errorInCreation'] = $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
