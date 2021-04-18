@@ -64,9 +64,10 @@ function loadAnnounce($announce)
             <div><?php echo $announce->getDuration() ?></div>
         </div>
     <?php endif; ?>
-    <?php if ($announce->getPhoto()) : ?>
+    <?php $file = glob("../src/View/images/announces/" . $announce->getId() . ".*");
+    if (isset($file[0])) : ?>
         <div>
-            <img src="<?php echo glob("../src/View/images/announces/" . $announce->getId() . ".*")[0] ?>" />
+            <img src="<?php echo $file[0] ?>" />
         </div>
     <?php endif; ?>
     <form action="announce.php" method="POST">

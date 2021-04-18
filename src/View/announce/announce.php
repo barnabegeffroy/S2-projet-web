@@ -19,10 +19,13 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
     <div>
         Durée maximale de prêt<?php echo $data['duree']; ?>
     </div>
+
 <?php endif; ?>
 
-<?php if (isset($data['photo'])) : ?>
+
+<?php $file = glob("../src/View/images/announces/" . $data['id'] . ".*");
+if (isset($file[0])) : ?>
     <div>
-        <img src="<?php echo glob("../src/View/images/announces/" . $data['id'] . "*")[0] ?>" />
+        <img src="<?php echo $file[0] ?>" />
     </div>
 <?php endif; ?>
