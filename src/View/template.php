@@ -66,7 +66,8 @@ function loadAnnounce($announce)
     <?php endif; ?>
     <?php if ($announce->getPhoto()) : ?>
         <div>
-            <img src="<?php echo glob("../src/View/images/announces/" . $announce->getId() . "*") ?>" />
+            <img src="<?php $string = "../src/View/images/announces/" . $announce->getId() . ".*";
+                        echo glob($string) ?>" />
         </div>
     <?php endif; ?>
     <form action="announce.php" method="POST">
