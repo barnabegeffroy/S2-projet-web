@@ -165,7 +165,7 @@ class Announce
     /**
      * @return mixed
      */
-    public function getPhoto()
+    public function getPhoto() : bool
     {
         return $this->photo;
     }
