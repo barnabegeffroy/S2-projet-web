@@ -28,18 +28,17 @@ class AnnounceRepository
     $this->announceHydrator = $announceHydrator;
   }
 
-  function insert(string $titre, int $idUser, string $datePublication,  $duree, $description, $file, $place)
+  function insert(string $titre, int $idUser, string $datePublication,  $duree, $description, $place)
   {
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, estDisponible) 
-      VALUES (:titre, :idUser, :datePublication, :duree, :description, :file, :lieu, TRUE)'
+      VALUES (:titre, :idUser, :datePublication, :duree, :description, FALSE, :lieu, TRUE)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
     $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
     $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
-    $stmt->bindValue(':file', $file, \PDO::PARAM_STR);
     $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
     $stmt->execute();
   }
@@ -144,6 +143,16 @@ class AnnounceRepository
       'UPDATE "annonce" SET duree=:duree WHERE id = :id'
     );
     $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function changePhoto($id, $bool)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "annonce" SET photo=:bool WHERE id = :id'
+    );
+    $stmt->bindValue(':bool', $bool, \PDO::PARAM_STR);
     $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
     $stmt->execute();
   }

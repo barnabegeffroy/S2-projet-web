@@ -28,6 +28,7 @@ if (null !== $adresse) {
 
 
 if (null !== $titre &&  null !== $date) {
+  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
   if ($image !== null) {
     $dossier = '../src/View/images/announces/';
     $fichier = basename($image['name']);
@@ -44,12 +45,13 @@ if (null !== $titre &&  null !== $date) {
     } else {
       $id = $announceRepository->getLastCreated($_SESSION['user_id'])['id'];
       $fichier = $id . $extension;
-      if (!move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
+      if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
+        $announceRepository->changePhoto($id, true);
+      } else {
         $viewData['errorInCreation'] = 'Echec de l\'upload !';
       }
     }
   }
-  $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $fichier, $coordonnees);
 } else {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }

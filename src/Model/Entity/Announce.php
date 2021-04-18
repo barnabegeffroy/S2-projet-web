@@ -35,7 +35,7 @@ class Announce
     private $description;
 
     /**
-     * @var string
+     * @var boolean
      */
     private $photo;
 
