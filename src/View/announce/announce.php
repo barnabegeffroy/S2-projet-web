@@ -21,9 +21,8 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
     </div>
 <?php endif; ?>
 
-<?php if (isset($data['photo'])) : ?>
+<?php if (isset($data['photo'])) : $string = "../src/View/images/announces/" . $announce->getId() . ".*" ?>
     <div>
-        <img src="<?php $string = "../src/View/images/announces/" . $announce->getId() . ".*";
-                    echo glob($string) ?>" />
+        <img src="<?php echo glob($string) ?>" />
     </div>
 <?php endif; ?>
