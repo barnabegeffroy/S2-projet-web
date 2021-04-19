@@ -54,7 +54,9 @@ if (isset($data['errorInCreation'])) : ?>
     <img src="<?php echo $file[0]; ?>" />
   </div>
   <form method="POST">
-    <input class="button1" name="delete" type="submit" value="Supprimer l'image">
+    <input type="hidden" name="filename" value="<?php echo $file[0] ?>">
+    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+    <button class="button1" type="submit">Supprimer l'image</button>
   </form>
   <?php
   if (isset($_POST['delete'])) {
@@ -65,7 +67,7 @@ if (isset($data['errorInCreation'])) : ?>
   </div>
   <form action="updatePicture.php" method="POST">
     <input type="hidden" name="filename" value="<?php echo $file[0] ?>">
-    <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
+    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
     <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
     <label for="image">Image :</label>
     <input type="file" id="image" name="image" />

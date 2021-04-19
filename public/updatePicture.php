@@ -9,7 +9,7 @@ $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapte
 
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$id = $_POST['id'];
+$id = $_POST['idAnnounce'];
 $filename = $_POST['filename'];
 $announceRepository->changePhoto($id, false);
 unlink($filename);
