@@ -1,4 +1,7 @@
 <?php
+if (!empty($_POST['id'])) {
+  $data = $announceRepository->getDataById($_POST['id']);
+}
 if (!$authenticatorService->isAuthenticated()) {
   $error = "Vous devez vous connecter pour accéder à cette page";
   header('Location: index.php?erreur=' . $error);
