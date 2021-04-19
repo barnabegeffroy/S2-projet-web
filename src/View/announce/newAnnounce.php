@@ -1,11 +1,17 @@
 <?php
-if (!empty($_POST['id'])) {
-  $data = $announceRepository->getDataById($_POST['id']);
-}
+$dbfactory = new \Rediite\Model\Factory\dbFactory();
+$dbAdapter = $dbfactory->createService();
+$announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
+$announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
+$announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
+
 if (!$authenticatorService->isAuthenticated()) {
   $error = "Vous devez vous connecter pour accéder à cette page";
   header('Location: index.php?erreur=' . $error);
   exit;
+}
+if (!empty($_POST['id'])) {
+  $data = $announceRepository->getDataById($_POST['id']);
 }
 if (isset($data['errorInCreation'])) : ?>
   <span class="error-message"><?= $data['errorInCreation'] ?></span>
