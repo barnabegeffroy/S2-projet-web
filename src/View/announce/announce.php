@@ -22,7 +22,6 @@ $user = $userRepository->getIdentity($data['idutilisateur']) ?>
 
 <?php endif; ?>
 
-
 <?php $file = glob("../src/View/images/announces/" . $data['id'] . ".*");
 if (isset($file[0])) : ?>
     <div>
