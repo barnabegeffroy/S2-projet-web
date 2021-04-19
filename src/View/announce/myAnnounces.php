@@ -36,7 +36,7 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
         loadAnnounce($announce);
     ?>
         <form action="newAnnounce.php" method="post">
-            <input type="hidden" id="id" value="<?php echo $announce->getId() ?>">
+            <input type="hidden" name="idAnnounce" value="<?php echo $announce->getId() ?>">
             <button class="button1" type="submit">Modifier mon annonce</button>
         </form>
         <button class="button1" onclick="openForm(); change('<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>

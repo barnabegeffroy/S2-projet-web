@@ -11,18 +11,18 @@ if (!$authenticatorService->isAuthenticated()) {
   exit;
 }
 if (!empty($_POST['id'])) {
-  $data = $announceRepository->getDataById($_POST['id']);
+  $data = $announceRepository->getDataById($_POST['idAnnounce']);
 }
 if (isset($data['errorInCreation'])) : ?>
   <span class="error-message"><?= $data['errorInCreation'] ?></span>
 <?php endif; ?>
-<form action="<?php echo isset($data['title']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
   <?php if (isset($data['id'])) : ?>
     <input type="hidden" id="id" value="<?php echo $data['id'] ?>">
   <?php endif; ?>
   <div>
     <label for="titre">Titre :*</label>
-    <input type="text" id="titre" name="titre" value="<?php echo isset($data['title']) ? $data['title'] : null ?>" required />
+    <input type="text" id="titre" name="titre" value="<?php echo isset($data['titre']) ? $data['titre'] : null ?>" required />
   </div>
   <div>
     <label for="duree">Durée de prêt maximum :</label>
