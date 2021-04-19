@@ -1,7 +1,16 @@
-<?php if (isset($data['errorInCreation'])) : ?>
+<?php
+if (!$authenticatorService->isAuthenticated()) {
+  $error = "Vous devez vous connecter pour accéder à cette page";
+  header('Location: index.php?erreur=' . $error);
+  exit;
+}
+if (isset($data['errorInCreation'])) : ?>
   <span class="error-message"><?= $data['errorInCreation'] ?></span>
 <?php endif; ?>
-<form action="<?php echo isset($data['title']) ? "modifyAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo isset($data['title']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
+  <?php if (isset($data['id'])) : ?>
+    <input type="hidden" id="id" value="<?php echo $data['id'] ?>">
+  <?php endif; ?>
   <div>
     <label for="titre">Titre :*</label>
     <input type="text" id="titre" name="titre" value="<?php echo isset($data['title']) ? $data['title'] : null ?>" required />
@@ -21,11 +30,38 @@
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
     <input name="coordonnees" id="coordonnees" type="hidden">
   </div>
-  <div>
-    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-    <label for="image">Image :</label>
-    <input type="file" id="image" name="image" value="<?php echo isset($data['image']) ? $data['image'] : null ?>" />
-  </div>
+  <?php if (!isset($data['image'])) : ?>
+    <div>
+      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+      <label for="image">Image :</label>
+      <input type="file" id="image" name="image" />
+    </div>
+  <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
+<?php if (isset($data['image'])) :
+  $file = glob("../src/View/images/announces/" . $data['id'] . ".*"); ?>
+  <div>
+    <img src="<?php echo $file[0]; ?>" />
+  </div>
+  <form method="POST">
+    <button class="button1" name="delete" type="submit" value="Supprimer l'image">
+  </form>
+  <?php
+  if (isset($_POST['delete'])) {
+    $announceRepository->changePhoto($data['id'], false);
+    unlink($file[0]);
+  }
+  ?>
+  </div>
+  <form action="updatePicture.php" method="POST">
+    <input type="hidden" id="filename" value="<?php echo $file[0] ?>">
+    <input type="hidden" id="id" value="<?php echo $data['id'] ?>">
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+    <label for="image">Image :</label>
+    <input type="file" id="image" name="image" />
+    <button class="button1" type="submit">Changer l'image</button>
+  </form>
+<?php endif; ?>
+
 <script src="../src/assets/scripts/autocompletion.js"></script>

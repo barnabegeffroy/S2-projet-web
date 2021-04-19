@@ -1,5 +1,4 @@
 <?php
-$data = $announceRepository->getDataById($_POST['id']);
 $user = $userRepository->getIdentity($data['idutilisateur']) ?>
 <h1><?php echo $data['titre']; ?></h1>
 

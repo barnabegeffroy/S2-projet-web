@@ -35,11 +35,10 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
     <?php foreach ($announces as &$announce) :
         loadAnnounce($announce);
     ?>
-        <ul class="link-header-container">
-            <li class="link-header-item">
-                <button class="button1" onclick="location.href = 'password.php'">Modifier mon annonce</button>
-            </li>
-        </ul>
+        <form action="newAnnounce.php" method="post">
+            <input type="hidden" id="id" value="<?php echo $announce->getId() ?>">
+            <button class="button1" type="submit">Modifier mon annonce</button>
+        </form>
         <button class="button1" onclick="openForm(); change('<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
     <?php endforeach; ?>
     <script>
