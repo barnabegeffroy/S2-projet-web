@@ -10,7 +10,7 @@ if (!$authenticatorService->isAuthenticated()) {
   header('Location: index.php?erreur=' . $error);
   exit;
 }
-if (!empty($_POST['id'])) {
+if (!empty($_POST['idAnnounce'])) {
   $data = $announceRepository->getDataById($_POST['idAnnounce']);
 }
 if (isset($data['errorInCreation'])) : ?>
