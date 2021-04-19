@@ -17,8 +17,8 @@ if (isset($data['errorInCreation'])) : ?>
   <span class="error-message"><?= $data['errorInCreation'] ?></span>
 <?php endif; ?>
 <form action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
-  <?php if (isset($data['id'])) : ?>
-    <input type="hidden" id="id" value="<?php echo $data['id'] ?>">
+  <?php if (isset($data['idAnnounce'])) : ?>
+    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
   <?php endif; ?>
   <div>
     <label for="titre">Titre :*</label>
