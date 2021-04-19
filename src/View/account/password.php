@@ -5,7 +5,7 @@ if (!$authenticatorService->isAuthenticated()) {
   exit;
 }
 ?>
-<form action="changePassword.php" method="post">
+<form action="updatePassword.php" method="post">
   <div>
     <label>Ancien mot de passe :</label>
     <input type="password" id="last_password" name="last_password" required />

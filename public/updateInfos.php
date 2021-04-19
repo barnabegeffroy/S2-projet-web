@@ -20,8 +20,8 @@ $user = $userRepository->findOneById($id);
 
 if ($email !== $user->getEMail()) {
     if ($userService->doesUserExist($email)) {
-        $errorMessage['userAlreadyExist'] = "Un utilisateur existe déjà à cette adresse mail";
-        loadView('infos', $errorMessage);
+        $viewData['userAlreadyExist'] = "Un utilisateur existe déjà à cette adresse mail";
+        loadView('infos', $viewData);
         exit;
     }
     $userRepository->changeEMail($id, $email);
