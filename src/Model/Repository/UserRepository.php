@@ -28,7 +28,7 @@ class UserRepository
     $this->userHydrator = $userHydrator;
   }
 
-  function insert(string $prenom, string $pseudo, string $nom, string $email, string $telephone, string $password)
+  function insert(string $prenom, $pseudo, string $nom, string $email, string $telephone, string $password)
   {
     $stmt = $this->dbAdapter->prepare(
       'INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES (:nom, :pseudo, :prenom, :email, :telephone, :password)'
