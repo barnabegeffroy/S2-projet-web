@@ -28,4 +28,25 @@ if (isset($file[0])) : ?>
     <div>
         <img src="<?php echo $file[0] ?>" />
     </div>
+<?php endif;
+if ($data['idutilisateur'] == $_SESSION['user_id']) :
+?>
+    <form action="newAnnounce.php" method="post">
+        <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+        <button class="button1" type="submit">Modifier mon annonce</button>
+    </form>
+    <button class="button1" onclick="openForm(); change('<?php echo $data['id'] ?>')">Supprimer mon annonce</button>
 <?php endif; ?>
+<script>
+    function openForm() {
+        document.getElementById("MyForm").style.display = "block";
+    }
+
+    function change(value) {
+        document.getElementById("idAnnounce").setAttribute('value', value);
+    }
+
+    function closeForm() {
+        document.getElementById("MyForm").style.display = "none";
+    }
+</script>
