@@ -39,7 +39,7 @@ if (isset($data['errorInCreation'])) : ?>
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
     <input name="coordonnees" id="coordonnees" type="hidden">
   </div>
-  <?php if (!isset($data['photo'])) : ?>
+  <?php if (!($data['photo'])) : ?>
     <div>
       <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
       <label for="image">Image :</label>
@@ -48,22 +48,16 @@ if (isset($data['errorInCreation'])) : ?>
   <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
-<?php if (isset($data['photo'])) :
+<?php if ($data['photo']) :
   $file = glob("../src/View/images/announces/" . $data['id'] . ".*"); ?>
   <div>
     <img src="<?php echo $file[0]; ?>" />
   </div>
-  <form method="POST">
+  <form method="POST" action="deletePicture.php">
     <input type="hidden" name="filename" value="<?php echo $file[0] ?>">
     <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
     <button class="button1" type="submit">Supprimer l'image</button>
   </form>
-  <?php
-  if (isset($_POST['delete'])) {
-    $announceRepository->changePhoto($data['id'], false);
-    unlink($file[0]);
-  }
-  ?>
   </div>
   <form action="updatePicture.php" method="POST">
     <input type="hidden" name="filename" value="<?php echo $file[0] ?>">
