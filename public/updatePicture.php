@@ -16,7 +16,7 @@ unlink($filename);
 $image = is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null;
 $viewData = [];
 
-$viewData = upload_image($announceRepository, $viewData, $image);
+$viewData = upload_image($announceRepository, $viewData, $image, $id);
 
 if (empty($viewData['errorInCreation'])) {
     header('Location: myAnnounces.php');

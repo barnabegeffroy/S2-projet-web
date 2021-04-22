@@ -76,7 +76,7 @@ function loadAnnounce($announce)
     </form>
 <?php }
 
-function upload_image($announceRepository, $viewData, $image)
+function upload_image($announceRepository, $viewData, $image, $id)
 {
     if ($image !== null) {
         $dossier = '../src/View/images/announces/';
@@ -92,7 +92,7 @@ function upload_image($announceRepository, $viewData, $image)
         } else if ($taille > $taille_maxi) {
             $viewData['errorInCreation'] = 'Le fichier est trop gros...';
         } else {
-            $id = $announceRepository->getDataById($_POST['id'])['id'];
+            $id = $announceRepository->getDataById($id)['id'];
             $fichier = $id . $extension;
             if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
                 $announceRepository->changePhoto($id, true);

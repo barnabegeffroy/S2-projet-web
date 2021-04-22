@@ -16,6 +16,7 @@ $cp = !empty($_POST['cp']) ? "postcode=" . $_POST['cp'] : null;
 $ville = !empty($_POST['ville']) ?  preg_replace('/\s+/', '_', $_POST['ville']) : null;
 $adresse = !empty($_POST['adresse']) ? $journalName = preg_replace('/\s+/', '_', $_POST['adresse']) : null;
 $coordonnees = !empty($_POST['coordonnees']) ? $journalName = $_POST['coordonnees'] : null;
+$image = is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null;
 $id = $_POST['idAnnounce'];
 $viewData = [];
 $announce = $announceRepository->findOneById($id);
@@ -32,5 +33,10 @@ if ($duree !== $announce->getDuration()) {
   $announceRepository->changeDuration($id, $duree);
 }
 
-header('Location: myAnnounces.php');
-exit;
+$viewData = upload_image($announceRepository, $viewData, $image, $id);
+
+if (empty($viewData['errorInCreation'])) {
+  header('Location: myAnnounces.php');
+  exit;
+}
+loadView('announce/myAnnounces', $viewData);

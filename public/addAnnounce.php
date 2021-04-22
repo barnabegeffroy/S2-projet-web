@@ -22,7 +22,8 @@ $viewData = [];
 
 if (null !== $titre &&  null !== $date) {
   $viewData['errorInCreation'] = $announceRepository->insert($titre, $_SESSION['user_id'], $date, $duree, $description, $coordonnees);
-  $viewData = upload_image($announceRepository, $viewData, $image);
+  $id = $announceRepository->getLastCreated($_SESSION['user_id'])['id'];
+  $viewData = upload_image($announceRepository, $viewData, $image, $id);
 } else {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }

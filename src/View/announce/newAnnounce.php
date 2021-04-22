@@ -39,7 +39,7 @@ if (isset($data['errorInCreation'])) : ?>
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
     <input name="coordonnees" id="coordonnees" type="hidden">
   </div>
-  <?php if (isset($data['photo']) ? $data['photo'] : true) : ?>
+  <?php if (isset($data['photo']) ? !boolval($data['photo']) : true) : ?>
     <div>
       <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
       <label for="image">Image :</label>
@@ -48,7 +48,7 @@ if (isset($data['errorInCreation'])) : ?>
   <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
-<?php if (isset($data['photo']) ? $data['photo'] : false) :
+<?php if (isset($data['photo']) ? boolval($data['photo']) : false) :
   $file = glob("../src/View/images/announces/" . $data['id'] . ".*"); ?>
   <div>
     <img src="<?php echo $file[0]; ?>" />
