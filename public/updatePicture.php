@@ -13,7 +13,7 @@ $id = $_POST['idAnnounce'];
 $filename = $_POST['filename'];
 $announceRepository->changePhoto($id, false);
 unlink($filename);
-$image = is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null;
+$image = is_uploaded_file($_FILES['newImage']['tmp_name']) ? $_FILES['newImage'] : null;
 $viewData = [];
 
 $viewData = upload_image($announceRepository, $viewData, $image, $id);
@@ -22,4 +22,4 @@ if (empty($viewData['errorInCreation'])) {
     header('Location: myAnnounces.php');
     exit;
 }
-loadView('announce/newAnnounce', $viewData);
+loadView('announce/myAnnounces', $viewData);

@@ -161,7 +161,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'UPDATE "annonce" SET photo=:bool WHERE id = :id'
     );
-    $stmt->bindValue(':bool', $bool, \PDO::PARAM_STR);
+    $stmt->bindValue(':bool', $bool, \PDO::PARAM_BOOL);
     $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
     $stmt->execute();
   }

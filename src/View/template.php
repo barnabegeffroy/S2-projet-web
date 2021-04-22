@@ -99,7 +99,9 @@ function upload_image($announceRepository, $viewData, $image, $id)
             } else {
                 $viewData['errorInCreation'] = 'Echec de l\'upload !';
             }
+            return $viewData;
         }
     }
+    $viewData['errorInCreation'] = 'fichier introuvable !';
     return $viewData;
 }
