@@ -39,7 +39,7 @@ if (isset($data['errorInCreation'])) : ?>
     <input name="adresse" id="adresse" type="text" placeholder="Adresse">
     <input name="coordonnees" id="coordonnees" type="hidden">
   </div>
-  <?php if (!($data['photo'])) : ?>
+  <?php if (isset($data['photo'])? true : $data['photo']) : ?>
     <div>
       <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
       <label for="image">Image :</label>
