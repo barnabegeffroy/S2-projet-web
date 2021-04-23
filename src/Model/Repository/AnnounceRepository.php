@@ -124,6 +124,10 @@ class AnnounceRepository
     );
     $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
     $stmt->execute();
+    $file = glob("../src/View/images/announces/" . $id . ".*");
+    if (isset($file[0])) {
+      unlink($file[0]);
+    }
   }
 
   public function changeTitle($id, $title)

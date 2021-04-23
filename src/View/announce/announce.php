@@ -29,24 +29,34 @@ if (isset($file[0])) : ?>
         <img src="<?php echo $file[0] ?>" />
     </div>
 <?php endif;
-if ($data['idutilisateur'] == $_SESSION['user_id']) :
+if ($data['idutilisateur'] == $authenticatorService->getCurrentUserId()) :
 ?>
     <form action="newAnnounce.php" method="post">
         <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
         <button class="button1" type="submit">Modifier mon annonce</button>
     </form>
-    <button class="button1" onclick="openForm(); change('<?php echo $data['id'] ?>')">Supprimer mon annonce</button>
+    <button class="button1" onclick="openForm('deleteAccountForm'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer mon annonce</button>
+    <div class="form-popup" id="deleteAccountForm">
+        <form action="deleteAnnounce.php" method="post" class="form-container">
+            <label for="password"><b>Mot de passe</b></label>
+            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+            <input id="idAnnounce" name="idAnnounce" type="hidden">
+            <button type="submit" class="button1">Supprimer définitivement</button>
+            <button type="button" class="button1 cancel" onclick="closeForm('deleteAccountForm')">Annuler</button>
+        </form>
+    </div>
+<?php endif;
+if ($authenticatorService->isAdmin() && $authenticatorService->getCurrentUserId() !== $data['idutilisateur']) :
+?>
+    <button class="button1" onclick="openForm('deleteAccountForm'); change('idUser','<?php echo $data['idutilisateur'] ?>'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer l'annonce</button>
+    <div class="form-popup" id="deleteAccountForm">
+        <form action="deleteAnnounce.php" method="post" class="form-container">
+            <label for="password"><b>Mot de passe</b></label>
+            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+            <input id="idAnnounce" name="idAnnounce" type="hidden">
+            <input id="idUser" name="idUser" type="hidden">
+            <button type="submit" class="button1">Supprimer définitivement</button>
+            <button type="button" class="button1 cancel" onclick="closeForm('deleteAccountForm')">Annuler</button>
+        </form>
+    </div>
 <?php endif; ?>
-<script>
-    function openForm() {
-        document.getElementById("MyForm").style.display = "block";
-    }
-
-    function change(value) {
-        document.getElementById("idAnnounce").setAttribute('value', value);
-    }
-
-    function closeForm() {
-        document.getElementById("MyForm").style.display = "none";
-    }
-</script>

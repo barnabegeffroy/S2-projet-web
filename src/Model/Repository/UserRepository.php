@@ -64,6 +64,20 @@ class UserRepository
     return $rawUser ? $this->userHydrator->hydrate($rawUser) : null;
   }
   
+  public function findAll()
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM "utilisateur"'
+    );
+    $stmt->execute();
+    $users = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $users[$i] = $row ? $this->userHydrator->hydrate($row) : null;
+      $i++;
+    }
+    return $users;
+  }
   
     public function getIdentity($userId)
     {

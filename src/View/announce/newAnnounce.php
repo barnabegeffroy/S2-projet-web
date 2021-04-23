@@ -1,15 +1,15 @@
 <?php
-$dbfactory = new \Rediite\Model\Factory\dbFactory();
-$dbAdapter = $dbfactory->createService();
-$announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
-$announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
-$announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
-
 if (!$authenticatorService->isAuthenticated()) {
   $error = "Vous devez vous connecter pour accéder à cette page";
   header('Location: index.php?erreur=' . $error);
   exit;
 }
+
+$dbfactory = new \Rediite\Model\Factory\dbFactory();
+$dbAdapter = $dbfactory->createService();
+$announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
+$announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
+$announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 if (!empty($_POST['idAnnounce'])) {
   $data = $announceRepository->getDataById($_POST['idAnnounce']);
 }

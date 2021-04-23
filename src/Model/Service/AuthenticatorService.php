@@ -9,15 +9,15 @@ class AuthenticatorService
 {
 
   /**
-  * @var UserRepository
-  */
+   * @var UserRepository
+   */
   private $userRepository;
 
   /**
    * AuthenticatorService constructor.
    * @param UserRepository $userRepository
    */
-  public function __construct (UserRepository $userRepository)
+  public function __construct(UserRepository $userRepository)
   {
     $this->userRepository = $userRepository;
   }
@@ -33,11 +33,15 @@ class AuthenticatorService
   }
 
   function getCurrentUser(): ?UserEntity
-   {
+  {
     $userId = $this->getCurrentUserId();
     if ($userId) {
       return $this->userRepository->findOneById($userId);
     }
     return null;
+  }
+  function isAdmin(): bool
+  {
+    return $this->getCurrentUserId() == 1;
   }
 }

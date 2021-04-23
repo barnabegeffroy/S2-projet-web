@@ -21,6 +21,7 @@ function loadView($view, $data)
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="../src/assets/scripts/form.js"></script>
 
     </head>
 

@@ -10,7 +10,7 @@ $userHydrator = new \Rediite\Model\Hydrator\UserHydrator();
 $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $userHydrator);
 $userService = new \Rediite\Model\Service\UserService($userRepository);
 
-$user = $userRepository->findOneById($_SESSION['user_id']);
+$user = $authenticatorService->getCurrentUser();
 ?>
 <form action="updateInfos.php" method="post">
     <div>

@@ -7,6 +7,7 @@ $dbAdapter = $dbfactory->createService();
 $userHydrator = new \Rediite\Model\Hydrator\UserHydrator();
 $userRepository = new \Rediite\Model\Repository\UserRepository($dbAdapter, $userHydrator);
 $userService = new \Rediite\Model\Service\UserService($userRepository);
+$authenticatorService = new \Rediite\Model\Service\AuthenticatorService($userRepository);
 
 $prenom =  $_POST['prenom'];
 $pseudo =  !empty($_POST['pseudo']) ? $_POST['pseudo'] : null;
@@ -15,7 +16,7 @@ $email =  $_POST['email'];
 $telephone =  $_POST['telephone'];
 
 $viewData = [];
-$id = $_SESSION['user_id'];
+$id = $authenticatorService->getCurrentUserId();
 $user = $userRepository->findOneById($id);
 
 if ($email !== $user->getEMail()) {

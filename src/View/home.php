@@ -5,6 +5,7 @@ if (null != $erreur) : ?>
 <?php
 endif;
 $announces = $announceRepository->findAll();
+$userId = $authenticatorService->getCurrentUserId();
 ?>
 <h1>La plateforme de prêt d'objets de l'ENSIIE</h1>
 
@@ -14,11 +15,11 @@ $announces = $announceRepository->findAll();
     <?php else : foreach ($announces as &$announce) :
         loadAnnounce($announce);
     ?>
-        <?php if (isset($_SESSION['user_id'])) :
-            if ($announce->getUserId() ==  $_SESSION['user_id']) : ?>
+        <?php if (isset($userId)) :
+            if ($announce->getUserId() ==  $userId) : ?>
                 <button class="button1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
             <?php else :
-                $bool = ($announceService->isFav($announce->getId(), $_SESSION['user_id'])) ?>
+                $bool = ($announceService->isFav($announce->getId(), $userId)) ?>
                 <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
                     <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
                     <button class="button1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>

@@ -10,7 +10,7 @@ $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
+$announces = $announceRepository->findAllByUserId($authenticatorService->getCurrentUserId());
 
 ?>
 
@@ -23,13 +23,13 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
 
 <?php else : ?>
 
-    <div class="form-popup" id="MyForm">
+    <div class="form-popup" id="deleteAnnounceForm">
         <form action="deleteAnnounce.php" method="post" class="form-container">
             <label for="password"><b>Mot de passe</b></label>
             <input type="password" placeholder="entrez votre mot de passe" name="password" required>
             <input id="idAnnounce" name="idAnnounce" type="hidden">
             <button type="submit" class="button1">Supprimer définitivement</button>
-            <button type="button" class="button1 cancel" onclick="closeForm()">Annuler</button>
+            <button type="button" class="button1 cancel" onclick="closeForm('deleteAnnounceForm')">Annuler</button>
         </form>
     </div>
     <?php foreach ($announces as &$announce) :
@@ -39,19 +39,6 @@ $announces = $announceRepository->findAllByUserId($_SESSION['user_id']);
             <input type="hidden" name="idAnnounce" value="<?php echo $announce->getId() ?>">
             <button class="button1" type="submit">Modifier mon annonce</button>
         </form>
-        <button class="button1" onclick="openForm(); change('<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
+        <button class="button1" onclick="openForm('deleteAnnounceForm'); change('idAnnounce','<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
     <?php endforeach; ?>
-    <script>
-        function openForm() {
-            document.getElementById("MyForm").style.display = "block";
-        }
-
-        function change(value) {
-            document.getElementById("idAnnounce").setAttribute('value', value);
-        }
-
-        function closeForm() {
-            document.getElementById("MyForm").style.display = "none";
-        }
-    </script>
 <?php endif; ?>

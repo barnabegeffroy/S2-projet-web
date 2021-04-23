@@ -34,6 +34,12 @@
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'logout.php'">Se déconnecter</button>
             </li>
+        <?php endif;
+        if ($authenticatorService->isAdmin()) :
+        ?>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'users.php'">fonctions Admin</button>
+            </li>
         <?php endif; ?>
     </ul>
 </div>

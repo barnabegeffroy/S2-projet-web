@@ -10,7 +10,7 @@ $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$favs = $announceRepository->findAllFavs($_SESSION['user_id']);
+$favs = $announceRepository->findAllFavs($authenticatorService->getCurrentUserId());
 
 ?>
 
