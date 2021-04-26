@@ -45,6 +45,18 @@ if ($data['idutilisateur'] == $authenticatorService->getCurrentUserId()) :
             <button type="button" class="button1 cancel" onclick="closeForm('deleteAccountForm')">Annuler</button>
         </form>
     </div>
+<?php else : ?>
+    <form action="userAnnounces.php" method="post">
+        <input type="hidden" name="userId" value="<?php echo $data['idutilisateur'] ?>">
+        <button class="button1" type="submit">Voir toutes les annonces de cet entraiideur</button>
+    </form>
+<?php endif;
+if ($authenticatorService->isAuthenticated()) :
+    $bool = ($announceService->isFav($announce->getId(), $userId)) ?>
+    <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
+        <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+        <button class="button1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>
+    </form>
 <?php endif;
 if ($authenticatorService->isAdmin() && $authenticatorService->getCurrentUserId() !== $data['idutilisateur']) :
 ?>
