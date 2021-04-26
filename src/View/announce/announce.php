@@ -52,7 +52,7 @@ if ($data['idutilisateur'] == $authenticatorService->getCurrentUserId()) :
     </form>
 <?php endif;
 if ($authenticatorService->isAuthenticated()) :
-    $bool = ($announceService->isFav($announce->getId(), $userId)) ?>
+    $bool = ($announceService->isFav($announce->getId(), $authenticatorService->getCurrentUserId())) ?>
     <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
         <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
         <button class="button1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>
@@ -72,3 +72,39 @@ if ($authenticatorService->isAdmin() && $authenticatorService->getCurrentUserId(
         </form>
     </div>
 <?php endif; ?>
+<div id="datepicker"></div>
+<!-- Script -->
+<script type="text/javascript">
+    $(function() {
+        // An array of dates
+        var eventDates = {};
+        <?php
+        $resas = $announceRepository->getReservation($data['id']);
+        foreach ($resas as &$resa) {
+            $date = $resa['datedebut'];
+            $endDate = $resa['datefin'];
+            while ($date < $endDate) {
+                $date = strtotime("+1 day", strtotime("2007-02-28"));
+                $date = date("Y-m-d", $date);
+                echo "eventDates[new Date(" . $date . ")] = new Date(" . $date . ");";
+            }
+        } ?>
+        // datepicker
+        $('#datepicker').datepicker({
+            beforeShowDay: function(date) {
+                var highlight = eventDates[date];
+                if (highlight) {
+                    return [true, "event", 'Tooltip text'];
+                } else {
+                    return [true, '', ''];
+                }
+            }
+        });
+    });
+</script>
+<style>
+    .event a {
+        background-color: #5FBA7D !important;
+        color: #ffffff !important;
+    }
+</style>

@@ -227,4 +227,20 @@ class AnnounceRepository
     }
     return $favs;
   }
+
+  public function getReservation($announceId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT dateDebut, dateFin FROM reservation WHERE idAnnonce=:idAnnounce;'
+    );
+    $stmt->bindValue(':idAnnounce', $announceId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $resas = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $resas[$i] = $row ? $row : null;
+      $i++;
+    }
+    return $resas;
+  }
 }

@@ -22,6 +22,8 @@ CREATE TABLE Utilisateur (
 );
 DROP TABLE IF EXISTS Annonce CASCADE;
 
+INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Geffroy','Craig','Barnabé','barnabe.geffroy@ensiie.fr','0670908741','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
+
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
     titre VARCHAR(100) NOT NULL,
@@ -33,9 +35,9 @@ CREATE TABLE Annonce (
     lieu VARCHAR(256),
     estDisponible BOOLEAN,
     CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
-
 );
 
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, estDisponible) VALUES ('Jeux de société','1','2021-04-24', NULL, 'Monopoly, Catan, ...', FALSE, NULL, NULL);
 DROP TABLE IF EXISTS Favoris;
 
 CREATE TABLE Favoris (
@@ -101,6 +103,8 @@ CREATE TABLE Reservation (
     CONSTRAINT fk_annonce_reservation FOREIGN KEY (idAnnonce) REFERENCES Annonce(id),
     CONSTRAINT fk_user_reservation FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
+
+INSERT INTO "reservation" (idAnnonce,idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
 
 DROP TABLE IF EXISTS Localisation;
 
