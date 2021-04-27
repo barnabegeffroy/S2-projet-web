@@ -16,7 +16,7 @@ $cp = !empty($_POST['cp']) ? "postcode=" . $_POST['cp'] : null;
 $ville = !empty($_POST['ville']) ?  preg_replace('/\s+/', '_', $_POST['ville']) : null;
 $adresse = !empty($_POST['adresse']) ? $journalName = preg_replace('/\s+/', '_', $_POST['adresse']) : null;
 $coordonnees = !empty($_POST['coordonnees']) ? $journalName = $_POST['coordonnees'] : null;
-$image = is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null;
+$image = isset($_FILES['image']) ? (is_uploaded_file($_FILES['image']['tmp_name']) ? $_FILES['image'] : null) : null;
 $id = $_POST['idAnnounce'];
 $viewData = [];
 $announce = $announceRepository->findOneById($id);

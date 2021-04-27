@@ -1,6 +1,7 @@
 <?php
-$data = $announceRepository->getDataById($_POST['id']);
+$data = $announceRepository->getDataById($_GET['id']);
 $user = $userRepository->getIdentity($data['idutilisateur']);
+$userSessionId = $authenticatorService->getCurrentUserId();
 ?>
 <h1><?php echo $data['titre']; ?></h1>
 
@@ -18,7 +19,7 @@ $user = $userRepository->getIdentity($data['idutilisateur']);
 <?php endif; ?>
 <?php if (isset($data['duree'])) : ?>
     <div>
-        Durée maximale de prêt<?php echo $data['duree']; ?>
+        Durée maximale de prêt en jours : <?php echo $data['duree']; ?>
     </div>
 
 <?php endif; ?>
@@ -29,7 +30,7 @@ if (isset($file[0])) : ?>
         <img src="<?php echo $file[0] ?>" />
     </div>
 <?php endif;
-if ($data['idutilisateur'] == $authenticatorService->getCurrentUserId()) :
+if ($data['idutilisateur'] == $userSessionId) :
 ?>
     <form action="newAnnounce.php" method="post">
         <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
@@ -46,19 +47,19 @@ if ($data['idutilisateur'] == $authenticatorService->getCurrentUserId()) :
         </form>
     </div>
 <?php else : ?>
-    <form action="userAnnounces.php" method="post">
+    <form action="userAnnounces.php" method="GET">
         <input type="hidden" name="userId" value="<?php echo $data['idutilisateur'] ?>">
         <button class="button1" type="submit">Voir toutes les annonces de cet entraiideur</button>
     </form>
 <?php endif;
-if ($authenticatorService->isAuthenticated()) :
-    $bool = ($announceService->isFav($announce->getId(), $authenticatorService->getCurrentUserId())) ?>
+if (!empty($userSessionId) && $userSessionId !== $data['idutilisateur']) :
+    $bool = ($announceService->isFav($data['id'], $userSessionId)) ?>
     <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
-        <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+        <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
         <button class="button1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>
     </form>
 <?php endif;
-if ($authenticatorService->isAdmin() && $authenticatorService->getCurrentUserId() !== $data['idutilisateur']) :
+if ($authenticatorService->isAdmin() && $userSessionId !== $data['idutilisateur']) :
 ?>
     <button class="button1" onclick="openForm('deleteAccountForm'); change('idUser','<?php echo $data['idutilisateur'] ?>'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer l'annonce</button>
     <div class="form-popup" id="deleteAccountForm">
@@ -72,39 +73,34 @@ if ($authenticatorService->isAdmin() && $authenticatorService->getCurrentUserId(
         </form>
     </div>
 <?php endif; ?>
-<div id="datepicker"></div>
-<!-- Script -->
-<script type="text/javascript">
-    $(function() {
-        // An array of dates
-        var eventDates = {};
-        <?php
-        $resas = $announceRepository->getReservation($data['id']);
-        foreach ($resas as &$resa) {
-            $date = $resa['datedebut'];
-            $endDate = $resa['datefin'];
-            while ($date < $endDate) {
-                $date = strtotime("+1 day", strtotime("2007-02-28"));
-                $date = date("Y-m-d", $date);
-                echo "eventDates[new Date(" . $date . ")] = new Date(" . $date . ");";
-            }
-        } ?>
-        // datepicker
-        $('#datepicker').datepicker({
-            beforeShowDay: function(date) {
-                var highlight = eventDates[date];
-                if (highlight) {
-                    return [true, "event", 'Tooltip text'];
-                } else {
-                    return [true, '', ''];
-                }
-            }
-        });
-    });
-</script>
+<form id="resa" name="resa" action="addReservation.php" onsubmit="return validateForm(<?php echo isset($data['duree']) ? $data['duree'] : PHP_INT_MAX ?>)" method="POST">
+    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+    <input type="hidden" name="auth" value="<?php echo ($userSessionId !== $data['idutilisateur'] && !empty($userSessionId)) ?>">
+    <input type="hidden" id="resaDates" value="<?php
+                                                $resas = $announceRepository->getReservation($data['id']);
+                                                foreach ($resas as &$resa) {
+                                                    $date = strtotime($resa['datedebut']);
+                                                    $endDate = strtotime($resa['datefin']);
+                                                    while ($date <= $endDate) {
+                                                        $printedDate = date("Y/m/d", $date);
+                                                        echo $printedDate . " ";
+                                                        $date = strtotime("+1 day", $date);
+                                                    }
+                                                } ?>">
+
+    <div class="wrapper">
+        <div id="jrange" class="dates">
+            <label for="dates"><b><?php echo $data['idutilisateur'] == $userSessionId || empty($userSessionId) ? "Calendrier des réservations" : "Sélectionnez la ou les dates de réservation" ?></b></label>
+            <input name="dates" required />
+            <div></div>
+        </div>
+    </div>
+</form>
+<script src="../src/assets/scripts/calendar.js"></script>
 <style>
-    .event a {
-        background-color: #5FBA7D !important;
-        color: #ffffff !important;
+    .date-range-selected>.ui-state-active,
+    .date-range-selected>.ui-state-default {
+        background: none;
+        background-color: lightsteelblue;
     }
 </style>

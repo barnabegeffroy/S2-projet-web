@@ -5,7 +5,7 @@ $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$userId = isset($_POST['userId']) ? isset($_POST['userId']) : null;
+$userId = isset($_GET['userId']) ? isset($_GET['userId']) : null;
 $announces = $announceRepository->findAllByUserId($userId);
 $userSessionId = $authenticatorService->getCurrentUserId();
 ?>

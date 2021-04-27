@@ -29,7 +29,7 @@ CREATE TABLE Annonce (
     titre VARCHAR(100) NOT NULL,
     idUtilisateur INTEGER,
     datePublication DATE NOT NULL,
-    duree TIME,
+    duree INTEGER,
     description VARCHAR,
     photo BOOLEAN,
     lieu VARCHAR(256),
@@ -104,6 +104,7 @@ CREATE TABLE Reservation (
     CONSTRAINT fk_user_reservation FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 
+INSERT INTO "reservation" (idAnnonce,idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-04-26','2021-04-29');
 INSERT INTO "reservation" (idAnnonce,idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
 
 DROP TABLE IF EXISTS Localisation;

@@ -26,8 +26,8 @@ if (isset($data['errorInCreation'])) : ?>
       <input type="text" id="titre" name="titre" value="<?php echo isset($data['titre']) ? $data['titre'] : null ?>" required />
     </div>
     <div>
-      <label for="duree">Durée de prêt maximum :</label>
-      <input type="text" id="duree" name="duree" value="<?php echo isset($data['duree']) ? $data['duree'] : null ?>" />
+      <label for="duree">Durée de prêt maximale (en jours) :</label>
+      <input type="number" id="duree" name="duree" min="1" value="<?php echo isset($data['duree']) ? $data['duree'] : null ?>" />
     </div>
     <div>
       <label for="description">Description :</label>

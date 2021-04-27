@@ -17,7 +17,7 @@ function loadView($view, $data)
     <head>
         <meta charset="utf-8">
         <title>ENTRAiiDe</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../src/assets/css/style.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -60,7 +60,7 @@ function loadAnnounce($announce)
     <?php endif; ?>
     <?php if ($announce->getDuration() !== null) : ?>
         <div>
-            <div>Durée de prêt maximale :</div>
+            <div>Durée de prêt maximale en jours :</div>
             <div><?php echo $announce->getDuration() ?></div>
         </div>
     <?php endif; ?>
@@ -70,7 +70,7 @@ function loadAnnounce($announce)
             <img src="<?php echo $file[0] ?>" />
         </div>
     <?php endif; ?>
-    <form action="announce.php" method="POST">
+    <form action="announce.php" method="GET">
         <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
         <button class="button1" type="submit">Voir l'annonce</button>
     </form>

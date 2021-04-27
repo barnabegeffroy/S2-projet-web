@@ -37,7 +37,7 @@ class AnnounceRepository
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
     $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
-    $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
+    $stmt->bindValue(':duree', $duree, \PDO::PARAM_INT);
     $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
     $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
     $is_success = $stmt->execute();
@@ -155,7 +155,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'UPDATE "annonce" SET duree=:duree WHERE id = :id'
     );
-    $stmt->bindValue(':duree', $duree, \PDO::PARAM_STR);
+    $stmt->bindValue(':duree', $duree, \PDO::PARAM_INT);
     $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
     $stmt->execute();
   }
