@@ -15,7 +15,7 @@
 
         <div>
             <form method="get">
-                <input type="search" id="address-input" placeholder="Saisissez une ville" />
+                <input type="search" id="address-input" placeholder="Saisissez une adresse" />
             </form>
         </div>
 
@@ -56,4 +56,4 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-<script src="../../assets/scripts/places.js"></script>
+<script src="/src/assets/scripts/places.js"></script>

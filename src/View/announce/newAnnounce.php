@@ -68,4 +68,4 @@ if (isset($data['errorInCreation'])) : ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-<script src="../../assets/scripts/places.js"></script>
+<script src="/src/assets/scripts/places.js"></script>
