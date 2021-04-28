@@ -3,12 +3,24 @@
         <span class="logo-container"><a href="index.php"><img src="../src/View/images/logo.PNG" alt="Accueil" /></a>
         </span>
     </div>
-    <div>
-        <form method="GET" action="search.php">
-            <input type="search" name="q" placeholder="Rechercher un article" />
-            <input class="button1" type="submit" value="Valider" />
-        </form>
-    </div>
+
+    <ul>
+
+        <div>
+            <form method="GET" action="search.php">
+                <input type="search" name="q" placeholder="Rechercher un article" />
+                <input class="button1" type="submit" value="Valider" />
+            </form>
+        </div>
+
+        <div>
+            <form method="get">
+                <script src="../../assets/scripts/places.js"></script>
+                <input type="search" id="address-input" placeholder="Saisissez une ville" />
+            </form>
+        </div>
+
+    </ul>
     <ul class="link-header-container">
 
         <?php if (!$authenticatorService->isAuthenticated()) : ?>

@@ -35,10 +35,7 @@ if (isset($data['errorInCreation'])) : ?>
     </div>
     <div>
       <label for="cp">Adresse :</label>
-      <input name="cp" id="cp" type="text" placeholder="CP">
-      <input name="ville" id="ville" type="text" placeholder="Ville" required>
-      <input name="adresse" id="adresse" type="text" placeholder="Adresse">
-      <input name="coordonnees" id="coordonnees" type="hidden">
+      <input type="search" id="address-input" placeholder="Saisissez une adresse" />
     </div>
     <?php if (isset($data['photo']) ? !($data['photo'] == "f" ? false : true) : true) : ?>
       <div>
@@ -70,4 +67,4 @@ if (isset($data['errorInCreation'])) : ?>
   <?php endif; ?>
 </div>
 
-<script src="../src/assets/scripts/autocompletion.js"></script>
+<script src="../src/assets/scripts/places.js"></script>
