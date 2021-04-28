@@ -188,3 +188,21 @@ label {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+/*Rectangle qui contient les messages */
+.rectangle2{
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+  padding-left : 10px;
+  padding-right : 10px;
+  border-top : solid;
+  border-top-color : #828282;
+  border-left : solid;
+  border-right : solid;
+  border-bottom : solid;
+  border-top-width : 3px;
+}
