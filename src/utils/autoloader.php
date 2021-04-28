@@ -13,3 +13,4 @@ include_once '../src/Model/Hydrator/AnnounceHydrator.php';
 include_once '../src/Model/Service/UserService.php';
 include_once '../src/Model/Service/AnnounceService.php';
 include_once '../src/Model/Service/AuthenticatorService.php';
+include_once 'style.css';
