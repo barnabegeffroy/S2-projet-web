@@ -228,7 +228,7 @@ class AnnounceRepository
     return $favs;
   }
 
-  public function getReservation($announceId)
+  public function findReservationsByAnnounce($announceId)
   {
     $stmt = $this->dbAdapter->prepare(
       'SELECT dateDebut, dateFin FROM reservation WHERE idAnnonce=:idAnnounce;'
@@ -242,5 +242,76 @@ class AnnounceRepository
       $i++;
     }
     return $resas;
+  }
+
+  public function findReservationsByUser($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT idAnnonce, dateDebut, dateFin FROM reservation WHERE idUtilisateur=:userId;'
+    );
+    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $resas = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $resas[$i] = $row ? $row : null;
+      $i++;
+    }
+    return $resas;
+  }
+
+  public function findLoans($userId)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.idAnnonce WHERE R.idUtilisateur=:idUser'
+    );
+    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->execute();
+    $resas = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $resas[$i] = $row ? $row : null;
+      $i++;
+    }
+    return $resas;
+  }
+
+  public function addReservation($announceId, $userId, $start, $end)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'INSERT INTO "reservation" (idUtilisateur, idAnnonce, dateDebut, dateFin) VALUES (:idUser,:idAnnounce, :start, :end)'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idAnnounce', $announceId, \PDO::PARAM_INT);
+    $stmt->bindValue(':start', $start, \PDO::PARAM_STR);
+    $stmt->bindValue(':end', $end, \PDO::PARAM_STR);
+    $stmt->execute();
+  }
+
+  public function deleteResa($idAnnounce, $userId, $start)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'DELETE FROM "reservation" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce AND dateDebut = :start'
+    );
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
+    $stmt->bindValue(':start', $start, \PDO::PARAM_STR);
+    $stmt->execute();
+  }
+
+  public function search($expression)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      "SELECT * FROM Annonce WHERE CONCAT(titre,description) LIKE '%:expression%' ORDER BY id DESC"
+    );
+    $stmt->bindValue(':expression', $expression, \PDO::PARAM_STR);
+    $stmt->execute();
+    $searchs = null;
+    $i = 0;
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $searchs[$i] = $row ? $this->announceHydrator->hydrate($row) : null;
+      $i++;
+    }
+    return $searchs;
   }
 }

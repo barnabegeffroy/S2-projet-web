@@ -13,3 +13,7 @@
   <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
+
+<input type="search" id="address-input" placeholder="Saisissez une adresse" />
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+<script src="/src/assets/scripts/places.js"></script>
