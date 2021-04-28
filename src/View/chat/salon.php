@@ -1,5 +1,29 @@
 <?php
-$messages = ""
+if (!$authenticatorService->isAuthenticated()) {
+    $error = "Vous devez vous connecter pour accéder à cette page";
+    header('Location: index.php?erreur=' . $error);
+    exit;
+}
+$dbfactory = new \Rediite\Model\Factory\dbFactory();
+$dbAdapter = $dbfactory->createService();
+$messageRepository = new \Rediite\Model\Repository\MessageRepository($dbAdapter);
+
+$messages = $messageRepository->viewMessage($authenticatorService->getCurrentUserId());
+
+if($messages=="")
+{
+    echo $messages;
+}
+else
+{
+    foreach($messages as $message)
+    {
+    $description=htmlspecialchars($message->getDescription());
+    $idEmetteur=($message->getIdEmetteur());
+
+    }
+}
+
 ?>
 
 <html>
@@ -15,10 +39,10 @@ $messages = ""
         if($messages!=""){
         foreach($messages as $message)
         {
-            $content=$message->getContent();
-            $emittor=$message->getEmittor();
+            $description=$message->getDescription();
+            $idEmetteur=$message->getIdEmetteur();
         /*  $content=$message->getContent(); */
-        echo $emittor.': '.$content.'<br/>';     
+        echo $idEmetteur.': '.$description.'<br/>';     
 
         }}?>
         
