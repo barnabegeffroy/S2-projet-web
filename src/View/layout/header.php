@@ -39,6 +39,14 @@
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'myAnnounces.php'">Mes annonces</button>
             </li>
+            </li>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'myResas.php'">Mes réservations</button>
+            </li>
+            </li>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'myLoans.php'">Mes entraiides</button>
+            </li>
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'account.php'">Mon compte</button>
             </li>
