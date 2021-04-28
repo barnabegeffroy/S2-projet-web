@@ -66,4 +66,5 @@ if (isset($data['errorInCreation'])) : ?>
     </form>
   <?php endif; ?>
 </div>
+
 <script src="../../assets/scripts/places.js"></script>
