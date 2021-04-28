@@ -1,5 +1,4 @@
 <?php
-include_once '../src/scripts/places.js';
 if (!$authenticatorService->isAuthenticated()) {
   $error = "Vous devez vous connecter pour accéder à cette page";
   header('Location: index.php?erreur=' . $error);
