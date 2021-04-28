@@ -42,12 +42,9 @@ if (isset($data['errorInCreation'])) : ?>
     </div>
     <?php if (isset($data['photo']) ? !($data['photo'] == "f" ? false : true) : true) : ?>
       <div>
-        <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-        <label for="image">Image :</label>
-        <input type="file" id="image" name="image" />
+      <input type="search" id="address-input" placeholder="Saisissez une adresse" />
       </div>
     <?php endif; ?>
-    <button type="submit">Valider</button>
   </form>
   <?php if (isset($data['photo']) ? ($data['photo'] == "f" ? false : true) : false) :
     $file = glob("../src/View/images/announces/" . $data['id'] . ".*"); ?>

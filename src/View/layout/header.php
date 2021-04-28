@@ -4,17 +4,20 @@
         </span>
     </div>
     <ul>
-        <div>
+        <li><div>
             <form method="GET">
                 <input type="search" name="q" placeholder="Rechercher un article" />
                 <input class="button1" type="submit" value="Valider" />
             </form>
         </div>
+        </li>
+        <li>
         <div>
             <form method="get">
                 <input type="search" id="address-input" placeholder="Saisissez une ville" />
             </form>
         </div>
+        </li>
     </ul>
     <ul class="link-header-container">
 
