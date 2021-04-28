@@ -9,6 +9,11 @@
             <input class="button1" type="submit" value="Valider" />
         </form>
     </div>
+    <div>
+        <form method="get">
+            <input type="search" id="address-input" placeholder="Saisissez une ville" />
+        </form>
+    </div>
     <ul class="link-header-container">
 
         <?php if (!$authenticatorService->isAuthenticated()) : ?>
@@ -71,3 +76,13 @@ if (isset($_GET['q']) and !empty($_GET['q'])) {
         <?php
     }
         ?>
+
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+<script>
+  var placesAutocomplete = places({
+    appId: 'YOUR_PLACES_APP_ID',
+    apiKey: 'YOUR_PLACES_API_KEY',
+    container: document.querySelector('#address-input')
+  });
+</script>
