@@ -249,7 +249,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'SELECT idAnnonce, dateDebut, dateFin FROM reservation WHERE idUtilisateur=:userId;'
     );
-    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
     $stmt->execute();
     $resas = null;
     $i = 0;
@@ -265,7 +265,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'SELECT * FROM reservation R JOIN annonce A ON A.id = R.idAnnonce WHERE R.idUtilisateur=:idUser'
     );
-    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();
     $resas = null;
     $i = 0;
