@@ -12,13 +12,6 @@
                 <input class="button1" type="submit" value="Valider" />
             </form>
         </div>
-
-        <div>
-            <form method="get">
-            <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
-            </form>
-        </div>
-
     </ul>
     <ul class="link-header-container">
 
