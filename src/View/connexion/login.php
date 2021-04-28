@@ -13,3 +13,28 @@
   <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
+
+
+<input type="search" id="address" class="form-control" placeholder="Where are we going?" />
+
+<p>Selected: <strong id="address-value">none</strong></p>
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    appId: '<YOUR_PLACES_APP_ID>',
+    apiKey: '<YOUR_PLACES_API_KEY>',
+    container: document.querySelector('#address')
+  });
+
+  var $address = document.querySelector('#address-value')
+  placesAutocomplete.on('change', function(e) {
+    $address.textContent = e.suggestion.value
+  });
+
+  placesAutocomplete.on('clear', function() {
+    $address.textContent = 'none';
+  });
+
+})();
+</script>
