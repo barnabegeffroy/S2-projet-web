@@ -14,6 +14,7 @@
         
         <div>
             <form method="get">
+                <script src ="../../assets/scripts/places.js"></script>
                 <input type="search" id="address-input" placeholder="Saisissez une ville" />
             </form>
         </div>
