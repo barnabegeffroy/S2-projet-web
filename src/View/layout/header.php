@@ -3,17 +3,19 @@
         <span class="logo-container"><a href="index.php"><img src="../src/View/images/logo.PNG" alt="Accueil" /></a>
         </span>
     </div>
-    <div>
-        <form method="GET">
-            <input type="search" name="q" placeholder="Rechercher un article" />
-            <input class="button1" type="submit" value="Valider" />
-        </form>
-    </div>
-    <div>
-        <form method="get">
-            <input type="search" id="address-input" placeholder="Saisissez une ville" />
-        </form>
-    </div>
+    <ul>
+        <div>
+            <form method="GET">
+                <input type="search" name="q" placeholder="Rechercher un article" />
+                <input class="button1" type="submit" value="Valider" />
+            </form>
+        </div>
+        <div>
+            <form method="get">
+                <input type="search" id="address-input" placeholder="Saisissez une ville" />
+            </form>
+        </div>
+    </ul>
     <ul class="link-header-container">
 
         <?php if (!$authenticatorService->isAuthenticated()) : ?>
@@ -78,11 +80,11 @@ if (isset($_GET['q']) and !empty($_GET['q'])) {
         ?>
 
 
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-<script>
-  var placesAutocomplete = places({
-    appId: 'YOUR_PLACES_APP_ID',
-    apiKey: 'YOUR_PLACES_API_KEY',
-    container: document.querySelector('#address-input')
-  });
-</script>
+        <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+        <script>
+            var placesAutocomplete = places({
+                appId: 'YOUR_PLACES_APP_ID',
+                apiKey: 'YOUR_PLACES_API_KEY',
+                container: document.querySelector('#address-input')
+            });
+        </script>
