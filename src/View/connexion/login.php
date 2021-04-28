@@ -13,5 +13,3 @@
   <?php endif; ?>
   <button type="submit">Valider</button>
 </form>
-
-

@@ -15,7 +15,7 @@
 
         <div>
             <form method="get">
-                <input type="search" id="address-input" placeholder="Saisissez une adresse" />
+            <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
             </form>
         </div>
 
@@ -54,6 +54,3 @@
         <?php endif; ?>
     </ul>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-<script src="/src/assets/scripts/places.js"></script>
