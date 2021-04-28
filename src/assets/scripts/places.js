@@ -1,7 +1,7 @@
 (function() {
     var placesAutocomplete = places({
-      appId: '<0F5JUQOPZH>',
-      apiKey: '<aa22f43a3845cf5d968df909b13ffd82>',
+      appId: '0F5JUQOPZH',
+      apiKey: 'aa22f43a3845cf5d968df909b13ffd82',
       container: document.querySelector('#address')
     });
   
