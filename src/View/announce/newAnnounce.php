@@ -67,4 +67,4 @@ if (isset($data['errorInCreation'])) : ?>
   <?php endif; ?>
 </div>
 
-<script src="/src/assets/scripts/autocompletion.js"></script>
+<script src="../src/assets/scripts/autocompletion.js"></script>
