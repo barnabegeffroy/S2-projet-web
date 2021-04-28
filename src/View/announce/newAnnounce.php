@@ -35,7 +35,7 @@ if (isset($data['errorInCreation'])) : ?>
     </div>
     <div>
       <label for="cp">Adresse :</label>
-      <input type="search" id="address-input" placeholder="Saisissez une adresse" />
+      <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
     </div>
     <?php if (isset($data['photo']) ? !($data['photo'] == "f" ? false : true) : true) : ?>
       <div>
@@ -67,5 +67,6 @@ if (isset($data['errorInCreation'])) : ?>
   <?php endif; ?>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-<script src="/src/assets/scripts/places.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/src/assets/scripts/autocompletion.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ"></script>
