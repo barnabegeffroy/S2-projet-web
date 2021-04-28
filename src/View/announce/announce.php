@@ -77,7 +77,7 @@ if ($authenticatorService->isAdmin() && $userSessionId !== $data['idutilisateur'
     <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
     <input type="hidden" name="auth" value="<?php echo ($userSessionId !== $data['idutilisateur'] && !empty($userSessionId)) ?>">
     <input type="hidden" id="resaDates" value="<?php
-                                                $resas = $announceRepository->getReservation($data['id']);
+                                                $resas = $announceRepository->findReservationsByAnnounce($data['id']);
                                                 foreach ($resas as &$resa) {
                                                     $date = strtotime($resa['datedebut']);
                                                     $endDate = strtotime($resa['datefin']);
