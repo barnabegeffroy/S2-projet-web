@@ -14,9 +14,9 @@ $resas = $announceRepository->findLoans($authenticatorService->getCurrentUserId(
 
 ?>
 
-<h1>Mes reservations</h1>
+<h1>Mes entraiides</h1>
 <?php if (empty($resas)) : ?>
-    <div>Vous n'avez pas encore de réservation.</div>
+    <div>Vous n'avez pas encore d'entraiides.</div>
 
 <?php else : ?>
     <?php foreach ($resas as &$resa) :

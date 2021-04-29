@@ -249,7 +249,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'SELECT idAnnonce, dateDebut, dateFin FROM reservation WHERE idUtilisateur=:userId;'
     );
-    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
     $stmt->execute();
     $resas = null;
     $i = 0;
@@ -265,7 +265,7 @@ class AnnounceRepository
     $stmt = $this->dbAdapter->prepare(
       'SELECT * FROM reservation R JOIN annonce A ON A.id = R.idAnnonce WHERE R.idUtilisateur=:idUser'
     );
-    $stmt->bindValue(':idAnnounce', $userId, \PDO::PARAM_INT);
+    $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();
     $resas = null;
     $i = 0;
@@ -302,10 +302,10 @@ class AnnounceRepository
   public function search($expression)
   {
     $stmt = $this->dbAdapter->prepare(
-      "SELECT * FROM Annonce WHERE CONCAT(titre,description) LIKE '%:expression%' ORDER BY id DESC"
+      "SELECT * FROM Annonce WHERE lower(CONCAT(titre,description)) LIKE lower(CONCAT('%','" . $expression . "','%')) ORDER BY id DESC"
     );
-    $stmt->bindValue(':expression', $expression, \PDO::PARAM_STR);
     $stmt->execute();
+
     $searchs = null;
     $i = 0;
     while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {

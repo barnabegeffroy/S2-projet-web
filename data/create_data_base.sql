@@ -49,16 +49,6 @@ CREATE TABLE Favoris (
 );
 
 
-DROP TABLE IF EXISTS Notation;
-
-CREATE TABLE Notation (
-    id SERIAL PRIMARY KEY,
-    idEmetteur INTEGER NOT NULL,
-    idReceveur INTEGER NOT NULL,
-    valeur FLOAT,
-    CONSTRAINT fk_notation FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id)
-);
-
 DROP TABLE IF EXISTS Message;
 
 CREATE TABLE Message (
@@ -71,15 +61,6 @@ CREATE TABLE Message (
     CONSTRAINT fk_message_2 FOREIGN KEY (idReceveur) REFERENCES Utilisateur(id)
 );
 
-DROP TABLE IF EXISTS Image;
-
-CREATE TABLE Image (
-    id SERIAL PRIMARY KEY,
-    titre VARCHAR(100) NOT NULL,
-    adresse VARCHAR(256) NOT NULL,
-    hauteur INTEGER,
-    largeur INTEGER
-);
 
 DROP TABLE IF EXISTS Commentaire;
 
@@ -122,12 +103,8 @@ GRANT all privileges ON utilisateur_id_seq TO tpcurseurs;
 GRANT all privileges ON Favoris TO tpcurseurs;
 GRANT all privileges ON Annonce TO tpcurseurs;
 GRANT all privileges ON Annonce_id_seq TO tpcurseurs;
-GRANT all privileges ON Notation TO tpcurseurs;
-GRANT all privileges ON Notation_id_seq TO tpcurseurs;
 GRANT all privileges ON Message TO tpcurseurs;
 GRANT all privileges ON Message_id_seq TO tpcurseurs;
-GRANT all privileges ON Image TO tpcurseurs;
-GRANT all privileges ON Image_id_seq TO tpcurseurs;
 GRANT all privileges ON Commentaire TO tpcurseurs;
 GRANT all privileges ON Commentaire_id_seq TO tpcurseurs;
 GRANT all privileges ON Reservation TO tpcurseurs;

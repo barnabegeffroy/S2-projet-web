@@ -8,10 +8,17 @@
 
         <div>
             <form method="GET" action="search.php">
-                <input type="search" name="q" placeholder="Rechercher un article" />
+                <input type="search" name="q" placeholder="Rechercher un article" required />
                 <input class="button1" type="submit" value="Valider" />
             </form>
         </div>
+
+        <div>
+            <form method="get">
+                <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
+            </form>
+        </div>
+
     </ul>
     <ul class="link-header-container">
 
@@ -31,6 +38,14 @@
             </li>
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'myAnnounces.php'">Mes annonces</button>
+            </li>
+            </li>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'myResas.php'">Mes réservations</button>
+            </li>
+            </li>
+            <li class="link-header-item">
+                <button class="button1" onclick="location.href = 'myLoans.php'">Mes entraiides</button>
             </li>
             <li class="link-header-item">
                 <button class="button1" onclick="location.href = 'account.php'">Mon compte</button>

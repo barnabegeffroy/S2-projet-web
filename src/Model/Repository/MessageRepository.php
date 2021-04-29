@@ -20,13 +20,13 @@ class MessageRepository
         $MessagesData = $this->dbAdapter->query('SELECT * FROM "Message"');
         $Messages = [];
         foreach ($MessagesData as $MessagesDatum) {
-            $Message = new Message();
+            $Message = new MessageEntity();
             $Message
-                ->setMessageId($MessagesDatum['id'])
-                ->setDescription($MessagesDatum['description'])
-                ->setIdReceveur($MessagesDatum['idReceveur'])
-                ->setDatePublication($MessagesDatum['datePublication'])
-                ->setIdEmetteur($MessagesDatum['idEmetteur']);
+            ->setIdReceveur($MessagesDatum['idReceveur'])
+            ->setDescription($MessagesDatum['description'])
+            ->setMessageId($MessagesDatum['id'])
+            ->setDatePublication($MessagesDatum['datePublication'])
+            ->setIdEmetteur($MessagesDatum['idEmetteur']);
             $Messages[] = $Message;
         }
         return $Messages;
@@ -66,7 +66,7 @@ class MessageRepository
         $stmt->bindParam('id', $id);
         $stmt->execute();
         foreach ($stmt as $MessagesDatum) {
-            $Message = new Message();
+            $Message = new MessageEntity();
                 $Message
                     ->setidEmetteur($MessagesDatum['idEmetteur'])
                     ->setDescription($MessagesDatum['description']);

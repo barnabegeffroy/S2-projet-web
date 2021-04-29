@@ -6,7 +6,9 @@ if (null != $erreur) : ?>
 endif;
 $q = isset($_GET['q']) && !empty($_GET['q']) ? htmlspecialchars($_GET['q']) : null;
 $userId = $authenticatorService->getCurrentUserId();
-$announces = $announceRepository->search($q);
+if ($q!== null) {
+    $announces = $announceRepository->search($q);
+}
 ?>
 <h1>Résultat de votre recherche</h1>
 
