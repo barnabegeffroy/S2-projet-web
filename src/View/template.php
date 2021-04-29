@@ -23,7 +23,7 @@ function loadView($view, $data)
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="../src/assets/scripts/form.js"></script>
         <script src="../src/assets/scripts/maps.js"></script>
-        
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap"></script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script> -->
     </head>
 
@@ -77,7 +77,6 @@ function loadAnnounce($announce)
         <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
         <button class="button1" type="submit">Voir l'annonce</button>
     </form>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap"></script>
 <?php }
 
 function upload_image($announceRepository, $viewData, $image, $id)
