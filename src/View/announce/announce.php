@@ -104,3 +104,6 @@ if ($authenticatorService->isAdmin() && $userSessionId !== $data['idutilisateur'
         background-color: lightsteelblue;
     }
 </style>
+
+
+<div id="map"></div>
