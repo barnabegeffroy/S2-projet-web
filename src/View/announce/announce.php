@@ -3,7 +3,7 @@ $data = $announceRepository->getDataById($_GET['id']);
 $user = $userRepository->getIdentity($data['idutilisateur']);
 $userSessionId = $authenticatorService->getCurrentUserId();
 ?>
-<h1><?php echo $data['titre']; ?></h1>
+<h1 class="text-dark pt-4"><?php echo $data['titre']; ?></h1>
 
 <div>
     Publié par <?php echo $user['prenom'] . (isset($user['pseudo']) ? ' \'' . $user['pseudo'] . '\' ' : ' ') . $user['nom'] ?>

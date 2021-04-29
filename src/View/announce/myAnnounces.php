@@ -17,7 +17,7 @@ $announces = $announceRepository->findAllByUserId($authenticatorService->getCurr
 <?php if (isset($data['failedPassword'])) : ?>
     <span class="error-message"><?= $data['failedPassword'] ?></span>
 <?php endif; ?>
-<h1>Mes annonces</h1>
+<h1 class="text-dark pt-4">Mes annonces</h1>
 <?php if (empty($announces)) : ?>
     <div>Vous n'avez encore aucune annonce publiée.</div>
 

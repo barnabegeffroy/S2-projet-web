@@ -7,7 +7,7 @@ endif;
 $announces = $announceRepository->findAll();
 $userId = $authenticatorService->getCurrentUserId();
 ?>
-<h1>La plateforme de prêt d'objets de l'ENSIIE</h1>
+<h1 class="text-dark pt-4">La plateforme de prêt d'objets de l'ENSIIE</h1>
 
 <?php if (empty($announces)) : ?>
     <div>Aucune annonce publiée pour l'instant.</div>

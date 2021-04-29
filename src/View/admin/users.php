@@ -6,7 +6,7 @@ if (null != $erreur) : ?>
 endif;
 $users = $userRepository->findAll();
 ?>
-<h1>Les inscrits :</h1>
+<h1 class="text-dark pt-4">Les inscrits :</h1>
 
 <?php foreach ($users as &$user) : ?>
     <div>

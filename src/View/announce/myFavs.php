@@ -14,7 +14,7 @@ $favs = $announceRepository->findAllFavs($authenticatorService->getCurrentUserId
 
 ?>
 
-<h1>Mes favoris</h1>
+<h1 class="text-dark pt-4">Mes favoris</h1>
 <?php if (empty($favs)) : ?>
     <div>Vous n'avez pas encore de favoris.</div>
 

@@ -10,7 +10,7 @@ if ($q!== null) {
     $announces = $announceRepository->search($q);
 }
 ?>
-<h1>Résultat de votre recherche</h1>
+<h1 class="text-dark pt-4">Résultat de votre recherche</h1>
 
 <?php if (empty($announces)) : ?>
     <div>Aucune annonce ne correspond à votre recherche.</div>

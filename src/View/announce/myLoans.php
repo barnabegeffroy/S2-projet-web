@@ -14,7 +14,7 @@ $resas = $announceRepository->findLoans($authenticatorService->getCurrentUserId(
 
 ?>
 
-<h1>Mes entraiides</h1>
+<h1 class="text-dark pt-4">Mes entraiides</h1>
 <?php if (empty($resas)) : ?>
     <div>Vous n'avez pas encore d'entraiides.</div>
 

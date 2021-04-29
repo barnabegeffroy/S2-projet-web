@@ -13,7 +13,7 @@ $userSessionId = $authenticatorService->getCurrentUserId();
 <?php if (isset($data['failedPassword'])) : ?>
     <span class="error-message"><?= $data['failedPassword'] ?></span>
 <?php endif; ?>
-<h1>Les annonces de cet entraiideur</h1>
+<h1 class="text-dark pt-4">Les annonces de cet entraiideur</h1>
 <?php if (empty($announces)) : ?>
     <div>Aucune annonce publiée pour l'instant.</div>
 

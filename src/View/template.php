@@ -17,9 +17,11 @@ function loadView($view, $data)
     <head>
         <meta charset="utf-8">
         <title>ENTRAiiDe</title>
+        <link rel="stylesheet" href="../src/assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../src/assets/css/style.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="../src/assets/scripts/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="../src/assets/scripts/form.js"></script>
         <script src="../src/assets/scripts/autocompletion.js"></script>
@@ -28,7 +30,7 @@ function loadView($view, $data)
 
     <body>
         <?php include_once '../src/View/layout/header.php' ?>
-        <div class="main-container">
+        <div class="col-12 text-center mt-5">
             <?php include_once '../src/View/' . $view . '.php' ?>
         </div>
         <?php include_once '../src/View/layout/footer.php' ?>
@@ -40,42 +42,37 @@ function loadView($view, $data)
 
 function loadAnnounce($announce)
 { ?>
-    <div>
-        <div>Titre :</div>
-        <div><?php echo $announce->getTitle() ?></div>
+    <div class="row">
+        <div class="col">
+            <img src=" <?php if (isset($file[0])) {
+                            echo $file[0];
+                        } else {
+                            echo "../src/View/images/no_pic.jpg";
+                        } ?>" class="w-100" />
+        </div>
+        <div class="col">
+            <h4 class="my-4"><?php echo $announce->getTitle() ?></h4>
+            <h6>Date de publication :</h6>
+            <p><?php echo $announce->getDate() ?></p>
+            <?php if ($announce->getDescription() !== null) : ?>
+                <h6>Description :</h6>
+                <p><?php echo $announce->getDescription() ?></p>
+            <?php endif; ?>
+            <?php if ($announce->getPlace() !== null) : ?>
+                <h6>Lieu de prêt :</h6>
+                <p><?php echo $announce->getPlace() ?></p>
+            <?php endif; ?>
+            <?php if ($announce->getDuration() !== null) : ?>
+                <h6>Durée de prêt maximale en jours :</h6>
+                <p><?php echo $announce->getDuration() ?></p>
+            <?php endif; ?>
+            <?php $file = glob("../src/View/images/announces/" . $announce->getId() . ".*"); ?>
+            <form action="announce.php" method="GET">
+                <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+                <button class="btn btn-outline-dark btn-md" type="submit">Voir l'annonce</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <div>Date de publication :</div>
-        <div><?php echo $announce->getDate() ?></div>
-    </div>
-    <?php if ($announce->getDescription() !== null) : ?>
-        <div>
-            <div>Description :</div>
-            <div><?php echo $announce->getDescription() ?></div>
-        </div>
-    <?php endif; ?>
-    <?php if ($announce->getPlace() !== null) : ?>
-        <div>
-            <div>Lieu de prêt :</div>
-            <div><?php echo $announce->getPlace() ?></div>
-        </div>
-    <?php endif; ?>
-    <?php if ($announce->getDuration() !== null) : ?>
-        <div>
-            <div>Durée de prêt maximale en jours :</div>
-            <div><?php echo $announce->getDuration() ?></div>
-        </div>
-    <?php endif; ?>
-    <?php $file = glob("../src/View/images/announces/" . $announce->getId() . ".*");
-    if (isset($file[0])) : ?>
-        <div>
-            <img src="<?php echo $file[0] ?>" />
-        </div>
-    <?php endif; ?>
-    <form action="announce.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-        <button class="button1" type="submit">Voir l'annonce</button>
-    </form>
 <?php }
 
 function upload_image($announceRepository, $viewData, $image, $id)

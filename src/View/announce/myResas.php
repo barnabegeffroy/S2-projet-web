@@ -14,7 +14,7 @@ $resas = $announceRepository->findReservationsByUser($authenticatorService->getC
 
 ?>
 
-<h1>Mes reservations</h1>
+<h1 class="text-dark pt-4">Mes reservations</h1>
 <?php if (empty($resas)) : ?>
     <div>Vous n'avez pas encore de réservation.</div>
 

@@ -14,7 +14,7 @@ $user = $authenticatorService->getCurrentUser();
 
 ?>
 
-<h1>Vos informations</h1>
+<h1 class="text-dark pt-4">Vos informations</h1>
 
 <div>
     <div>Prénom :</div>
