@@ -7,6 +7,19 @@ $(document).ready(function () {
     });
 });
 
+
+window.addEventListener('load',function(){
+    if(document.getElementById('map')){
+      google.load("maps", "3",{
+        callback:function(){
+           new google.maps.Map(document.getElementById('map'), {
+              center: new google.maps.LatLng(0,0),
+              zoom: 3
+            });
+        }
+      });     
+    }
+  },false);
 // Initialize and add the map
 function initMap() {
     // The location of the announce
