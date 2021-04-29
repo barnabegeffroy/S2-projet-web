@@ -10,19 +10,21 @@ $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$announces = $announceRepository->findAllByUserId($authenticatorService->getCurrentUserId());
+$userId = $authenticatorService->getCurrentUserId();
+$announces = $announceRepository->findAllByUserId($userId);
 
 ?>
 
 <?php if (isset($data['failedPassword'])) : ?>
     <span class="error-message"><?= $data['failedPassword'] ?></span>
 <?php endif; ?>
-<h1 class="text-dark pt-4">Mes annonces</h1>
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Mes annonces</h1>
+</div>
 <?php if (empty($announces)) : ?>
-    <div>Vous n'avez encore aucune annonce publiée.</div>
+    <h4 class="text-dark text-center pt-4">Vous n'avez encore aucune annonce publiée.</h4>
 
 <?php else : ?>
-
     <div class="form-popup" id="deleteAnnounceForm">
         <form action="deleteAnnounce.php" method="post" class="form-container">
             <label for="password"><b>Mot de passe</b></label>
@@ -33,12 +35,6 @@ $announces = $announceRepository->findAllByUserId($authenticatorService->getCurr
         </form>
     </div>
     <?php foreach ($announces as &$announce) :
-        loadAnnounce($announce);
-    ?>
-        <form action="newAnnounce.php" method="post">
-            <input type="hidden" name="idAnnounce" value="<?php echo $announce->getId() ?>">
-            <button class="button1" type="submit">Modifier mon annonce</button>
-        </form>
-        <button class="button1" onclick="openForm('deleteAnnounceForm'); change('idAnnounce','<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
-    <?php endforeach; ?>
+        loadAnnounce($announce, $userId, $announceService->isFav($announce->getId(), $userId));
+    endforeach; ?>
 <?php endif; ?>

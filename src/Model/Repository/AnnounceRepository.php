@@ -183,7 +183,7 @@ class AnnounceRepository
   public function addFav($idAnnounce, $userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "favoris" (idUtilisateur,idAnnonce) VALUES (:idUser,:idAnnounce)'
+      'INSERT INTO "favoris" (fav_idUtilisateur,fav_idAnnonce) VALUES (:idUser,:idAnnounce)'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
@@ -193,7 +193,7 @@ class AnnounceRepository
   public function deleteFav($idAnnounce, $userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'DELETE FROM "favoris" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce'
+      'DELETE FROM "favoris" WHERE fav_idUtilisateur = :idUser AND fav_idAnnonce = :idAnnounce'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
@@ -203,7 +203,7 @@ class AnnounceRepository
   public function findFav($idAnnounce, $userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM "favoris" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce'
+      'SELECT * FROM "favoris" WHERE fav_idUtilisateur = :idUser AND fav_idAnnonce = :idAnnounce'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);
@@ -215,7 +215,7 @@ class AnnounceRepository
   public function findAllFavs($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM annonce A JOIN favoris F ON A.id = F.idAnnonce WHERE F.idUtilisateur=:idUser;'
+      'SELECT * FROM annonce A JOIN favoris F ON A.id = F.fav_idAnnonce WHERE F.fav_idUtilisateur=:idUser;'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -231,7 +231,7 @@ class AnnounceRepository
   public function findReservationsByAnnounce($announceId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT dateDebut, dateFin FROM reservation WHERE idAnnonce=:idAnnounce;'
+      'SELECT dateDebut, dateFin FROM reservation WHERE res_idAnnonce=:idAnnounce;'
     );
     $stmt->bindValue(':idAnnounce', $announceId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -247,7 +247,7 @@ class AnnounceRepository
   public function findReservationsByUser($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT idAnnonce, dateDebut, dateFin FROM reservation WHERE idUtilisateur=:userId;'
+      'SELECT res_idAnnonce, dateDebut, dateFin FROM reservation WHERE res_idUtilisateur=:userId;'
     );
     $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -263,7 +263,7 @@ class AnnounceRepository
   public function findLoans($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.idAnnonce WHERE R.idUtilisateur=:idUser'
+      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.res_idAnnonce WHERE R.res_idUtilisateur=:idUser'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -279,7 +279,7 @@ class AnnounceRepository
   public function addReservation($announceId, $userId, $start, $end)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "reservation" (idUtilisateur, idAnnonce, dateDebut, dateFin) VALUES (:idUser,:idAnnounce, :start, :end)'
+      'INSERT INTO "reservation" (res_idUtilisateur, res_idAnnonce, dateDebut, dateFin) VALUES (:idUser,:idAnnounce, :start, :end)'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->bindValue(':idAnnounce', $announceId, \PDO::PARAM_INT);
@@ -291,7 +291,7 @@ class AnnounceRepository
   public function deleteResa($idAnnounce, $userId, $start)
   {
     $stmt = $this->dbAdapter->prepare(
-      'DELETE FROM "reservation" WHERE idUtilisateur = :idUser AND idAnnonce = :idAnnounce AND dateDebut = :start'
+      'DELETE FROM "reservation" WHERE res_idUtilisateur = :idUser AND res_idAnnonce = :idAnnounce AND dateDebut = :start'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->bindValue(':idAnnounce', $idAnnounce, \PDO::PARAM_INT);

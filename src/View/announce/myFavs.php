@@ -14,18 +14,15 @@ $favs = $announceRepository->findAllFavs($authenticatorService->getCurrentUserId
 
 ?>
 
-<h1 class="text-dark pt-4">Mes favoris</h1>
-<?php if (empty($favs)) : ?>
-    <div>Vous n'avez pas encore de favoris.</div>
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Mes favoris</h1>
+</div>
+    <?php if (empty($favs)) : ?>
+        <h4 class="text-dark pt-4 text-center">Vous n'avez pas encore de favoris.</h4>
 
 <?php else : ?>
     <?php foreach ($favs as &$announce) :
-        loadAnnounce($announce);
-    ?>
-        <form action="deleteFav.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-            <button class="button1" type="submit">Supprimer des favoris</button>
-        </form>
-    <?php endforeach; ?>
+            loadAnnounce($announce, $authenticatorService->getCurrentUserId(), true);
+        endforeach; ?>
 
 <?php endif; ?>
