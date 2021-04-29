@@ -35,7 +35,7 @@ if (isset($data['errorInCreation'])) : ?>
     </div>
     <div>
       <label for="cp">Adresse :</label>
-      <input type="text" class="form-control" id="search_input2" placeholder="Saisissez une adresse" />
+      <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
     </div>
     <?php if (isset($data['photo']) ? !($data['photo'] == "f" ? false : true) : true) : ?>
       <div>

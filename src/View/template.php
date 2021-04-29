@@ -24,8 +24,9 @@ function loadView($view, $data)
         <script src="../src/assets/scripts/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="../src/assets/scripts/form.js"></script>
-        <script src="../src/assets/scripts/autocompletion.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ"></script>
+        <script src="../src/assets/scripts/maps.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap"></script>
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script> -->
     </head>
 
     <body>
