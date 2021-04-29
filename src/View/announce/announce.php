@@ -107,3 +107,4 @@ if ($authenticatorService->isAdmin() && $userSessionId !== $data['idutilisateur'
 
 
 <div id="map"></div>
+<script src="../src/assets/scripts/maps.js"></script>
