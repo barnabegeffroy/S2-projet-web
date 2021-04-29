@@ -8,14 +8,14 @@
 
         <div>
             <form method="GET" action="search.php">
-                <input type="search" name="q" placeholder="Rechercher un article" />
+                <input type="search" name="q" placeholder="Rechercher un article" required />
                 <input class="button1" type="submit" value="Valider" />
             </form>
         </div>
 
         <div>
             <form method="get">
-            <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
+                <input type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
             </form>
         </div>
 

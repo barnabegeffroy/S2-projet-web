@@ -302,10 +302,10 @@ class AnnounceRepository
   public function search($expression)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM Annonce WHERE CONCAT(titre,description) LIKE CONCAT("%",:expression,"%") ORDER BY id DESC'
+      "SELECT * FROM Annonce WHERE lower(CONCAT(titre,description)) LIKE lower(CONCAT('%','" . $expression . "','%')) ORDER BY id DESC"
     );
-    $stmt->bindValue(':expression', $expression, \PDO::PARAM_STR);
     $stmt->execute();
+
     $searchs = null;
     $i = 0;
     while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
