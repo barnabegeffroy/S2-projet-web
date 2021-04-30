@@ -30,9 +30,9 @@ $convs = $chatRepository->findConvsByUserId($userId);
         </form>
     </div>
     <?php foreach ($convs as &$conv) :
-        $idAnnounce = $conv['conv_idAnnonce'];
+        $idAnnounce = $conv['idannonce'];
         $idChatter = $conv['id1'] == $userId ? $conv['id2'] : $conv['id1'];
-        $idChat = $conv['conv_id'];
+        $idChat = $conv['id'];
         $announce = $announceRepository->getTitle($idAnnounce);
         $chatterIdentity = $userRepository->getIdentity($idChatter);
     ?>
@@ -56,7 +56,7 @@ $convs = $chatRepository->findConvsByUserId($userId);
                         <input type="hidden" name="idConv" value="<?php echo $idChat ?>">
                         <button class="btn btn-outline-dark btn-md my-1" type="submit">Ouvrir la conversation</button>
                     </form>
-                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteConvForm'); change('deleteConv','<?php echo $idAnnounce ?>')">Supprimer mon annonce</button>
+                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteConvForm'); change('deleteConv','<?php echo $idAnnounce ?>')">Supprimer la conversation</button>
                 </div>
             </div>
         </div>
