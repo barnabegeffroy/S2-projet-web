@@ -42,6 +42,7 @@ if (empty($data)) : ?>
 
             <div id="map" class="map"></div>
             <script src="../src/assets/scripts/maps.js"></script>
+            
 
             <div class="col">
                 <?php if ($data['idutilisateur'] == $userSessionId) : ?>
