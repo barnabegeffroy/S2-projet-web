@@ -27,7 +27,7 @@ function loadView($view, $data)
         <script src="../src/assets/scripts/autocompletion.js"></script>
         <script src="../src/assets/scripts/maps.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=places&v=weekly"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=places&v=weekly" async></script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script> -->
     </head>
 
