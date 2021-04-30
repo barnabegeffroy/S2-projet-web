@@ -39,7 +39,7 @@ if (empty($data)) : ?>
                 <?php endif; ?>
             </div>
 
-            
+
             <div class="col">
                 <?php if ($data['idutilisateur'] == $userSessionId) : ?>
                     <form action="newAnnounce.php" method="post">
@@ -112,9 +112,9 @@ if (empty($data)) : ?>
 
 
     <script src="../src/assets/scripts/maps.js"></script>
-            <div id="map"></div>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script>
-            
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script>
+
     <script src="../src/assets/scripts/calendar.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">
 <?php endif; ?>
