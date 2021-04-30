@@ -1,11 +1,11 @@
-// var searchInput = 'search_input';
+var searchInput = 'search_input';
+var autocomplete;
 
-// $(document).ready(function () {
-//     var autocomplete;
-//     autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-//         types: ['geocode'],
-//     });
-// });
+$(document).ready(function () {
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        types: ['geocode'],
+    });
+});
 
 
 // window.addEventListener('load',function(){
