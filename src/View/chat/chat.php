@@ -32,7 +32,7 @@ $convs = $chatRepository->findConvsByUserId($userId);
     <?php foreach ($convs as &$conv) :
         $idAnnounce = $conv['conv_idAnnonce'];
         $idChatter = $conv['id1'] == $userId ? $conv['id2'] : $conv['id1'];
-        $idChat = $conv['conv_id'];
+        $idChat = $conv['id'];
         $announce = $announceRepository->getTitle($idAnnounce);
         $chatterIdentity = $userRepository->getIdentity($idChatter);
     ?>

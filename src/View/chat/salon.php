@@ -30,7 +30,7 @@ if (empty($data)) : ?>
 
     <?php endif; ?>
     <form action="addMessage.php" method="POST">
-        <input type="hidden" name="ref_conv" value="<?php echo $data['conv_id'] ?>">
+        <input type="hidden" name="ref_conv" value="<?php echo $data['id'] ?>">
         <input type="hidden" name="idAuteur" value="<?php echo $userSessionId ?>">
         <input type='string' autocomplete="off" placeholder="Ecrivez votre message..." name="message" style="width: 1630px;"></input>
         <button class="button" type="submit" name="Rejoindre" value="<?php echo $id; ?>">Envoyer</button>

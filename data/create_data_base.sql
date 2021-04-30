@@ -7,7 +7,7 @@
 -- If tables already exists
 
 
-DROP TABLE IF EXISTS Utilisateur CASCADE ;
+DROP TABLE IF EXISTS Utilisateur CASCADE;
 
 CREATE TABLE Utilisateur (
     id SERIAL PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE Annonce (
     CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, estDisponible) VALUES ('Jeux de société','1','2021-04-24', NULL, 'Monopoly, Catan, ...', FALSE, NULL, NULL);
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Jeux de société','1','2021-04-24', NULL, 'Monopoly, Catan, ...', FALSE, NULL);
 DROP TABLE IF EXISTS Favoris;
 
 CREATE TABLE Favoris (
@@ -52,7 +52,7 @@ CREATE TABLE Favoris (
 DROP TABLE IF EXISTS Conversation;
 
 CREATE TABLE Conversation (
-    conv_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     id1 INTEGER NOT NULL,
     id2 INTEGER NOT NULL,
     conv_idAnnonce INTEGER NOT NULL,
@@ -64,13 +64,13 @@ CREATE TABLE Conversation (
 DROP TABLE IF EXISTS Message;
 
 CREATE TABLE Message (
-    mes_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     ref_conv INTEGER NOT NULL,
     idAuteur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
     description VARCHAR,
-    CONSTRAINT fk_ref_conv FOREIGN KEY (ref_conv) REFERENCES Conversation(conv_id),
-    CONSTRAINT fk_auteur FOREIGN KEY (idAuteur) REFERENCES Utilisateur(id),
+    CONSTRAINT fk_ref_conv FOREIGN KEY (ref_conv) REFERENCES Conversation(id),
+    CONSTRAINT fk_auteur FOREIGN KEY (idAuteur) REFERENCES Utilisateur(id)
 );
 
 
@@ -117,6 +117,8 @@ GRANT all privileges ON Annonce TO tpcurseurs;
 GRANT all privileges ON Annonce_id_seq TO tpcurseurs;
 GRANT all privileges ON Message TO tpcurseurs;
 GRANT all privileges ON Message_id_seq TO tpcurseurs;
+GRANT all privileges ON Conversation TO tpcurseurs;
+GRANT all privileges ON Conversation_id_seq TO tpcurseurs;
 GRANT all privileges ON Commentaire TO tpcurseurs;
 GRANT all privileges ON Commentaire_id_seq TO tpcurseurs;
 GRANT all privileges ON Reservation TO tpcurseurs;
