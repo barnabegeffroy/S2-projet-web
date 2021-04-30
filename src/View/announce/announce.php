@@ -111,9 +111,9 @@ if (empty($data)) : ?>
     </div>
 
 
+    <script src="../src/assets/scripts/maps.js"></script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly"></script>
-    <script src="../src/assets/scripts/maps.js"></script>
 
     <script src="../src/assets/scripts/calendar.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">
