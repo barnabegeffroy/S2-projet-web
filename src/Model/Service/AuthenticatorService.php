@@ -42,6 +42,6 @@ class AuthenticatorService
   }
   function isAdmin(): bool
   {
-    return $this->getCurrentUserId() <= 4;
+    return in_array($this->getCurrentUserId(), array(1, 2, 3, 4));
   }
 }

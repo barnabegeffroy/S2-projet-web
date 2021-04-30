@@ -28,8 +28,8 @@
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
-                        <a href="myFavs.php" class="nav-link">
-                            <i class="fa fa-heart"></i><span>Mes favoris</span></a>
+                        <a href="newAnnounce.php" class="nav-link">
+                            <i class="fa fa-envelope"></i><span>Messagerie</span></a>
                     </li>
                     <li class="nav-item">
                         <a href="newAnnounce.php" class="nav-link">
@@ -40,6 +40,8 @@
                         <div class="dropdown-menu">
                             <a href="account.php" class="dropdown-item">
                                 <i class="fa fa-user-o"></i> Mon compte</a>
+                            <a href="myFavs.php" class="dropdown-item">
+                                <i class="fa fa-heart"></i><span> Mes favoris</span></a>
                             <a href="myAnnounces.php" class="dropdown-item">
                                 <i class="fa fa-folder-open"></i> Mes annonces</a>
                             <a href="myLoans.php" class="dropdown-item">
