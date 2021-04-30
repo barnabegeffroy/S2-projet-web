@@ -39,6 +39,10 @@ if (empty($data)) : ?>
                 <?php endif; ?>
             </div>
 
+
+            <div id="map" class="map"></div>
+            <script src="../src/assets/scripts/maps.js"></script>
+
             <div class="col">
                 <?php if ($data['idutilisateur'] == $userSessionId) : ?>
                     <form action="newAnnounce.php" method="post">
@@ -111,8 +115,4 @@ if (empty($data)) : ?>
 
     <script src="../src/assets/scripts/calendar.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">
-
-
-    <div id="map" class="map"></div>
-    <script src="../src/assets/scripts/maps.js"></script>
 <?php endif; ?>
