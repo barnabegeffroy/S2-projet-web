@@ -24,11 +24,11 @@ $(document).ready(function () {
 
 // Initialize and add the map
 function initMap() {
-    var placeDetails = google.maps.places.getDetails()
-    // The location of the announce
-    var myPositionLat = placeDetails.lat();
-    var myPositionLng = placeDetails.lng();
-    const myPosition = google.maps.places.LatLng(myPositionLat, myPositionLng);
+    // var placeDetails = google.maps.places.getDetails()
+    // // The location of the announce
+    // var myPositionLat = placeDetails.lat();
+    // var myPositionLng = placeDetails.lng();
+    const myPosition = google.maps.places.LatLng(0.0,0.0);
     // The map, centered at the announce
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
