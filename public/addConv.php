@@ -15,7 +15,11 @@ $date = date('Y-m-d');
 $description = $_POST['message'];
 
 $chatRepository->createConv($idAnnounce, $idAutre, $idAuteur);
-$ref_conv = $chatRepository->getLastConvCreated($idAnnounce, $idAutre, $idAuteur);
-$chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description);
-header('Location: php.php?idConv=' . $ref_conv);
-exit;
+echo $idAnnounce;
+echo $idAutre;
+echo $idAuteur;
+echo $_SESSION['user_id'];
+// $ref_conv = $chatRepository->getLastConvCreated($idAnnounce, $idAutre, $idAuteur);
+// $chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description);
+// header('Location: php.php?idConv=' . $ref_conv);
+// exit;
