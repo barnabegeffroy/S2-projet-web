@@ -2,7 +2,7 @@
     <h1 class="text-dark pt-4">Messagerie</h1>
 </div>
 <?php
-$data = $chatRepository->getConvById($_GET['idConv']);
+$data = $chatRepository->getMessagesFromConvId($_GET['idConv']);
 $userSessionId = $authenticatorService->getCurrentUserId();
 if (empty($data)) : ?>
     <h3>Annonce introuvable</h3>
