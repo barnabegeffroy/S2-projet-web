@@ -44,17 +44,6 @@ class Announce
      */
     private $lieu;
 
-
-    /**
-     * @var boolean
-     */
-    private $isAvailableNow;
-
-    // /**
-    //  * @var image
-    //  */
-    // private $profilePicture;
-
     /**
      * @return mixed
      */
@@ -165,7 +154,7 @@ class Announce
     /**
      * @return mixed
      */
-    public function getPhoto() : bool
+    public function getPhoto(): bool
     {
         return $this->photo;
     }
@@ -195,24 +184,6 @@ class Announce
     public function setPlace($place)
     {
         $this->lieu = $place;
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isAvailable(): bool
-    {
-        return $this->isAvailableNow;
-    }
-
-    /**
-     * @param boolean $bool
-     * @return Announce
-     */
-    public function setIsAvailable($bool)
-    {
-        $this->isAvailableNow = $bool;
         return $this;
     }
 }

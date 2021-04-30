@@ -12,7 +12,7 @@ $userService = new \Rediite\Model\Service\UserService($userRepository);
 
 $user = $authenticatorService->getCurrentUser();
 ?>
-<div class="col-3">
+<div class="col-5">
     <h4 class="text-dark text-center pt-4">Modifiez vos informations.</h4>
 
     <form action="updateInfos.php" method="post">

@@ -21,6 +21,8 @@ $id = $_POST['idAnnounce'];
 $viewData = [];
 $announce = $announceRepository->findOneById($id);
 
+$isSet = !empty($_POST['isSet']) ? $_POST['isSet'] : null;
+
 if ($titre !== $announce->getTitle()) {
   $announceRepository->changeTitle($id, $titre);
 }
@@ -33,7 +35,15 @@ if ($duree !== $announce->getDuration()) {
   $announceRepository->changeDuration($id, $duree);
 }
 
-$viewData = upload_image($announceRepository, $viewData, $image, $id);
+if (!empty($isSet)) {
+  $file = glob("../src/View/images/announces/" . $id . ".*");
+  unlink($file[0]);
+  $announceRepository->changePhoto($id, false);
+}
+
+if (!empty($image)) {
+  $viewData = upload_image($announceRepository, $viewData, $image, $id);
+}
 
 if (empty($viewData['errorInCreation'])) {
   header('Location: announce.php?id=' . $id);

@@ -13,7 +13,6 @@ class AnnounceHydrator
       ->setTitle($data['titre'])
       ->setUserId($data['idutilisateur'])
       ->setDate($data['datepublication'])
-      ->setIsAvailable($data['estdisponible'])
       ->setDuration($data['duree'])
       ->setDescription($data['description'])
       ->setPhoto($data['photo'])

@@ -1,4 +1,4 @@
-<div class="col-3">
+<div class="col-5">
   <h4 class="text-dark text-center pt-4">Entrez vos indentifiants.</h4>
   <form action="authenticate.php" method="post">
     <div class="form-group">

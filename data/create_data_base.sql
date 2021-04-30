@@ -21,6 +21,9 @@ CREATE TABLE Utilisateur (
 DROP TABLE IF EXISTS Annonce CASCADE;
 
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Geffroy','Craig','Barnabé','barnabe.geffroy@ensiie.fr','0670908741','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
+INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Clavel','Clemos','Clémence','clemence.clavel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
+INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Gayet','Pipo','Constant','constant.gayet@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
+INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Harivel','Poulette','Alexia','alexia.harviel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
@@ -31,7 +34,6 @@ CREATE TABLE Annonce (
     description VARCHAR,
     photo BOOLEAN,
     lieu VARCHAR(256),
-    estDisponible BOOLEAN,
     CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 

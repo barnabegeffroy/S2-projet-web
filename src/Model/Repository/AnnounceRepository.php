@@ -31,8 +31,8 @@ class AnnounceRepository
   function insert(string $titre, int $idUser, string $datePublication, $duree, $description, $place)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, estDisponible) 
-      VALUES (:titre, :idUser, :datePublication, :duree, :description, FALSE, :lieu, TRUE)'
+      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) 
+      VALUES (:titre, :idUser, :datePublication, :duree, :description, FALSE, :lieu)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);

@@ -5,7 +5,7 @@ if (!$authenticatorService->isAuthenticated()) {
   exit;
 }
 ?>
-<div class="col-3">
+<div class="col-5">
   <h4 class="text-dark text-center pt-4">Modifiez votre mot de passe.</h4>
 
   <form action="updatePassword.php" method="post">

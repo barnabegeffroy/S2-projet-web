@@ -44,12 +44,6 @@ class Utilisateur
      */
     private $telephone;
 
-
-    /**
-     * @var float
-     */
-    private $noteMoyenne;
-
     /**
      * @var string
      */
@@ -200,24 +194,6 @@ class Utilisateur
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAverageNote()
-    {
-        return $this->noteMoyenne;
-    }
-
-    /**
-     * @param mixed $averageNote
-     * @return Utilisateur
-     */
-    public function setAverageNote($averageNote)
-    {
-        $this->noteMoyenne = $averageNote;
         return $this;
     }
 
