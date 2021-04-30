@@ -108,7 +108,7 @@ if (empty($data)) : ?>
                 </form>
                 <form action="addConv.php" id="message" class="form-container" method="POST">
                     <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
-                    <input type="hidden" name="idOther" value="<?php echo $data['idUtilisateur'] ?>">
+                    <input type="hidden" name="idOther" value="<?php echo $data['idutilisateur'] ?>">
                     <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
                     <label class="form-label" for="message"> </label>
                     <input class="form-control" type="text" name="message" placeholder="Ecrivez votre message ici...">
