@@ -28,7 +28,7 @@
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
-                        <a href="newAnnounce.php" class="nav-link">
+                        <a href="chat.php" class="nav-link">
                             <i class="fa fa-envelope"></i><span>Messagerie</span></a>
                     </li>
                     <li class="nav-item">

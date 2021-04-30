@@ -43,7 +43,7 @@ class ChatRepository
     public function getConvId($convId)
     {
         $stmt = $this->dbAdapter->prepare(
-            'SELECT * FROM "conversation" WHERE conv_id = :id'
+            'SELECT * FROM "conversation" WHERE id = :id'
         );
         $stmt->bindValue(':id', $convId, \PDO::PARAM_INT);
         $stmt->execute();
@@ -70,7 +70,7 @@ class ChatRepository
     function createConv($idAnnonce, $id1, $id2)
     {
         $stmt = $this->dbAdapter->prepare(
-            'INSERT INTO "Conversation" (conv_idAnnonce, id1, id2) VALUES (:idAnnonce, :id1, :id2)'
+            'INSERT INTO "conversation" (conv_idAnnonce, id1, id2) VALUES (:idAnnonce, :id1, :id2)'
         );
         $stmt->bindValue(':idAnnonce', $idAnnonce, \PDO::PARAM_INT);
         $stmt->bindValue(':id1', $id1, \PDO::PARAM_INT);
@@ -81,14 +81,14 @@ class ChatRepository
     function getLastConvCreated($idAnnonce, $id1, $id2)
     {
       $stmt = $this->dbAdapter->prepare(
-        'SELECT conv_id FROM conversation WHERE idAnnonce = :idAnnonce AND id1 = :id1 AND id2 = :id2 ORDER BY ID DESC LIMIT 1'
+        'SELECT id FROM "conversation" WHERE conv_idannonce = :idAnnonce AND id1 = :id1 AND id2 = :id2 ORDER BY ID DESC LIMIT 1'
       );
       $stmt->bindValue(':idAnnonce', $idAnnonce, \PDO::PARAM_INT);
       $stmt->bindValue(':id1', $id1, \PDO::PARAM_INT);
       $stmt->bindValue(':id2', $id2, \PDO::PARAM_INT);
       $stmt->execute();
       $id = $stmt->fetch();
-      return $id ? $id['conv_id'] : null;
+      return $id ? $id: null;
     }
     //function insert(string $userName,string $createdAt,string $playersToFind,string $gameName,string $title)
     function insertMessage(int $ref_conv, int $idAuteur, string $datePublication, string $description)

@@ -72,6 +72,7 @@ $(function () {
             at: 'left bottom',
             of: $('#jrange input')
         })
+    hide();
 
     $('#jrange input').on('focus', function (e) {
         var v = this.value,

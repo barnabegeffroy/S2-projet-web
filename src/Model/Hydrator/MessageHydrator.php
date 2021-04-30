@@ -10,7 +10,7 @@ class MessageHydrator
   {
     $message = new MessageEntity();
     $message
-        ->setMessageId($data['mes_id'])
+        ->setMessageId($data['id'])
         ->setIdAuteur($data['idauteur'])
         ->setDescription($data['description'])
         ->setDatePublication($data['datepublication'])
