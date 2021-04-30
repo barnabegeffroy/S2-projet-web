@@ -40,9 +40,6 @@ if (empty($data)) : ?>
             </div>
 
 
-            <script src="../src/assets/scripts/maps.js"></script>
-            <div id="map"></div>
-            
             <div class="col">
                 <?php if ($data['idutilisateur'] == $userSessionId) : ?>
                     <form action="newAnnounce.php" method="post">
@@ -120,6 +117,20 @@ if (empty($data)) : ?>
             </div>
         </div>
     </div>
+
+
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+          height: 400px;
+          /* The height is 400 pixels */
+          width: 100%;
+        /* The width is the width of the web page */
+    }
+    </style>
+    <script src="../src/assets/scripts/maps.js"></script>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly"></script>
 
     <script src="../src/assets/scripts/calendar.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">

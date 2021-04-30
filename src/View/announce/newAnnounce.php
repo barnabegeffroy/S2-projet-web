@@ -39,6 +39,7 @@ if (isset($data['errorInCreation'])) : ?>
         <div>
           <label class="form-label" for="cp">Adresse :</label>
           <input class="form-control" type="text" class="form-control" id="search_input" placeholder="Saisissez une adresse" />
+          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&libraries=places"></script>
         </div>
         <?php if ((isset($data['photo']) && $data['photo'] !== "1") || !isset($data['photo'])) : ?>
           <div>
