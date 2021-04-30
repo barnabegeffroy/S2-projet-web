@@ -28,7 +28,7 @@ function initMap() {
     // // The location of the announce
     // var myPositionLat = placeDetails.lat();
     // var myPositionLng = placeDetails.lng();
-    const myPosition = google.maps.places.LatLng(0.0,0.0);
+    const myPosition = { lat: -25.344, lng: 131.036 };
     // The map, centered at the announce
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
