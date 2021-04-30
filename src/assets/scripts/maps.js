@@ -20,6 +20,8 @@ window.addEventListener('load',function(){
       });     
     }
   },false);
+
+  
 // Initialize and add the map
 function initMap() {
     // The location of the announce
