@@ -49,16 +49,28 @@ CREATE TABLE Favoris (
 );
 
 
+DROP TABLE IF EXISTS Conversation;
+
+CREATE TABLE Conversation (
+    conv_id SERIAL PRIMARY KEY,
+    id1 INTEGER NOT NULL,
+    id2 INTEGER NOT NULL,
+    conv_idAnnonce INTEGER NOT NULL,
+    CONSTRAINT fk_message_1 FOREIGN KEY (id1) REFERENCES Utilisateur(id),
+    CONSTRAINT fk_message_2 FOREIGN KEY (id2) REFERENCES Utilisateur(id),
+    CONSTRAINT cle_etr_annonce FOREIGN KEY (conv_idAnnonce) REFERENCES Annonce(id)
+);
+
 DROP TABLE IF EXISTS Message;
 
 CREATE TABLE Message (
-    id SERIAL PRIMARY KEY,
-    idEmetteur INTEGER NOT NULL,
-    idReceveur INTEGER NOT NULL,
+    mes_id SERIAL PRIMARY KEY,
+    ref_conv INTEGER NOT NULL,
+    idAuteur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
     description VARCHAR,
-    CONSTRAINT fk_message_1 FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id),
-    CONSTRAINT fk_message_2 FOREIGN KEY (idReceveur) REFERENCES Utilisateur(id)
+    CONSTRAINT fk_ref_conv FOREIGN KEY (ref_conv) REFERENCES Conversation(conv_id),
+    CONSTRAINT fk_auteur FOREIGN KEY (idAuteur) REFERENCES Utilisateur(id),
 );
 
 

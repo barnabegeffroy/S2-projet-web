@@ -74,7 +74,7 @@ if (empty($data)) : ?>
                     <div class="form-popup" id="deleteAccountForm">
                         <form action="deleteAnnounce.php" method="post" class="form-container">
                             <label class="form-label" for="password"><b>Mot de passe</b></label>
-                            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+                            <input class="form-control" type="password" placeholder="entrez votre mot de passe" name="password" required>
                             <input id="idAnnounce" name="idAnnounce" type="hidden">
                             <input id="idUser" name="idUser" type="hidden">
                             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
@@ -82,7 +82,7 @@ if (empty($data)) : ?>
                         </form>
                     </div>
                 <?php endif; ?>
-                <form id="resa" name="resa" action="addReservation.php" onsubmit="return validateForm(<?php echo isset($data['duree']) ? $data['duree'] : PHP_INT_MAX ?>)" method="POST">
+                <form class="form-container" id="resa" name="resa" action="addReservation.php" onsubmit="return validateForm(<?php echo isset($data['duree']) ? $data['duree'] : PHP_INT_MAX ?>)" method="POST">
                     <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
                     <input type="hidden" name="auth" value="<?php echo ($userSessionId !== $data['idutilisateur'] && !empty($userSessionId)) ?>">
                     <input type="hidden" id="resaDates" value="<?php
@@ -99,11 +99,19 @@ if (empty($data)) : ?>
 
                     <div class="wrapper">
                         <div id="jrange" class="dates">
-                            <label class="form-label" for="dates"><b><?php echo $data['idutilisateur'] == $userSessionId || empty($userSessionId) ? "Calendrier des réservations" : "Sélectionnez la ou les dates de réservation" ?></b></label><br>
+                            <label class="form-label" for="dates"><strong><?php echo $data['idutilisateur'] == $userSessionId || empty($userSessionId) ? "Calendrier des réservations" : "Sélectionnez la ou les dates de réservation" ?></strong></label><br>
                             <input name="dates" required />
                             <div></div>
                         </div>
                     </div>
+                </form>
+                <form action="addConv.php" id="message" class="form-container">
+                    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+                    <input type="hidden" name="idOther" value="<?php echo $data['idUtilisateur'] ?>">
+                    <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
+                    <label class="form-label" for="message"> </label>
+                    <input class="form-control" type="text" name="message" placeholder="Ecrivez votre message ici...">
+                    <button type="submit" class="btn btn-outline-dark btn-md my-1">Envoyer</button>
                 </form>
             </div>
         </div>

@@ -16,11 +16,3 @@ unlink($filename);
 
 header('Location: announce.php?id=' . $id);
 exit;
-?>
-<!-- <form id="tmpForm" action="announce.php" method="get"> -->
-<!-- <input type="hidden" name="id" value="<?php echo $id ?>"> -->
-<!-- </form> -->
-<!-- <script type="text/javascript"> -->
-// document.getElementById('tmpForm').submit();
-<!-- </script> -->
-<!--  -->

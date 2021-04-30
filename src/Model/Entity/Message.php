@@ -12,12 +12,12 @@ class Message
     /**
      * @var int
      */
-    private $idEmetteur;
+    private $idAuteur;
 
     /**
      * @var int
      */
-    private $idReceveur;
+    private $refConv;
 
     /**
      * @var string
@@ -40,7 +40,7 @@ class Message
 
     /**
      * @param mixed $id
-     * @return Utilisateur
+     * @return Message
      */
     public function setMessageId($id)
     {
@@ -50,34 +50,34 @@ class Message
     /**
      * @return mixed
      */
-    public function getIdReceveur()
+    public function getIdAuteur()
     {
-        return $this->idReceveur;
+        return $this->idAuteur;
     }
     /**
      * @param mixed $id
      * @return Message
      */
-    public function setIdReceveur($id)
+    public function setIdAuteur($id)
     {
-        $this->idReceveur = $id;
+        $this->idAuteur = $id;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getIdEmetteur()
+    public function getRefConv()
     {
-        return $this->idEmetteur;
+        return $this->refConv;
     }
     /**
      * @param mixed $id
      * @return Message
      */
-    public function setIdEmetteur($id)
+    public function setRefConv($id)
     {
-        $this->idEmetteur = $id;
+        $this->refConv = $id;
         return $this;
     }
     

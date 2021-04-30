@@ -10,6 +10,8 @@ function loadView($view, $data)
     $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
     $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
     $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
+    $messageHydrator = new \Rediite\Model\Hydrator\MessageHydrator();
+    $chatRepository = new \Rediite\Model\Repository\ChatRepository($dbAdapter, $messageHydrator);
 ?>
     <!doctype html>
     <html lang="fr">

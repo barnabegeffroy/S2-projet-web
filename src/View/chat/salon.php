@@ -1,56 +1,38 @@
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Messagerie</h1>
+</div>
 <?php
-if (!$authenticatorService->isAuthenticated()) {
-    $error = "Vous devez vous connecter pour accéder à cette page";
-    header('Location: index.php?erreur=' . $error);
-    exit;
-}
-$dbfactory = new \Rediite\Model\Factory\dbFactory();
-$dbAdapter = $dbfactory->createService();
-$messageRepository = new \Rediite\Model\Repository\MessageRepository($dbAdapter);
-
-$messages = $messageRepository->viewMessage($authenticatorService->getCurrentUserId());
-
-if($messages=="")
-{
-    echo $messages;
-}
-else
-{
-    foreach($messages as $message)
-    {
-    $description=htmlspecialchars($message->getDescription());
-    $idEmetteur=($message->getIdEmetteur());
-
-    }
-}
-
-?>
-
-<html>
-    <head>
-        
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="style.css" />
-
-
-    </head>
-    <body>
-        <div class="rectangle2"><?php 
-        if($messages!=""){
-        foreach($messages as $message)
-        {
-            $description=$message->getDescription();
-            $idEmetteur=$message->getIdEmetteur();
-        /*  $content=$message->getContent(); */
-        echo $idEmetteur.': '.$description.'<br/>';     
-
-        }}?>
-        
-
-
-        <form action="salon.php" method="POST">
-        <input type='string' autocomplete="off" placeholder="Ecrivez votre message..." name="message" style="width: 1630px;"></input>
-        <button class="button" type="submit" name="Rejoindre" value="<?php echo $id ; ?>" >Envoyer</input>
+$data = $chatRepository->getConvById($_GET['idConv']);
+$userSessionId = $authenticatorService->getCurrentUserId();
+if (empty($data)) : ?>
+    <h3>Annonce introuvable</h3>
+<?php elseif ($data['id1'] !== $userSessionId && $data['id2'] !== $userSessionId) : ?>
+    <h3>Accès refusé</h3>
+<?php else :
+    $other = $data['id1'] !== $userSessionId ? $data['id1'] : $data['id2'];
+    $messages = $chatRepository->getMessagesFromConvId($_GET['idConv']); ?>
+    <p class="lead">
+        Conversation avec <?php echo $other['prenom'] . (isset($other['pseudo']) ? ' \'' . $other['pseudo'] . '\' ' : ' ') . $other['nom'] . " le " . $data['datepublication']; ?>
+    </p>
+    <div class="border-top border-primary w-25 mx-auto my-3"></div>
+    <?php foreach ($messages as &$message)
+        if ($message->getIdAuteur() == $userSessionId) : ?>
+        <div class="text-right">
+            <p class="lead"><?php echo $message->getDatePublication() ?></p>
+            <div><?php echo $message->getDescription() ?></div>
         </div>
-    </body>
 
+    <?php else : ?>
+        <div class="text-left">
+            <p class="lead"><?php echo $message->getDatePublication() ?></p>
+            <div><?php echo $message->getDescription() ?></div>
+        </div>
+
+    <?php endif; ?>
+    <form action="addMessage.php" method="POST">
+        <input type="hidden" name="ref_conv" value="<?php echo $data['conv_id'] ?>">
+        <input type="hidden" name="idAuteur" value="<?php echo $userSessionId ?>">
+        <input type='string' autocomplete="off" placeholder="Ecrivez votre message..." name="message" style="width: 1630px;"></input>
+        <button class="button" type="submit" name="Rejoindre" value="<?php echo $id; ?>">Envoyer</button>
+    </form>
+<?php endif; ?>
