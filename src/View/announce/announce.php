@@ -112,8 +112,6 @@ if (empty($data)) : ?>
     <script src="../src/assets/scripts/calendar.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">
 
-    </style>
-
 
     <div id="map" class="map"></div>
     <script src="../src/assets/scripts/maps.js"></script>
