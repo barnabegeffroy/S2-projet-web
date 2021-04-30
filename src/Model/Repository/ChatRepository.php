@@ -40,7 +40,7 @@ class ChatRepository
         return $convs;
     }
 
-    public function getConvId($convId)
+    public function getConvFromId($convId)
     {
         $stmt = $this->dbAdapter->prepare(
             'SELECT * FROM "conversation" WHERE id = :id'
@@ -94,7 +94,7 @@ class ChatRepository
     function insertMessage(int $ref_conv, int $idAuteur, string $datePublication, string $description)
     {
         $stmt = $this->dbAdapter->prepare(
-            'INSERT INTO "Message" (ref_conv, idAuteur, datePublication , description) VALUES (:ref_conv, :idAuteur, :datePublication, :description)'
+            'INSERT INTO "message" (ref_conv, idAuteur, datePublication , description) VALUES (:ref_conv, :idAuteur, :datePublication, :description)'
         );
         $stmt->bindValue(':ref_conv', $ref_conv, \PDO::PARAM_INT);
         $stmt->bindValue(':idAuteur', $idAuteur, \PDO::PARAM_INT);

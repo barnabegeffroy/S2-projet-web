@@ -30,16 +30,16 @@ $convs = $chatRepository->findConvsByUserId($userId);
         </form>
     </div>
     <?php foreach ($convs as &$conv) :
-        $idAnnounce = $conv['idannonce'];
+        $idAnnounce = $conv['conv_idannonce'];
         $idChatter = $conv['id1'] == $userId ? $conv['id2'] : $conv['id1'];
         $idChat = $conv['id'];
-        $announce = $announceRepository->getTitle($idAnnounce);
+        $title = $announceRepository->getTitle($idAnnounce);
         $chatterIdentity = $userRepository->getIdentity($idChatter);
     ?>
         <div class="container mt-2">
             <div class="row rounded-3 border border-3 my-5">
                 <div class="col my-auto">
-                    <h4 class="my-4"><?php echo $announce['titre'] ?></h4>
+                    <h4 class="my-4"><?php echo $title ?></h4>
                     <h6><?php echo $chatterIdentity['prenom'] . (isset($chatterIdentity['pseudo']) ? ' \'' . $chatterIdentity['pseudo'] . '\' ' : ' ') . $chatterIdentity['nom']; ?></h6>
                 </div>
 
