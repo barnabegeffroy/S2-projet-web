@@ -1,4 +1,4 @@
-<p> Ce site a été créé par : </p>
+<h4> Ce site a été créé par : </h4>
 <ul>
     <li> Alexia Harivel </li>
     <li>Barnabé Geffroy</li>

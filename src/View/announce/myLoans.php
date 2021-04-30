@@ -10,31 +10,32 @@ $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 $announceService = new \Rediite\Model\Service\AnnounceService($announceRepository);
 
-$resas = $announceRepository->findLoans($authenticatorService->getCurrentUserId());
+$userId = $authenticatorService->getCurrentUserId();
+$resas = $announceRepository->findLoans($userId);
 
 ?>
 
-<h1 class="text-dark pt-4">Mes entraiides</h1>
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Mes entraiides</h1>
+</div>
 <?php if (empty($resas)) : ?>
-    <div>Vous n'avez pas encore d'entraiides.</div>
+    <h4 class="text-dark text-center pt-4">Vous n'avez pas encore d'entraiides.</h4>
 
 <?php else : ?>
     <?php foreach ($resas as &$resa) :
-        $announce = $announceRepository->findOneById($resa['idannonce']);
-        loadAnnounce($announce);
+        $announce = $announceRepository->findOneById($resa['res_idannonce']);
     ?>
-        <div>
-            Date de début : <?php echo $resa['datedebut']; ?>
+        <div class="border border-3 rounded-3 my-1">
+            <p class="text-center my-2 font-weight-bold"> Du <?php echo $resa['datedebut']; ?> au <?php echo $resa['datefin']; ?> :</p>
+            <?php loadAnnounce($announce, $userId, $announceService->isFav($announce->getId(), $userId));
+            ?>
+            <form class="text-center" action="deleteResa.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+                <input type="hidden" name="start" value="<?php echo $resa['datedebut'] ?>">
+                <input type="hidden" name="userId" value="<?php echo $announce->getUserId() ?>">
+                <button class="btn btn-outline-dark btn-md" type="submit">Supprimer cette réservation</button>
+            </form>
         </div>
-        <div>
-            Date de fin : <?php echo $resa['datefin']; ?>
-        </div>
-        <form action="deleteResa.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-            <input type="hidden" name="start" value="<?php echo $resa['datedebut'] ?>">
-            <input type="hidden" name="userId" value="<?php echo $announce->getUserId() ?>">
-            <button class="button1" type="submit">Supprimer cette réservation</button>
-        </form>
     <?php endforeach; ?>
 
 <?php endif; ?>

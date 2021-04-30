@@ -16,9 +16,7 @@ CREATE TABLE Utilisateur (
     nom VARCHAR(50) NOT NULL,
     email VARCHAR(256) UNIQUE NOT NULL,
     telephone VARCHAR(10),
-    password VARCHAR(256) NOT NULL,
-    profilePicture INTEGER,
-    noteMoyenne FLOAT
+    password VARCHAR(256) NOT NULL
 );
 DROP TABLE IF EXISTS Annonce CASCADE;
 
@@ -41,11 +39,11 @@ INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description
 DROP TABLE IF EXISTS Favoris;
 
 CREATE TABLE Favoris (
-    idUtilisateur INTEGER NOT NULL,
-    idAnnonce INTEGER NOT NULL,
-    PRIMARY KEY (idUtilisateur, idAnnonce),
-    CONSTRAINT cle_etr_utilisateur FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id),
-    CONSTRAINT cle_etr_annonce FOREIGN KEY (idAnnonce) REFERENCES Annonce(id)
+    fav_idUtilisateur INTEGER NOT NULL,
+    fav_idAnnonce INTEGER NOT NULL,
+    PRIMARY KEY (fav_idUtilisateur, fav_idAnnonce),
+    CONSTRAINT cle_etr_utilisateur FOREIGN KEY (fav_idUtilisateur) REFERENCES Utilisateur(id),
+    CONSTRAINT cle_etr_annonce FOREIGN KEY (fav_idAnnonce) REFERENCES Annonce(id)
 );
 
 
@@ -76,17 +74,17 @@ CREATE TABLE Commentaire (
 DROP TABLE IF EXISTS Reservation;
 
 CREATE TABLE Reservation (
-    idAnnonce INTEGER NOT NULL,
-    idUtilisateur INTEGER NOT NULL,
+    res_idAnnonce INTEGER NOT NULL,
+    res_idUtilisateur INTEGER NOT NULL,
     dateDebut DATE NOT NULL,
     dateFin DATE NOT NULL,
-    CONSTRAINT pk_reservation PRIMARY KEY (idAnnonce,dateDebut,dateFin),
-    CONSTRAINT fk_annonce_reservation FOREIGN KEY (idAnnonce) REFERENCES Annonce(id),
-    CONSTRAINT fk_user_reservation FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
+    CONSTRAINT pk_reservation PRIMARY KEY (res_idAnnonce,dateDebut,dateFin),
+    CONSTRAINT fk_annonce_reservation FOREIGN KEY (res_idAnnonce) REFERENCES Annonce(id),
+    CONSTRAINT fk_user_reservation FOREIGN KEY (res_idUtilisateur) REFERENCES Utilisateur(id)
 );
 
-INSERT INTO "reservation" (idAnnonce,idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-04-26','2021-04-29');
-INSERT INTO "reservation" (idAnnonce,idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
+INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-04-26','2021-04-29');
+INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
 
 DROP TABLE IF EXISTS Localisation;
 

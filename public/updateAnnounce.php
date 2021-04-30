@@ -36,7 +36,7 @@ if ($duree !== $announce->getDuration()) {
 $viewData = upload_image($announceRepository, $viewData, $image, $id);
 
 if (empty($viewData['errorInCreation'])) {
-  header('Location: myAnnounces.php');
+  header('Location: announce.php?id=' . $id);
   exit;
 }
 loadView('announce/myAnnounces', $viewData);

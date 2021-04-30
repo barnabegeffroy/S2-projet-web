@@ -1,0 +1,22 @@
+.date-range-selected>.ui-state-active,
+.date-range-selected>.ui-state-default {
+    background: none;
+    background-color: lightsteelblue;
+}
+
+.wrapper {
+    height: 600px;
+}
+
+#jrange input {
+    width: 200px;
+}
+
+#jrange div {
+    font-size: 9pt;
+}
+
+.event a {
+    background-color: red !important;
+    color: white !important;
+}

@@ -25,13 +25,14 @@ function loadView($view, $data)
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="../src/assets/scripts/form.js"></script>
         <script src="../src/assets/scripts/maps.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,places&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap"></script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script> -->
     </head>
 
     <body>
         <?php include_once '../src/View/layout/header.php' ?>
-        <div class="col-12 text-center mt-5">
+        <div class="main-container">
             <?php include_once '../src/View/' . $view . '.php' ?>
         </div>
         <?php include_once '../src/View/layout/footer.php' ?>
@@ -41,37 +42,57 @@ function loadView($view, $data)
 <?php
 }
 
-function loadAnnounce($announce)
+function loadAnnounce($announce, $userId, $isFav)
 { ?>
-    <div class="row">
-        <div class="col">
-            <img src=" <?php if (isset($file[0])) {
-                            echo $file[0];
-                        } else {
-                            echo "../src/View/images/no_pic.jpg";
-                        } ?>" class="w-100" />
-        </div>
-        <div class="col">
-            <h4 class="my-4"><?php echo $announce->getTitle() ?></h4>
-            <h6>Date de publication :</h6>
-            <p><?php echo $announce->getDate() ?></p>
-            <?php if ($announce->getDescription() !== null) : ?>
-                <h6>Description :</h6>
-                <p><?php echo $announce->getDescription() ?></p>
-            <?php endif; ?>
-            <?php if ($announce->getPlace() !== null) : ?>
-                <h6>Lieu de prêt :</h6>
-                <p><?php echo $announce->getPlace() ?></p>
-            <?php endif; ?>
-            <?php if ($announce->getDuration() !== null) : ?>
-                <h6>Durée de prêt maximale en jours :</h6>
-                <p><?php echo $announce->getDuration() ?></p>
-            <?php endif; ?>
-            <?php $file = glob("../src/View/images/announces/" . $announce->getId() . ".*"); ?>
-            <form action="announce.php" method="GET">
-                <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
-                <button class="btn btn-outline-dark btn-md" type="submit">Voir l'annonce</button>
-            </form>
+    <div class="container mt-2">
+        <div class="row rounded-3 border border-3 my-5">
+            <div class="col my-auto">
+                <h4 class="my-4"><?php echo $announce->getTitle() ?></h4>
+                <h6>Date de publication :</h6>
+                <p><?php echo $announce->getDate() ?></p>
+                <?php if ($announce->getDescription() !== null) : ?>
+                    <h6>Description :</h6>
+                    <p><?php echo $announce->getDescription() ?></p>
+                <?php endif; ?>
+                <?php if ($announce->getPlace() !== null) : ?>
+                    <h6>Lieu de prêt :</h6>
+                    <p><?php echo $announce->getPlace() ?></p>
+                <?php endif; ?>
+                <?php if ($announce->getDuration() !== null) : ?>
+                    <h6>Durée de prêt maximale en jours :</h6>
+                    <p><?php echo $announce->getDuration() ?></p>
+                <?php endif; ?>
+            </div>
+
+            <div class="col my-auto">
+                <?php $file = glob("../src/View/images/announces/" . $announce->getId() . ".*"); ?>
+                <img src=" <?php if (isset($file[0])) {
+                                echo $file[0];
+                            } else {
+                                echo "../src/View/images/no_pic.jpg";
+                            } ?>" class="w-100" />
+            </div>
+
+            <div class="col my-auto">
+                <form action="announce.php" method="GET">
+                    <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+                    <button class="btn btn-outline-dark btn-md my-1" type="submit">Voir l'annonce</button>
+                </form>
+                <?php if ($announce->getUserId() ==  $userId) : ?>
+                    <button class="btn btn-outline-dark btn-md my-1" onclick="location.href = 'myAnnounces.php'">Voir toutes mes annonces</button>
+                    <form action="newAnnounce.php" method="post">
+                        <input type="hidden" name="idAnnounce" value="<?php echo $announce->getId() ?>">
+                        <button class="btn btn-outline-dark btn-md my-1" type="submit">Modifier mon annonce</button>
+                    </form>
+                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAnnounceForm'); change('idAnnounce','<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
+                <?php elseif (!empty($userId)) :
+                    $bool = ($isFav) ?>
+                    <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $announce->getId() ?>">
+                        <button class="btn btn-outline-dark btn-md my-1" type="submit"><?php echo $bool ? "Supprimer des" : "Ajouter aux"  ?> favoris</button>
+                    </form>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 <?php }
