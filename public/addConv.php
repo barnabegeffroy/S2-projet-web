@@ -19,7 +19,7 @@ $chatRepository->createConv($idAnnounce, $idAutre, $idAuteur);
 // echo $idAutre;
 // echo $idAuteur;
 // echo $_SESSION['user_id'];
-$ref_conv = $chatRepository->getLastConvCreated($idAnnounce, $idAutre, $idAuteur);
+$ref_conv = $chatRepository->getLastConvCreated($idAnnounce, $idAutre, $idAuteur)['id'];
 $chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description);
 header('Location: php.php?idConv=' . $ref_conv);
 exit;
