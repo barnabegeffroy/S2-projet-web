@@ -40,7 +40,7 @@ if (empty($data)) : ?>
             </div>
 
 
-            <div id="map" class="map"></div>
+            <div id="map"></div>
             <script src="../src/assets/scripts/maps.js"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=geometry&v=weekly" async></script>
 
