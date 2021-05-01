@@ -1,7 +1,7 @@
 <?php if (isset($data['errorInCreation'])) : ?>
   <span class="error-message"><?= $data['errorInCreation'] ?></span>
 <?php endif; ?>
-<div class="col-35>
+<div class="col-35">
   <h4 class="text-dark text-center pt-4">Entrez vos informations pour créer votre compte.</h4>
   <form action="addUser.php" method="post">
     <div class="form-group">

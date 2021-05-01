@@ -35,9 +35,11 @@ function loadView($view, $data)
 
     <body>
         <?php include_once '../src/View/layout/header.php' ?>
+
         <div class="main-container">
             <?php include_once '../src/View/' . $view . '.php' ?>
         </div>
+        
         <?php include_once '../src/View/layout/footer.php' ?>
     </body>
 
@@ -73,7 +75,7 @@ function loadAnnounce($announce, $userId, $isFav)
                                 echo $file[0];
                             } else {
                                 echo "../src/View/images/no_pic.jpg";
-                            } ?>" class="w-100" />
+                            } ?>" class="w-100" alt="Pas de visuel disponible"/>
             </div>
 
             <div class="col my-auto">

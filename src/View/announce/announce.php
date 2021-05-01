@@ -23,7 +23,7 @@ if (empty($data)) : ?>
                                 echo $file[0];
                             } else {
                                 echo "../src/View/images/no_pic.jpg";
-                            } ?>" class="w-100" />
+                            } ?>" class="w-100" alt="Pas de visuel disponible"/>
             </div>
 
             <div class="col">
@@ -50,7 +50,7 @@ if (empty($data)) : ?>
                     <div class="form-popup" id="deleteAccountForm">
                         <form action="deleteAnnounce.php" method="post" class="form-container">
                             <label class="form-label" for="password"><b>Mot de passe</b></label>
-                            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+                            <input type="password" placeholder="entrez votre mot de passe" name="password" id="password" required>
                             <input id="idAnnounce" name="idAnnounce" type="hidden">
                             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
                             <button type="button" class="btn btn-outline-dark btn-md my-1 cancel" onclick="closeForm('deleteAccountForm')">Annuler</button>

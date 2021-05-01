@@ -23,7 +23,7 @@ $convs = $chatRepository->findConvsByUserId($userId);
     <div class="form-popup" id="deleteConvForm">
         <form action="deleteConv.php" method="post" class="form-container">
             <label class="form-label" for="password"><b>Mot de passe</b></label>
-            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+            <input type="password" placeholder="entrez votre mot de passe" name="password" id="password" required>
             <input id="idConv" name="idConv" type="hidden">
             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
             <button type="button" class="btn btn-outline-dark btn-md my-1 cancel" onclick="closeForm('deleteAnnounceForm')">Annuler</button>
@@ -49,7 +49,7 @@ $convs = $chatRepository->findConvsByUserId($userId);
                                     echo $file[0];
                                 } else {
                                     echo "../src/View/images/no_pic.jpg";
-                                } ?>" class="w-100" />
+                                } ?>" class="w-100" alt="Pas de visuel disponible" />
                 </div>
                 <div class="col my-auto">
                     <form action="salon.php" method="GET">

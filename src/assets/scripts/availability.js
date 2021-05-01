@@ -89,3 +89,12 @@ function checkResa(duree) {
         }
     }
 }
+
+function check(input) {
+    if (input.value != document.getElementById('password').value) {
+        input.setCustomValidity('Les mots de passes ne sont pas identiques');
+    } else {
+        // input is valid -- reset the error message
+        input.setCustomValidity('');
+    }
+}
