@@ -6,6 +6,7 @@ $dbfactory = new \Rediite\Model\Factory\dbFactory();
 $dbAdapter = $dbfactory->createService();
 $messageHydrator = new \Rediite\Model\Hydrator\MessageHydrator();
 $chatRepository = new \Rediite\Model\Repository\ChatRepository($dbAdapter, $messageHydrator);
+
 $announceHydrator = new \Rediite\Model\Hydrator\AnnounceHydrator();
 $announceRepository = new \Rediite\Model\Repository\AnnounceRepository($dbAdapter, $announceHydrator);
 
@@ -23,3 +24,4 @@ $chatRepository->updateResa($idMessage, false);
 $chatRepository->updateDescription($idMessage, $description);
 header('Location: salon.php?idConv=' . $ref_conv);
 exit;
+
