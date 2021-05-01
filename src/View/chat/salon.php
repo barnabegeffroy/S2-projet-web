@@ -33,7 +33,7 @@ if (empty($data)) : ?>
         <input type="hidden" name="ref_conv" value="<?php echo $data['id'] ?>">
         <input type="hidden" name="idAnnonce" value="<?php echo $data['idannonce'] ?>">
         <input type="hidden" name="idAuteur" value="<?php echo $userSessionId ?>">
-        <input type='string' autocomplete="off" placeholder="Ecrivez votre message..." name="message" style="width: 1630px;"></input>
-        <button class="button" type="submit" name="Rejoindre" value="<?php echo $id; ?>">Envoyer</button>
+        <input class="form-control" type='string' autocomplete="off" placeholder="Ecrivez votre message..." name="message"></input>
+        <button class="btn btn-outline-dark btn-md my-1" type="submit" name="Rejoindre" value="<?php echo $id; ?>">Envoyer</button>
     </form>
 <?php endif; ?>
