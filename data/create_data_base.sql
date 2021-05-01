@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS Annonce CASCADE;
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Geffroy','Craig','Barnabé','barnabe.geffroy@ensiie.fr','0670908741','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Clavel','Clemos','Clémence','clemence.clavel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Gayet','Pipo','Constant','constant.gayet@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
-INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Harivel','Poulette','Alexia','alexia.harviel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
+INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Harivel','Poulette','Alexia','alexia.harivel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 
 CREATE TABLE Annonce (
     id SERIAL PRIMARY KEY,
@@ -49,7 +49,7 @@ CREATE TABLE Favoris (
 );
 
 
-DROP TABLE IF EXISTS Conversation;
+DROP TABLE IF EXISTS Conversation CASCADE;
 
 CREATE TABLE Conversation (
     id SERIAL PRIMARY KEY,
@@ -68,21 +68,10 @@ CREATE TABLE Message (
     ref_conv INTEGER NOT NULL,
     idAuteur INTEGER NOT NULL,
     datePublication DATE NOT NULL,
+    demandeResa BOOLEAN,
     description VARCHAR,
     CONSTRAINT fk_ref_conv FOREIGN KEY (ref_conv) REFERENCES Conversation(id),
     CONSTRAINT fk_auteur FOREIGN KEY (idAuteur) REFERENCES Utilisateur(id)
-);
-
-
-DROP TABLE IF EXISTS Commentaire;
-
-CREATE TABLE Commentaire (
-    id SERIAL PRIMARY KEY,
-    description VARCHAR NOT NULL,
-    idEmetteur INTEGER NOT NULL,
-    idReceveur INTEGER NOT NULL,
-    datePublication DATE NOT NULL,
-    CONSTRAINT fk_commentaire FOREIGN KEY (idEmetteur) REFERENCES Utilisateur(id)
 );
 
 DROP TABLE IF EXISTS Reservation;
@@ -97,8 +86,8 @@ CREATE TABLE Reservation (
     CONSTRAINT fk_user_reservation FOREIGN KEY (res_idUtilisateur) REFERENCES Utilisateur(id)
 );
 
-INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-04-26','2021-04-29');
-INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
+-- INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-04-26','2021-04-29');
+-- INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (1,1,'2021-05-01','2021-05-05');
 
 DROP TABLE IF EXISTS Localisation;
 

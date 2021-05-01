@@ -78,27 +78,48 @@ class ChatRepository
         $stmt->execute();
     }
 
-    function getLastConvCreated($idAnnonce, $id1, $id2)
-    {
-      $stmt = $this->dbAdapter->prepare(
-        'SELECT id FROM "conversation" WHERE conv_idannonce = :idAnnonce AND id1 = :id1 AND id2 = :id2 ORDER BY ID DESC LIMIT 1'
-      );
-      $stmt->bindValue(':idAnnonce', $idAnnonce, \PDO::PARAM_INT);
-      $stmt->bindValue(':id1', $id1, \PDO::PARAM_INT);
-      $stmt->bindValue(':id2', $id2, \PDO::PARAM_INT);
-      $stmt->execute();
-      $id = $stmt->fetch();
-      return $id ? $id: null;
-    }
-    //function insert(string $userName,string $createdAt,string $playersToFind,string $gameName,string $title)
-    function insertMessage(int $ref_conv, int $idAuteur, string $datePublication, string $description)
+    function getConv($idAnnonce, $id1, $id2)
     {
         $stmt = $this->dbAdapter->prepare(
-            'INSERT INTO "message" (ref_conv, idAuteur, datePublication , description) VALUES (:ref_conv, :idAuteur, :datePublication, :description)'
+            'SELECT id FROM "conversation" WHERE conv_idannonce = :idAnnonce AND id1 = :id1 AND id2 = :id2 ORDER BY ID DESC LIMIT 1'
+        );
+        $stmt->bindValue(':idAnnonce', $idAnnonce, \PDO::PARAM_INT);
+        $stmt->bindValue(':id1', $id1, \PDO::PARAM_INT);
+        $stmt->bindValue(':id2', $id2, \PDO::PARAM_INT);
+        $stmt->execute();
+        $id = $stmt->fetch();
+        return $id ? $id : null;
+    }
+    //function insert(string $userName,string $createdAt,string $playersToFind,string $gameName,string $title)
+    function insertMessage(int $ref_conv, int $idAuteur, string $datePublication, string $description, bool $demande)
+    {
+        $stmt = $this->dbAdapter->prepare(
+            'INSERT INTO "message" (ref_conv, idAuteur, datePublication , description, demandeResa) VALUES (:ref_conv, :idAuteur, :datePublication, :description, :demande)'
         );
         $stmt->bindValue(':ref_conv', $ref_conv, \PDO::PARAM_INT);
         $stmt->bindValue(':idAuteur', $idAuteur, \PDO::PARAM_INT);
         $stmt->bindValue(':datePublication', $datePublication, \PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
+        $stmt->bindValue(':demande', $demande, \PDO::PARAM_BOOL);
+        $stmt->execute();
+    }
+
+    function updateResa(int $messageId, bool $demande)
+    {
+        $stmt = $this->dbAdapter->prepare(
+            'UPDATE "message" SET demandeResa=:demande WHERE id = :id'
+        );
+        $stmt->bindValue(':id', $messageId, \PDO::PARAM_INT);
+        $stmt->bindValue(':demande', $demande, \PDO::PARAM_BOOL);
+        $stmt->execute();
+    }
+
+    function updateDescription(int $messageId, string $description)
+    {
+        $stmt = $this->dbAdapter->prepare(
+            'UPDATE "message" SET description=:description WHERE id = :id'
+        );
+        $stmt->bindValue(':id', $messageId, \PDO::PARAM_INT);
         $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
         $stmt->execute();
     }

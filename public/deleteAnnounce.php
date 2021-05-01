@@ -15,7 +15,7 @@ $idAnnounce = $_POST['idAnnounce'];
 $user = isset($_POST['idUser']) ? $userRepository->findOneById($_POST['idUser']) : $authenticatorService->getCurrentUser();
 
 $viewData = [];
-if (!password_verify($password, $authenticatorService->getCurrentUser()->getPassword())) {
+if (!password_verify($password, $user->getPassword())) {
     $viewData['failedPassword'] = 'Mot de passe incorrect';
     loadView('announce/myAnnounces', $viewData);
 } else {

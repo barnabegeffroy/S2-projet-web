@@ -12,14 +12,16 @@ $idAuteur = $_POST['id'];
 $idAnnounce = $_POST['idAnnounce'];
 $idAutre = $_POST['idOther'];
 $date = date('Y-m-d');
-$description = $_POST['message'];
+$description = isset($_POST['message']) ? $_POST['message'] : $_POST['dates'];
+$demande = isset($_POST['demandeResa']);
 
-$chatRepository->createConv($idAnnounce, $idAutre, $idAuteur);
-// echo $idAnnounce;
-// echo $idAutre;
-// echo $idAuteur;
-// echo $_SESSION['user_id'];
-$ref_conv = $chatRepository->getLastConvCreated($idAnnounce, $idAutre, $idAuteur)['id'];
-$chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description);
+$ref_conv = $chatRepository->getConv($idAnnounce, $idAutre, $idAuteur);
+
+if (empty($ref_conv['id'])) {
+    $chatRepository->createConv($idAnnounce, $idAutre, $idAuteur);
+    $ref_conv = $chatRepository->getConv($idAnnounce, $idAutre, $idAuteur);
+}
+$ref_conv = $ref_conv['id'];
+$chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description, $demande);
 header('Location: salon.php?idConv=' . $ref_conv);
 exit;

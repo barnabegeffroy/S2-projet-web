@@ -10,11 +10,12 @@ class MessageHydrator
   {
     $message = new MessageEntity();
     $message
-        ->setMessageId($data['id'])
-        ->setIdAuteur($data['idauteur'])
-        ->setDescription($data['description'])
-        ->setDatePublication($data['datepublication'])
-        ->setRefConv($data['ref_conv']);
+      ->setMessageId($data['id'])
+      ->setIdAuteur($data['idauteur'])
+      ->setDescription($data['description'])
+      ->setDatePublication($data['datepublication'])
+      ->setRefConv($data['ref_conv'])
+      ->setDemandeResa($data['demanderesa']);
     return $message;
   }
 }

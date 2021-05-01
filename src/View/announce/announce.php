@@ -71,7 +71,7 @@ if (empty($data)) : ?>
                 <?php endif;
                 if ($authenticatorService->isAdmin() && $userSessionId !== $data['idutilisateur']) :
                 ?>
-                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAccountForm'); change('idUser','<?php echo $data['idutilisateur'] ?>'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer l'annonce</button>
+                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAccountForm'); change('idUser','<?php echo $userSessionId ?>'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer l'annonce</button>
                     <div class="form-popup" id="deleteAccountForm">
                         <form action="deleteAnnounce.php" method="post" class="form-container">
                             <label class="form-label" for="password"><b>Mot de passe</b></label>
@@ -83,8 +83,11 @@ if (empty($data)) : ?>
                         </form>
                     </div>
                 <?php endif; ?>
-                <form class="form-container" id="resa" name="resa" action="addReservation.php" onsubmit="return validateForm(<?php echo isset($data['duree']) ? $data['duree'] : PHP_INT_MAX ?>)" method="POST">
+                <form class="form-container" id="resa" name="resa" action="addConv.php" onsubmit="return validateForm(<?php echo isset($data['duree']) ? $data['duree'] : PHP_INT_MAX ?>)" method="POST">
                     <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+                    <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
+                    <input type="hidden" name="demandeResa" value="true">
+                    <input type="hidden" name="idOther" value="<?php echo $data['idutilisateur'] ?>">
                     <input type="hidden" name="auth" value="<?php echo ($userSessionId !== $data['idutilisateur'] && !empty($userSessionId)) ?>">
                     <input type="hidden" id="resaDates" value="<?php
                                                                 $resas = $announceRepository->findReservationsByAnnounce($data['id']);
@@ -106,32 +109,35 @@ if (empty($data)) : ?>
                         </div>
                     </div>
                 </form>
-                <form action="addConv.php" id="message" class="form-container" method="POST">
-                    <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
-                    <input type="hidden" name="idOther" value="<?php echo $data['idutilisateur'] ?>">
-                    <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
-                    <label class="form-label" for="message"> </label>
-                    <input class="form-control" type="text" name="message" placeholder="Ecrivez votre message ici...">
-                    <button type="submit" class="btn btn-outline-dark btn-md my-1">Envoyer</button>
-                </form>
+                <?php if ($userSessionId !== $data['idutilisateur'] && !empty($userSessionId)) : ?>
+                    <form action="addConv.php" id="sendMessage" class="form-container" method="POST">
+                        <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
+                        <input type="hidden" name="idOther" value="<?php echo $data['idutilisateur'] ?>">
+                        <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
+                        <label class="form-label" for="message"> </label>
+                        <input class="form-control" type="text" name="message" placeholder="Ecrivez votre message ici..." required>
+                        <button type="submit" class="btn btn-outline-dark btn-md my-1">Envoyer</button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 
 
     <style type="text/css">
-      /* Set the size of the div element that contains the map */
-      #map {
-          height: 400px;
-          /* The height is 400 pixels */
-          width: 100%;
-        /* The width is the width of the web page */
-    }
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
     </style>
     <script src="../src/assets/scripts/maps.js"></script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly"></script>
 
     <script src="../src/assets/scripts/calendar.js"></script>
+    <script src="../src/assets/scripts/availability.js"></script>
     <link rel="stylesheet" type="text/css" href="../src/assets/css/calendar.css">
 <?php endif; ?>

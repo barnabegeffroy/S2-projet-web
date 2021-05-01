@@ -7,9 +7,9 @@ endif;
 $users = $userRepository->findAll();
 ?>
 <div class="col-12 text-center mt-5">
-    <h1 class="text-dark pt-4">Les inscrits :</h1>
-    <div class="border rounded">
-        <?php foreach ($users as &$user) : ?>
+    <h1 class="text-dark pt-4 my-5">Les inscrits :</h1>
+    <?php foreach ($users as &$user) : ?>
+        <div class="border rounded">
             <div>
                 <h5>Prénom :</h5>
                 <div><?php echo $user->getFirstName() ?></div>
@@ -33,19 +33,19 @@ $users = $userRepository->findAll();
                 <div><?php echo $user->getPhoneNumber() ?></div>
             </div>
             <?php if ($authenticatorService->getCurrentUserId() !== $user->getId()) : ?>
-                <button class="button1" onclick="openForm('deleteForm'); change('idUser','<?php echo $user->getId() ?>')">Supprimer le compte</button>
+                <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteForm'); change('idUser','<?php echo $user->getId() ?>')">Supprimer le compte</button>
             <?php else : ?>
-                <button class="button1" onclick="location.href = 'account.php'">Mon compte</button>
-        <?php endif;
-        endforeach; ?>
-        <div class="form-popup" id="deleteForm">
-            <form action="deleteAccount.php" method="post" class="form-container">
-                <label class="form-label" for="password"><b>Mot de passe</b></label>
-                <input type="password" placeholder="entrez votre mot de passe" name="password" required>
-                <input id="idUser" name="idUser" type="hidden">
-                <button type="submit" class="button1">Supprimer définitivement</button>
-                <button type="button" class="button1 cancel" onclick="closeForm('deleteForm')">Annuler</button>
-            </form>
+                <button class="btn btn-outline-dark btn-md my-1" onclick="location.href = 'account.php'">Mon compte</button>
+            <?php endif; ?>
         </div>
+    <?php endforeach; ?>
+    <div class="form-popup" id="deleteForm">
+        <form action="deleteAccount.php" method="post" class="form-container">
+            <label class="form-label" for="password"><b>Mot de passe</b></label>
+            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+            <input id="idUser" name="idUser" type="hidden">
+            <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
+            <button type="button" class="btn btn-outline-dark btn-md my-1 cancel" onclick="closeForm('deleteForm')">Annuler</button>
+        </form>
     </div>
 </div>

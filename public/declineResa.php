@@ -9,10 +9,10 @@ $chatRepository = new \Rediite\Model\Repository\ChatRepository($dbAdapter, $mess
 
 
 $ref_conv = $_POST['ref_conv'];
-$idAuteur = $_POST['idAuteur'];
-$date = date('Y-m-d');
-$description = $_POST['message'];
+$idMessage = $_POST['idMessage'];
+$description = 'Demande refusée : ' . $_POST['message'];
 
-$chatRepository->insertMessage($ref_conv, $idAuteur, $date, $description, false);
+$chatRepository->updateResa($idMessage, false);
+$chatRepository->updateDescription($idMessage, $description);
 header('Location: salon.php?idConv=' . $ref_conv);
 exit;

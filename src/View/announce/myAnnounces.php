@@ -30,8 +30,8 @@ $announces = $announceRepository->findAllByUserId($userId);
             <label class="form-label" for="password"><b>Mot de passe</b></label>
             <input type="password" placeholder="entrez votre mot de passe" name="password" required>
             <input id="idAnnounce" name="idAnnounce" type="hidden">
-            <button type="submit" class="button1">Supprimer définitivement</button>
-            <button type="button" class="button1 cancel" onclick="closeForm('deleteAnnounceForm')">Annuler</button>
+            <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
+            <button type="button" class="btn btn-outline-dark btn-md my-1 cancel" onclick="closeForm('deleteAnnounceForm')">Annuler</button>
         </form>
     </div>
     <?php foreach ($announces as &$announce) :

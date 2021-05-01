@@ -171,6 +171,17 @@ class AnnounceRepository
     $stmt->execute();
   }
 
+  public function getDuration($id)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'SELECT duree FROM annonce WHERE id = :id'
+    );
+    $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
+    $duree = $stmt->fetch();
+    return $duree ? $duree['duree'] : null;
+  }
+
   public function changePhoto($id, $bool)
   {
     $stmt = $this->dbAdapter->prepare(
@@ -274,7 +285,7 @@ class AnnounceRepository
   public function findLoans($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.res_idAnnonce WHERE R.res_idUtilisateur=:idUser'
+      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.res_idAnnonce WHERE A.idUtilisateur=:idUser'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();

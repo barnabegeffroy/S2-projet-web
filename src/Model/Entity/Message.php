@@ -29,6 +29,11 @@ class Message
      */
     private $description;
 
+    /**
+     * @var boolean
+     */
+    private $demandeResa;
+
 
     /**
      * @return mixed
@@ -80,7 +85,7 @@ class Message
         $this->refConv = $id;
         return $this;
     }
-    
+
 
     /**
      * @return mixed
@@ -115,6 +120,24 @@ class Message
     public function setDescription($contenu)
     {
         $this->description = $contenu;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getDemandeResa()
+    {
+        return $this->demandeResa;
+    }
+
+    /**
+     * @param mixed $demandeResa
+     * @return Message
+     */
+    public function setDemandeResa($demandeResa)
+    {
+        $this->demandeResa = $demandeResa;
         return $this;
     }
 }
