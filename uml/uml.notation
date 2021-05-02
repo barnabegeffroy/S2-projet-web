@@ -13,10 +13,6 @@
         <element xmi:type="uml:Property" href="uml.uml#_i0_oUIZpEeuz_b3Jzs49-Q"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_i1IyQYZpEeuz_b3Jzs49-Q"/>
       </children>
-      <children xmi:type="notation:Shape" xmi:id="_08-aAIZsEeuz_b3Jzs49-Q" type="Property_ClassAttributeLabel">
-        <element xmi:type="uml:Property" href="uml.uml#_08vwgIZsEeuz_b3Jzs49-Q"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_08-aAYZsEeuz_b3Jzs49-Q"/>
-      </children>
       <children xmi:type="notation:Shape" xmi:id="_pQsV4IZoEeuz_b3Jzs49-Q" type="Property_ClassAttributeLabel">
         <element xmi:type="uml:Property" href="uml.uml#_pQgIoIZoEeuz_b3Jzs49-Q"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_pQsV4YZoEeuz_b3Jzs49-Q"/>
@@ -33,17 +29,9 @@
         <element xmi:type="uml:Property" href="uml.uml#_CboUUIZpEeuz_b3Jzs49-Q"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CbysYYZpEeuz_b3Jzs49-Q"/>
       </children>
-      <children xmi:type="notation:Shape" xmi:id="_MinycIZpEeuz_b3Jzs49-Q" type="Property_ClassAttributeLabel">
-        <element xmi:type="uml:Property" href="uml.uml#_MieogIZpEeuz_b3Jzs49-Q"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_MinycYZpEeuz_b3Jzs49-Q"/>
-      </children>
       <children xmi:type="notation:Shape" xmi:id="_DkuGgIZtEeuz_b3Jzs49-Q" type="Property_ClassAttributeLabel">
         <element xmi:type="uml:Property" href="uml.uml#_DkgEEIZtEeuz_b3Jzs49-Q"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_DkuGgYZtEeuz_b3Jzs49-Q"/>
-      </children>
-      <children xmi:type="notation:Shape" xmi:id="_YA4PYIZyEeuz_b3Jzs49-Q" type="Property_ClassAttributeLabel">
-        <element xmi:type="uml:Property" href="uml.uml#_YAt3UIZyEeuz_b3Jzs49-Q"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_YA4PYYZyEeuz_b3Jzs49-Q"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_vXmCwIqGEeumKKtXVDoFng" type="Property_ClassAttributeLabel">
         <element xmi:type="uml:Property" href="uml.uml#_vXVkEIqGEeumKKtXVDoFng"/>

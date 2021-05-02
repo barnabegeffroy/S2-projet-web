@@ -13,21 +13,14 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_8apCQIZoEeuz_b3Jzs49-Q" name="password">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_CboUUIZpEeuz_b3Jzs49-Q" name="birthday">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CboUUIZpEeuz_b3Jzs49-Q" name="pseudo">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_MieogIZpEeuz_b3Jzs49-Q" name="profilePicture" type="_CV35UIZjEeuz_b3Jzs49-Q"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_i0_oUIZpEeuz_b3Jzs49-Q" name="id">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_08vwgIZsEeuz_b3Jzs49-Q" name="adresse">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_DkgEEIZtEeuz_b3Jzs49-Q" name="telephone">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_YAt3UIZyEeuz_b3Jzs49-Q" name="noteMoyenne">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_vXVkEIqGEeumKKtXVDoFng" name="prenom">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
