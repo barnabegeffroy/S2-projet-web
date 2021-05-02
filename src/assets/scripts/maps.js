@@ -16,7 +16,7 @@ function initMap() {
 
   // The map, centered at the announce
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 18,
+    zoom: 16,
     center: ensiie
   });
 
