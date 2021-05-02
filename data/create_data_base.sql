@@ -81,15 +81,6 @@ CREATE TABLE Reservation (
     CONSTRAINT fk_user_reservation FOREIGN KEY (res_idUtilisateur) REFERENCES Utilisateur(id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS Localisation;
-
-CREATE TABLE Localisation (
-    lattitudeDegre FLOAT NOT NULL,
-    lattitudeMinute FLOAT NOT NULL,
-    longitudeDegre FLOAT NOT NULL,
-    longitudeMinute FLOAT NOT NULL,
-    CONSTRAINT pk_localisation PRIMARY KEY (lattitudeDegre,lattitudeMinute,longitudeDegre,longitudeMinute)
-);
 
 GRANT all privileges ON Utilisateur TO tpcurseurs;
 GRANT all privileges ON utilisateur_id_seq TO tpcurseurs;
