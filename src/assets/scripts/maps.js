@@ -6,10 +6,9 @@ $(document).ready(function () {
   });
   document.getElementById('lat').value = autocomplete.getPlace().geometry.location.lat();
   document.getElementById('lng').value = autocomplete.getPlace().geometry.location.lng();
-
+  
+  
 });
-
-
 // Initialize and add the map
 function initMap() {
 
@@ -21,10 +20,4 @@ function initMap() {
     center: ensiie
   });
 
-  // const myPosition = { lat: myLat , lng: myLng }
-  // // The marker, positioned at myPosition
-  // const marker = new google.maps.Marker({
-  //   position: myPosition,
-  //   map: map,
-  // });
 };
