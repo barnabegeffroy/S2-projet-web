@@ -16,6 +16,8 @@ class AnnounceHydrator
       ->setDuration($data['duree'])
       ->setDescription($data['description'])
       ->setPhoto($data['photo'])
+      ->setLat($data['lat'])
+      ->setLng($data['lng'])
       ->setPlace($data['lieu']);
     return $topic;
   }

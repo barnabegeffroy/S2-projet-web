@@ -19,7 +19,7 @@ if (isset($data['errorInCreation'])) : ?>
 <div class="row">
   <div class="col-5">
     <h4 class="text-dark text-center pt-4">Entrez les informations de votre annonce.</h4>
-    <form action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
+    <form name="addAnnounce" action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <?php if (isset($data['id'])) : ?>
           <input class="form-control" type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
@@ -38,7 +38,9 @@ if (isset($data['errorInCreation'])) : ?>
         </div>
         <div>
           <label class="form-label" for="search_input">Adresse :</label>
-          <input class="form-control" type="text" id="search_input" placeholder="Saisissez une adresse" />
+          <input class="form-control" type="text" id="search_input" name="search_input" placeholder="Saisissez une adresse" />
+          <input type="hidden" name="lat">
+          <input type="hidden" name="lng">
           <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&libraries=places"></script>
         </div>
         <?php if ((isset($data['photo']) && $data['photo'] !== "1") || !isset($data['photo'])) : ?>

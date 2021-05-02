@@ -28,11 +28,11 @@ class AnnounceRepository
     $this->announceHydrator = $announceHydrator;
   }
 
-  function insert(string $titre, int $idUser, string $datePublication, $duree, $description, $place)
+  function insert(string $titre, int $idUser, string $datePublication, $duree, $description, $place, $lat, $lng)
   {
     $stmt = $this->dbAdapter->prepare(
-      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) 
-      VALUES (:titre, :idUser, :datePublication, :duree, :description, FALSE, :lieu)'
+      'INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu, lat, lng) 
+      VALUES (:titre, :idUser, :datePublication, :duree, :description, FALSE, :lieu, :lat, :lng)'
     );
     $stmt->bindValue(':titre', $titre, \PDO::PARAM_STR);
     $stmt->bindValue(':idUser', $idUser, \PDO::PARAM_INT);
@@ -40,6 +40,8 @@ class AnnounceRepository
     $stmt->bindValue(':duree', $duree, \PDO::PARAM_INT);
     $stmt->bindValue(':description', $description, \PDO::PARAM_STR);
     $stmt->bindValue(':lieu', $place, \PDO::PARAM_STR);
+    $stmt->bindValue(':lat', $lat, \PDO::PARAM_STR);
+    $stmt->bindValue(':lng', $lng, \PDO::PARAM_STR);
     $is_success = $stmt->execute();
     // Code à rajouter
     if (!$is_success) {

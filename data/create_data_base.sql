@@ -29,6 +29,8 @@ CREATE TABLE Annonce (
     description VARCHAR,
     photo BOOLEAN,
     lieu VARCHAR(256),
+    lat FLOAT,
+    lng FLOAT,
     CONSTRAINT fk_annonce FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id) ON DELETE CASCADE
 );
 

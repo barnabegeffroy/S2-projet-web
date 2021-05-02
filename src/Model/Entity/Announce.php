@@ -43,6 +43,16 @@ class Announce
      * @var string
      */
     private $lieu;
+    
+    /**
+     * @var float
+     */
+    private $lat;
+    
+    /**
+     * @var float
+     */
+    private $lng;
 
     /**
      * @return mixed
@@ -184,6 +194,42 @@ class Announce
     public function setPlace($place)
     {
         $this->lieu = $place;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @param mixed $lat
+     * @return Announce
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @param mixed $lng
+     * @return Announce
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
         return $this;
     }
 }
