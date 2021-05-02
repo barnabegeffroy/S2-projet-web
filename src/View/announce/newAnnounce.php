@@ -60,7 +60,7 @@ if (isset($data['errorInCreation'])) : ?>
     <?php if (isset($data['photo']) && $data['photo'] == "1") :
       $file = glob("../src/View/images/announces/" . $data['id'] . ".*"); ?>
       <div>
-        <img src="<?php echo $file[0]; ?>" />
+        <img  class="w-100" src="<?php echo $file[0]; ?>" />
       </div>
       <form method="POST" action="deletePicture.php">
         <div class="form-group">
