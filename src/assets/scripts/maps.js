@@ -24,27 +24,20 @@ $(document).ready(function () {
 
 // Initialize and add the map
 function initMap() {
-  // var place = autocomplete.getPlace();
 
-  // var lat = place.geometry.location.lat(),
-  // var lng = place.geometry.location.lng();
-
-
-  var coord = autocomplete.getPlace().geometry.location;
-  console.log(coord);
-  // const myPosition = { lat: lat, lng: lng };
+  const center = { lat: 48.62682123216434, lng: 2.432315013435739 };
 
 
   // The map, centered at the announce
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: coord,
+    center: center,
   });
+  
+  const myPosition = { lat: 48.62682123216434 , lng: 2.432315013435739 }
   // The marker, positioned at myPosition
-  var marker = new google.maps.Marker({
-    position: coord,
+  const marker = new google.maps.Marker({
+    position: myPosition,
     map: map,
-    dragable: true,
-    visible: true
   });
 }
