@@ -71,7 +71,7 @@ if (empty($data)) : ?>
         <input type="hidden" name="ref_conv" value="<?php echo $data['id'] ?>">
         <input type="hidden" name="idAnnonce" value="<?php echo $data['idannonce'] ?>">
         <input type="hidden" name="idAuteur" value="<?php echo $userSessionId ?>">
-        <input class="form-control" type="text" placeholder="Ecrivez votre message..." name="message"></input>
+        <input class="form-control" type="text" placeholder="Ecrivez votre message..." name="message"/>
         <button class="btn btn-outline-dark btn-md my-1" type="submit" name="Rejoindre" value="<?php echo $id; ?>">Envoyer</button>
     </form>
 <?php endif; ?>

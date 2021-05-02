@@ -1,5 +1,4 @@
-.date-range-selected>.ui-state-active,
-.date-range-selected>.ui-state-default {
+.date-range-selected>.ui-state-active, .date-range-selected>.ui-state-default {
     background: none;
     background-color: lightsteelblue;
 }
@@ -15,4 +14,11 @@
 .event a {
     background-color: red !important;
     color: white !important;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
 }

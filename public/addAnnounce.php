@@ -27,7 +27,9 @@ $userId = $authenticatorService->getCurrentUserId();
 if (null !== $titre &&  null !== $date) {
   $viewData['errorInCreation'] = $announceRepository->insert($titre, $userId, $date, $duree, $description, $coordonnees);
   $id = $announceRepository->getLastCreated($userId)['id'];
-  $viewData = upload_image($announceRepository, $viewData, $image, $id);
+  if ($image !== null) {
+    $viewData = upload_image($announceRepository, $viewData, $image, $id);
+  }
 } else {
   $viewData['errorInCreation'] += "Impossible de créer l'annonce";
 }

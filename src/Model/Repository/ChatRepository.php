@@ -27,7 +27,7 @@ class ChatRepository
     public function findConvsByUserId($userId)
     {
         $stmt = $this->dbAdapter->prepare(
-            'SELECT * FROM "conversation" WHERE id1 = :id OR id2 =:id'
+            'SELECT * FROM "conversation" WHERE id1 = :id OR id2 =:id ORDER BY id DESC'
         );
         $stmt->bindValue(':id', $userId, \PDO::PARAM_INT);
         $stmt->execute();

@@ -43,7 +43,7 @@ $user = $authenticatorService->getCurrentUser();
     <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAccountForm')">Supprimer mon compte</button>
     <div class="form-popup" id="deleteAccountForm">
         <form action="deleteAccount.php" method="post" class="form-container">
-            <label class="form-label" for="password"><b>Mot de passe</b></label>
+            <label class="form-label" for="password"><strong>Mot de passe</strong></label>
             <input type="password" id="password" placeholder="entrez votre mot de passe" name="password" required>
             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
             <button type="button" class="btn btn-outline-dark btn-md my-1 cancel" onclick="closeForm('deleteAccountForm')">Annuler</button>

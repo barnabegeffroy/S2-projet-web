@@ -41,7 +41,7 @@ $users = $userRepository->findAll();
     <?php endforeach; ?>
     <div class="form-popup" id="deleteForm">
         <form action="deleteAccount.php" method="post" class="form-container">
-            <label class="form-label" for="password"><b>Mot de passe</b></label>
+            <label class="form-label" for="password"><strong>Mot de passe</strong></label>
             <input type="password" placeholder="entrez votre mot de passe" name="password" id="password" required>
             <input id="idUser" name="idUser" type="hidden">
             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>

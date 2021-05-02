@@ -67,7 +67,7 @@ class UserRepository
   public function findAll()
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM "utilisateur"'
+      'SELECT * FROM "utilisateur" ORDER BY id DESC'
     );
     $stmt->execute();
     $users = null;

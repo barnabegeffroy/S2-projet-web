@@ -43,8 +43,9 @@ if (isset($data['errorInCreation'])) : ?>
         </div>
         <?php if ((isset($data['photo']) && $data['photo'] !== "1") || !isset($data['photo'])) : ?>
           <div>
-
-            <input type="hidden" name="isSet" value="<?php echo $data['photo'] ?>">
+            <?php if (isset($data['photo'])) : ?>
+              <input type="hidden" name="isSet" value="<?php echo $data['photo'] ?>">
+            <?php endif; ?>
             <label class="form-label" for="image">Image :</label>
             <input class="form-control" type="file" id="image" name="image" />
           </div>

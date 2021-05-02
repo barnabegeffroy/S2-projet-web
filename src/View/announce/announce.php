@@ -23,7 +23,7 @@ if (empty($data)) : ?>
                                 echo $file[0];
                             } else {
                                 echo "../src/View/images/no_pic.jpg";
-                            } ?>" class="w-100" alt="Pas de visuel disponible"/>
+                            } ?>" class="w-100" alt="Pas de visuel disponible" />
             </div>
 
             <div class="col">
@@ -40,7 +40,7 @@ if (empty($data)) : ?>
             </div>
 
 
-            <div class="col">
+            <div class="col text-center">
                 <?php if ($data['idutilisateur'] == $userSessionId) : ?>
                     <form action="newAnnounce.php" method="post">
                         <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
@@ -49,7 +49,7 @@ if (empty($data)) : ?>
                     <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAccountForm'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer mon annonce</button>
                     <div class="form-popup" id="deleteAccountForm">
                         <form action="deleteAnnounce.php" method="post" class="form-container">
-                            <label class="form-label" for="password"><b>Mot de passe</b></label>
+                            <label class="form-label" for="password"><strong>Mot de passe</strong></label>
                             <input type="password" placeholder="entrez votre mot de passe" name="password" id="password" required>
                             <input id="idAnnounce" name="idAnnounce" type="hidden">
                             <button type="submit" class="btn btn-outline-dark btn-md my-1">Supprimer définitivement</button>
@@ -74,7 +74,7 @@ if (empty($data)) : ?>
                     <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAccountForm'); change('idUser','<?php echo $userSessionId ?>'); change('idAnnounce','<?php echo $data['id'] ?>')">Supprimer l'annonce</button>
                     <div class="form-popup" id="deleteAccountForm">
                         <form action="deleteAnnounce.php" method="post" class="form-container">
-                            <label class="form-label" for="password"><b>Mot de passe</b></label>
+                            <label class="form-label" for="password"><strong>Mot de passe</strong></label>
                             <input class="form-control" type="password" placeholder="entrez votre mot de passe" name="password" required>
                             <input id="idAnnounce" name="idAnnounce" type="hidden">
                             <input id="idUser" name="idUser" type="hidden">
@@ -104,7 +104,7 @@ if (empty($data)) : ?>
                     <div class="wrapper">
                         <div id="jrange" class="dates">
                             <label class="form-label" for="dates"><strong><?php echo $data['idutilisateur'] == $userSessionId || empty($userSessionId) ? "Calendrier des réservations" : "Sélectionnez la ou les dates de réservation" ?></strong></label><br>
-                            <input name="dates" required />
+                            <input name="dates" id="dates" required />
                             <div></div>
                         </div>
                     </div>
@@ -114,27 +114,17 @@ if (empty($data)) : ?>
                         <input type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">
                         <input type="hidden" name="idOther" value="<?php echo $data['idutilisateur'] ?>">
                         <input type="hidden" name="id" value="<?php echo $userSessionId ?>">
-                        <label class="form-label" for="message"> </label>
-                        <input class="form-control" type="text" name="message" placeholder="Ecrivez votre message ici..." required>
+                        <label class="form-label" for="message"><strong>Envoyez un message à cet entraiideur</strong></label>
+                        <input class="form-control" type="text" id="message" name="message" placeholder="Ecrivez votre message ici..." required>
                         <button type="submit" class="btn btn-outline-dark btn-md my-1">Envoyer</button>
                     </form>
                 <?php endif; ?>
             </div>
         </div>
     </div>
-
-
-    <style type="text/css">
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
-    </style>
-    <script src="../src/assets/scripts/maps.js"></script>
     <div id="map"></div>
+
+    <script src="../src/assets/scripts/maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly"></script>
 
     <script src="../src/assets/scripts/calendar.js"></script>

@@ -100,7 +100,7 @@ class AnnounceRepository
   public function findAllByUserId($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM "annonce" WHERE idutilisateur = :idutilisateur'
+      'SELECT * FROM "annonce" WHERE idutilisateur = :idutilisateur ORDER BY id DESC'
     );
     $stmt->bindValue(':idutilisateur', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -116,7 +116,7 @@ class AnnounceRepository
   public function findAll()
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM "annonce"'
+      'SELECT * FROM "annonce" ORDER BY id DESC'
     );
     $stmt->execute();
     $announces = null;
@@ -237,7 +237,7 @@ class AnnounceRepository
   public function findAllFavs($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM annonce A JOIN favoris F ON A.id = F.fav_idAnnonce WHERE F.fav_idUtilisateur=:idUser;'
+      'SELECT * FROM annonce A JOIN favoris F ON A.id = F.fav_idAnnonce WHERE F.fav_idUtilisateur=:idUser ORDER BY A.id DESC'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -253,7 +253,7 @@ class AnnounceRepository
   public function findReservationsByAnnounce($announceId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT dateDebut, dateFin FROM reservation WHERE res_idAnnonce=:idAnnounce;'
+      'SELECT dateDebut, dateFin FROM reservation WHERE res_idAnnonce=:idAnnounce'
     );
     $stmt->bindValue(':idAnnounce', $announceId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -269,7 +269,7 @@ class AnnounceRepository
   public function findReservationsByUser($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT res_idAnnonce, dateDebut, dateFin FROM reservation WHERE res_idUtilisateur=:userId;'
+      'SELECT res_idAnnonce, dateDebut, dateFin FROM reservation WHERE res_idUtilisateur=:userId ORDER BY dateDebut DESC'
     );
     $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
     $stmt->execute();
@@ -285,7 +285,7 @@ class AnnounceRepository
   public function findLoans($userId)
   {
     $stmt = $this->dbAdapter->prepare(
-      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.res_idAnnonce WHERE A.idUtilisateur=:idUser'
+      'SELECT * FROM reservation R JOIN annonce A ON A.id = R.res_idAnnonce WHERE A.idUtilisateur=:idUser ORDER BY dateDebut DESC'
     );
     $stmt->bindValue(':idUser', $userId, \PDO::PARAM_INT);
     $stmt->execute();

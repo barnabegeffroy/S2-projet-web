@@ -39,7 +39,7 @@ function loadView($view, $data)
         <div class="main-container">
             <?php include_once '../src/View/' . $view . '.php' ?>
         </div>
-        
+
         <?php include_once '../src/View/layout/footer.php' ?>
     </body>
 
@@ -75,7 +75,7 @@ function loadAnnounce($announce, $userId, $isFav)
                                 echo $file[0];
                             } else {
                                 echo "../src/View/images/no_pic.jpg";
-                            } ?>" class="w-100" alt="Pas de visuel disponible"/>
+                            } ?>" class="w-100" alt="Pas de visuel disponible" />
             </div>
 
             <div class="col my-auto">
@@ -107,7 +107,7 @@ function upload_image($announceRepository, $viewData, $image, $id)
     if ($image !== null) {
         $dossier = '../src/View/images/announces/';
         $fichier = basename($image['name']);
-        $taille_maxi = 1000000;
+        $taille_maxi = 10000000;
         $taille = filesize($image['tmp_name']);
         $extensions = array('.png', '.gif', '.jpg', '.jpeg');
         $extension = strrchr($image['name'], '.');
@@ -115,8 +115,10 @@ function upload_image($announceRepository, $viewData, $image, $id)
         if (!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
         {
             $viewData['errorInCreation'] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
+            return $viewData;
         } else if ($taille > $taille_maxi) {
-            $viewData['errorInCreation'] = 'Le fichier est trop gros...';
+            $viewData['errorInCreation'] = 'Le fichier est trop gros (il faut moins de 10Mo...';
+            return $viewData;
         } else {
             $id = $announceRepository->getDataById($id)['id'];
             $fichier = $id . $extension;
