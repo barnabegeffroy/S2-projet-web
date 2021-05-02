@@ -21,23 +21,23 @@ $(document).ready(function () {
 //     }
 //   },false);
 
+//essai
 
 // Initialize and add the map
 function initMap() {
-  var place = autocomplete.getPlace();
 
-  var lat = place.geometry.location.lat(),
-  var lng = place.geometry.location.lng();
+  const ensiie = { lat: 48.62682123216434, lng: 2.432315013435739 };
 
-  const myPosition = { lat: lat, lng: lng };
   // The map, centered at the announce
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: myPosition,
+    center: ensiie,
   });
+
+  const myPosition = { lat: 48.62682123216434 , lng: 2.432315013435739 }
   // The marker, positioned at myPosition
   const marker = new google.maps.Marker({
     position: myPosition,
     map: map,
   });
-}
+};
