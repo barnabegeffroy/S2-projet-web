@@ -37,6 +37,11 @@ if (empty($data)) : ?>
                         Durée maximale de prêt en jours : <strong><?php echo $data['duree']; ?></strong>
                     </p>
                 <?php endif; ?>
+                <?php if (isset($data['lieu'])) : ?>
+                    <p>
+                        Lieu : <strong><?php echo $data['lieu']; ?></strong>
+                    </p>
+                <?php endif; ?>
             </div>
 
 

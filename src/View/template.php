@@ -89,7 +89,6 @@ function loadAnnounce($announce, $userId, $isFav)
                         <input type="hidden" name="idAnnounce" value="<?php echo $announce->getId() ?>">
                         <button class="btn btn-outline-dark btn-md my-1" type="submit">Modifier mon annonce</button>
                     </form>
-                    <button class="btn btn-outline-dark btn-md my-1" onclick="openForm('deleteAnnounceForm'); change('idAnnounce','<?php echo $announce->getId() ?>')">Supprimer mon annonce</button>
                 <?php elseif (!empty($userId)) :
                     $bool = ($isFav) ?>
                     <form action="<?php echo $bool ? "deleteFav.php" : "addToFav.php" ?>" method="POST">
