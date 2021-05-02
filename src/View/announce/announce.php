@@ -127,7 +127,6 @@ if (empty($data)) : ?>
             </div>
         </div>
     </div>
-    <div id="map"></div>
 
     <script src="../src/assets/scripts/maps.js"></script>
     <div id="map"></div>
