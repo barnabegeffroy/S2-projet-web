@@ -20,6 +20,7 @@ function loadView($view, $data)
         <meta charset="utf-8">
         <title>ENTRAiiDe</title>
         <link rel="stylesheet" href="../src/assets/css/bootstrap.min.css">
+        <link rel="icon" href="../src/View/images/logoIcon.ico" />
         <link rel="stylesheet" type="text/css" href="../src/assets/css/style.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
