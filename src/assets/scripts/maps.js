@@ -21,6 +21,7 @@ $(document).ready(function () {
 //     }
 //   },false);
 
+//essai
 
 // Initialize and add the map
 function initMap() {
