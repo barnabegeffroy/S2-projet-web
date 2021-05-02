@@ -19,7 +19,7 @@ if (isset($data['errorInCreation'])) : ?>
 <div class="row">
   <div class="col-5">
     <h4 class="text-dark text-center pt-4">Entrez les informations de votre annonce.</h4>
-    <form name="addAnnounce" action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
+    <form name="addAnnounce" onsubmit="" action="<?php echo isset($data['titre']) ? "updateAnnounce.php" : "addAnnounce.php" ?>" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <?php if (isset($data['id'])) : ?>
           <input class="form-control" type="hidden" name="idAnnounce" value="<?php echo $data['id'] ?>">

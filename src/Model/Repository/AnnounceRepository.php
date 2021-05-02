@@ -204,6 +204,26 @@ class AnnounceRepository
     $stmt->execute();
   }
 
+  public function changeLat($id, $lat)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "annonce" SET lat=:lat WHERE id = :id'
+    );
+    $stmt->bindValue(':lat', $lat, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function changeLng($id, $lng)
+  {
+    $stmt = $this->dbAdapter->prepare(
+      'UPDATE "annonce" SET lng=:lng WHERE id = :id'
+    );
+    $stmt->bindValue(':lng', $lng, \PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
   public function addFav($idAnnounce, $userId)
   {
     $stmt = $this->dbAdapter->prepare(
