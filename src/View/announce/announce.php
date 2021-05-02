@@ -135,7 +135,7 @@ if (empty($data)) : ?>
     </style>
     <script src="../src/assets/scripts/maps.js"></script>
     <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDabmvz7QF2a2kqCvs-yZjN-Uu54Ao3zbQ&callback=initMap&libraries=&v=weekly" async></script>
 
     <script src="../src/assets/scripts/calendar.js"></script>
     <script src="../src/assets/scripts/availability.js"></script>
