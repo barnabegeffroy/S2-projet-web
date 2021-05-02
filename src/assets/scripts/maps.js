@@ -34,7 +34,7 @@ function initMap(myLat, myLng) {
 
   // The map, centered at the announce
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
+    zoom: 8,
     center: ensiie
   });
 
