@@ -25,19 +25,18 @@ $(document).ready(function () {
 // Initialize and add the map
 function initMap() {
 
-  const center = { lat: 48.62682123216434, lng: 2.432315013435739 };
-
+  const ensiie = { lat: 48.62682123216434, lng: 2.432315013435739 };
 
   // The map, centered at the announce
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: center,
+    center: ensiie,
   });
-  
+
   const myPosition = { lat: 48.62682123216434 , lng: 2.432315013435739 }
   // The marker, positioned at myPosition
   const marker = new google.maps.Marker({
     position: myPosition,
     map: map,
   });
-}
+};
