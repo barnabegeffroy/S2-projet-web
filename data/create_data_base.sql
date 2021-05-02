@@ -102,11 +102,11 @@ INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALU
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Harivel','Poulette','Alexia','alexia.harivel@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 INSERT INTO "utilisateur" (nom, pseudo, prenom, email, telephone, password) VALUES ('Oustric','Choco','Lucas','lucas.oustric@ensiie.fr','0000000000','$2y$10$K/8woUpK/8RmfH5EdvwNi.ahLYsRfJtxs2TIyHy/2X2rxiHQ1w4Iq');
 
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Catan','1','2021-04-24', 2, 'Jeu de société très sympa, je ne le prête que pour une soirée ou un week-end.', FALSE, NULL);
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Livres informatique','2','2021-04-30', NULL, 'Idéal pour réaliser un site web comme ENTRAiiDe.', TRUE, NULL);
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Le JavaScript pour les nuls','3','2021-05-02', 30, 'Ayant fini mon projet web, je prête ce livre avec grand plaisir !', TRUE, NULL);
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Intégrale de How I met your mother','4','2021-05-01', 15, 'Très bonne série que je prête avec grand plaisir', TRUE, NULL);
-INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Trilogie du Seigneur des Anneaux','1','2021-05-04', NULL, '', TRUE, NULL);
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Catan','1','2021-04-24', 2, 'Jeu de société très sympa, je ne le prête que pour une soirée ou un week-end.', 1, '1 Rue de la Résistance, Évry-Courcouronnes, France');
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Livres informatique','2','2021-04-30', NULL, 'Idéal pour réaliser un site web comme ENTRAiiDe.', 1, 'Boulevard de l Europe, Évry-Courcouronnes, France');
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Le JavaScript pour les nuls','3','2021-05-02', 30, 'Ayant fini mon projet web, je prête ce livre avec grand plaisir !', 1, '2 Villa Charles Delescluze, Évry-Courcouronnes, France');
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Intégrale de How I met your mother','4','2021-05-01', 15, 'Très bonne série que je prête avec grand plaisir', 1, 'Cours Monseigneur Roméro, Évry-Courcouronnes, France');
+INSERT INTO "annonce" (titre, idUtilisateur, datePublication, duree, description, photo, lieu) VALUES ('Trilogie du Seigneur des Anneaux','1','2021-05-04', NULL, '', 1, '1 Rue de la Résistance, Évry-Courcouronnes, France');
 
 INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (4,1,'2021-05-11','2021-05-25');
 INSERT INTO "reservation" (res_idAnnonce,res_idUtilisateur,dateDebut,dateFin) VALUES (3,5,'2021-05-26','2021-06-15');
