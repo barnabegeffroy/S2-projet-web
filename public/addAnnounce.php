@@ -26,7 +26,7 @@ $viewData = [];
 $userId = $authenticatorService->getCurrentUserId();
 
 if (null !== $titre &&  null !== $date) {
-  $viewData['errorInCreation'] = $announceRepository->insert($titre, $userId, $date, $duree, $description, $coordonnees, $lat, $lng);
+  $viewData['errorInCreation'] = $announceRepository->insert($titre, $userId, $date, $duree, $description, $adresse, $lat, $lng);
   $id = $announceRepository->getLastCreated($userId)['id'];
   if ($image !== null) {
     $viewData = upload_image($announceRepository, $viewData, $image, $id);
