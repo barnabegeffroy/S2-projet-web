@@ -4,8 +4,8 @@ $(document).ready(function () {
   var autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
     types: ['geocode'],
   });
-  document.getElementById('lat').value = autocomplete.getPlace().geometry.location.lat();
-  document.getElementById('lng').value = autocomplete.getPlace().geometry.location.lng();
+  document.forms["addAnnounce"]["lat"].value.value = autocomplete.getPlace().geometry.location.lat();
+  document.forms["addAnnounce"]["lat"].value = autocomplete.getPlace().geometry.location.lng();
   
   
 });
