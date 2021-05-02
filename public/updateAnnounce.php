@@ -46,10 +46,10 @@ if (!empty($image)) {
   $viewData = upload_image($announceRepository, $viewData, $image, $id);
 }
 
-if (!empty($adresse) && !empty($lat) && !empty($lng)) {
+if (!empty($adresse) /* && !empty($lat) && !empty($lng) */) {
   $announceRepository->changePlace($id, $adresse);
-  $announceRepository->changeLat($id, $lat);
-  $announceRepository->changeLng($id, $lng);
+  // $announceRepository->changeLat($id, $lat);
+  // $announceRepository->changeLng($id, $lng);
 }
 
 if (empty($viewData['errorInCreation'])) {

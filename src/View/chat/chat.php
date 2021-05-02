@@ -17,7 +17,7 @@ $convs = $chatRepository->findConvsByUserId($userId);
     <h1 class="text-dark pt-4">Messagerie</h1>
 </div>
 <?php if (empty($convs)) : ?>
-    <h4 class="text-dark text-center pt-4">Vous n'avez encore de message.</h4>
+    <h4 class="text-dark text-center pt-4">Vous n'avez pas encore de message.</h4>
 
 <?php else : ?>
     <div class="form-popup" id="deleteConvForm">
